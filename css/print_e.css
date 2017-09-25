@@ -1,0 +1,23 @@
+body{font:70% Tahoma,Arial,Sans-serif;background-color:#FFF;color:#000}
+ul.meta{font-size:smaller}
+ol.comments ul.meta{display:block}
+img,sub,hr,input[image],input[button],a.nav_current,a.nav_normal,.imgoption,.buttons{border:none;display:none}
+a[href^=http]::after{content:" (link: " attr(href) ") "}
+a:link,a:visited{color:#000;text-decoration:none}
+h1,h2,h3,h4,h5{text-align:center;border-bottom:1px solid #000;padding:0 5px 5px}
+table{width:100%;border:1px solid #000;border-collapse:collapse;margin-bottom:5px}
+table.data{border-collapse:collapse;padding:2px}
+div.table{border-left:1px solid #000;border-top:1px solid #000}
+table td.righttop{empty-cells:show;border-bottom:1px solid #000;border-left:1px solid #000;text-align:right;vertical-align:top;padding:2px}
+div.showr{text-align:right;margin-bottom:5px}
+div.show{text-align:center;margin-bottom:5px}
+div.showl{text-align:left;margin-bottom:5px}
+div.table th{text-align:left;background-color:#EEE}
+div.table th,div.table td{border-bottom:1px solid #000;border-right:1px solid #000;padding:3px}
+.comment{background-position:right top;background-repeat:no-repeat}
+form,div.footer,div.header,p.permalink,#main-menu,#bread-crumbs,#buttons,#postcomment,#sourceforge,#donate,#me,#help,#commentform,#modified,#navigate,#syndication,#bad-bot,div.preview,div.section ul.meta,div.help,.paging,table.mainpageheader,table.menu{display:}
+.hideme{display:none;}
+select,input,textarea,.wymagane{border:none}
+table td,table td.left,table th,table th.left{empty-cells:show;border-bottom:1px solid #000;border-left:1px solid #000;text-align:left;padding:2px}
+table td.center,table th.center{empty-cells:show;border-bottom:1px solid #000;border-left:1px solid #000;text-align:center;padding:2px}
+table td.right,table th.right{empty-cells:show;border-bottom:1px solid #000;border-left:1px solid #000;text-align:right;padding:2px}

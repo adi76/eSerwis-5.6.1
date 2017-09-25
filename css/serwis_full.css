@@ -1,0 +1,51 @@
+BODY{background-color:#F5F5F5;color:#000;font-family:Tahoma;font-size:12px;position:static;top:0;left:0;margin:0 0 1px;padding:0}
+H2{font-weight:bold;font-family:Tahoma;background-color:#FF4500;font-size:13px;color:#000;width:97%;text-align:center;padding:15px}
+H3{font-weight:bold;font-family:Tahoma;background-color:#98FB98;font-size:13px;color:#000;width:97%;padding:15px}
+H4{font-weight:bold;font-family:Tahoma;background-color:#5F6676;font-size:13px;color:#FFF;padding:5px}
+H5{font-weight:bold;font-family:Tahoma;background-color:#FFD700;font-size:13px;color:#000;width:97%;padding:15px}
+.titlebar_add{color:#FFF;font-weight:normal;background-color:#8E95A4;border-style:none;border-width:0;margin:10px}
+.titlebar_add_n{color:#FFF;font-weight:bold;background-color:#8E95A4;border-style:none;border-width:0;margin:10px}
+.maintablerow1{background:#A7ACBA;color:#000}
+.maintablerow1a{background:transparent;color:#000}
+.maintable{background:#313131;color:#FFF;letter-spacing:1px;padding:0 2px 3px}
+.noborder{color:#3B404B;background:#A7ACBA;border-color:#A7ACBA;border-style:solid;border-width:thin}
+.noborder1{color:#3B404B;background:#A7ACBA;border:2px solid #000;padding-bottom:2px;padding-left:2px;padding-right:2px;border-color:#545A6B}
+.error{color:red}
+TABLE{color:#000;background:#F5F5F5;border:2pt;position:static}
+.titlebarmain{color:#FFF;background:#8E95A4;border-color:#5C6D7B;border-width:1pt}
+.titlebarmainwarning1{color:#FFF;background:#C60000;border-color:#5C6D7B;border-width:2pt}
+.titlebarmainwarning{color:#FFF;background:Red;border-color:#5C6D7B;border-width:2pt}
+.titlebar{color:#FFF;background:#606B7F;border-color:#A52A2A;border-style:solid;border-width:0}
+.parzyste{color:#030303;background:#C9CDD3}
+.parzyste_{color:#030303;background:#C9CDD3;border-bottom:1px}
+.nieparzyste{color:#0b0b0b;background:#AFB6BF}
+.gold_font{color:#FFD700}
+.black_font{text-decoration:none;color:#000}
+.red_font{color:Red}
+.white_font{color:#FFF}
+.blue_font{color:Blue}
+a.main,a.main:hover,a.main:focus{color:#FFF;background:transparent;font-weight:bold;text-decoration:none}
+a.tendpoint{color:blue;background:transparent;text-decoration:none}
+a.tendpoint:hover{color:blue;background:transparent;font-weight:normal;text-decoration:underline}
+img.transparent{border:none}
+hr{color:#788B9A;border-width:medium}
+a.opcja_E{color:blue;background:transparent;text-decoration:none;font-weight:bold}
+a.opcja_U{color:red;background:transparent;text-decoration:none;font-weight:bold}
+A.opt{text-decoration:none;color:#004080;font-family:Tahoma;font-size:11px;font-weight:bold}
+A.opt:hover,visited{text-decoration:none;background-color:#004080;color:#FFF;font-family:Tahoma;font-size:11px;font-weight:bold}
+A.opte{text-decoration:none;color:#004080;font-family:Tahoma;font-size:11px;font-weight:normal}
+A.opte:hover,visited{text-decoration:none;color:#FFF;font-family:Tahoma;font-size:11px;font-weight:normal}
+A.opt_g{text-decoration:none;color:#228B22;font-family:Tahoma;font-size:11px;font-weight:bold}
+A.opt_r{text-decoration:none;color:Red;font-family:Tahoma;font-size:11px;font-weight:bold}
+A.opt_b{text-decoration:none;color:#000;font-family:Tahoma;font-size:11px;font-weight:bold}
+A.opt_w{text-decoration:none;color:#FFF;font-family:Tahoma;font-size:11px;font-weight:bold}
+A.opt_blue{text-decoration:none;color:blue;font-family:Tahoma;font-size:11px;font-weight:bold}
+A.opt_pink{text-decoration:none;color:#FA0;font-family:Tahoma;font-size:11px;font-weight:bold}
+H6{font-weight:bold;font-family:Tahoma;background-color:red;font-size:13px;color:#FFF;padding:5px}
+.edit1{border:none;background:#F2F2F2}
+.edit1a{border:none;background:#F2F2F2;color:red}
+.change{text-decoration:none;font-weight:bold}
+.wymagane{background-color:#FFFFA6;color:#000}
+.buttons,.buttons_ok{font-size:12px;color:#FFF;border:1px solid #000;margin-bottom:0;background-color:#5F6676;border-style:solid;padding:3px 5px}
+input.text{border:1px solid #123A94;background-color:#F9FBFF;margin-top:1px;color:#23407d;font-size:12px}
+select{font-family:Tahoma;font-size:12px;border-color:#757D90;border-style:none;border-width:0;padding:2px}

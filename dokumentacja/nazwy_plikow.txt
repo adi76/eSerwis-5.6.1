@@ -1,0 +1,7 @@
+d_<nazwa>		- d_fakutura	(dodawanie)
+e_<nazwa>		- e_faktura	(edycja)
+u_<nazwa>		- u_faktura	(usuwanie)
+z_<nazwa>		- z_faktura	(zarzπdzanie)
+p_<nazwa>		- p_uwagi	(pokaø)
+r_<nazwa>		- r_awaria	(raport)
+o_<nazwa>		- q_awaria	(odpowiedü - question)

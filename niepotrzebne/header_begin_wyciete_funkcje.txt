@@ -1,0 +1,87 @@
+function go_podkat(){
+var xhr = getXhr();
+
+document.getElementById('kat_id_value').value=document.getElementById('kat_id').value;
+
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200)
+		{
+			leselect = xhr.responseText;
+			document.getElementById('lista_podkategorii_from_ajax').innerHTML = leselect;
+		}
+	}
+
+	xhr.open("POST","hd_get_podkategoria.php",true);
+	xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+	sel = document.getElementById('kat_id');
+	idcontinent = sel.options[sel.selectedIndex].value;
+	xhr.send("katid="+idcontinent);
+
+	return true;
+}
+
+function go_priorytet(){
+var xhr = getXhr();
+
+document.getElementById('podkat_id_value').value=document.getElementById('podkat_id').value;
+document.getElementById('priorytet_id_value').value=document.getElementById('priorytet_id').value;
+
+	xhr.onreadystatechange = function(){
+	if(xhr.readyState == 4 && xhr.status == 200){
+			leselect = xhr.responseText;
+			document.getElementById('lista_priorytetow_from_ajax').innerHTML = leselect;
+		}
+	}
+	xhr.open("POST","hd_get_priorytet.php",true);
+	xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+	sel = document.getElementById('kat_id');
+	sel2 = document.getElementById('podkat_id');
+	idkat = sel.options[sel.selectedIndex].value;
+	idpodkat = sel2.options[sel2.selectedIndex].value;
+	var parametry = ""+idkat+""+idpodkat+"";
+	xhr.send("wybierzid="+parametry);
+	return true;
+}
+
+function go_status(){
+var xhr = getXhr();
+
+document.getElementById('podkat_id_value').value=document.getElementById('podkat_id').value;
+
+	xhr.onreadystatechange = function(){
+	if(xhr.readyState == 4 && xhr.status == 200){
+			leselect = xhr.responseText;
+			document.getElementById('lista_statusow_from_ajax').innerHTML = leselect;
+		}
+	}
+	xhr.open("POST","hd_get_status.php",true);
+	xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+	sel = document.getElementById('kat_id');
+	sel2 = document.getElementById('podkat_id');
+	sel3 = document.getElementById('priorytet_id');
+	
+	idkat = sel.options[sel.selectedIndex].value;
+	idpodkat = sel2.options[sel2.selectedIndex].value;
+	idprior = sel3.options[sel2.selectedIndex].value;
+	stage = document.getElementById('stage1').value;
+	
+	var parametry = ""+idkat+""+idpodkat+""+idprior+""+stage;
+	
+	xhr.send("wybierzid="+parametry);
+	
+	return true;
+}
+
+function add_hidden_podkat(divName, value1, value2) {
+	document.getElementById('podkat_name').value=value1;
+	document.getElementById('podkat_id_value').value=value2;
+}
+
+function add_hidden_priorytet(divName, value1, value2) {
+	document.getElementById('priorytet_name').value=value1;
+	document.getElementById('priorytet_id_value').value=value2;
+}
+
+function add_hidden_status(divName, value1, value2) {
+	document.getElementById('status_id_value').value=value2;
+}

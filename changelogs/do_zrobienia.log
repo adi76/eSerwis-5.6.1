@@ -1,0 +1,172 @@
+Do dodania w wersji 5.1.5
+==========================
+
+	1. komentarz do zgłoszenia (ala "allegro")
+	2. przy edycji zgłoszenia dodać checkbox'a "zamknij okno wywołujące bez odświeżania"
+	3. 
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	5. W "Raport okresowy ze zgłoszeń" dodać podświetlanie wierszy
+	6. 
+
+
+
+
+
+	1. przy edycji kategorii z Awaria -> prace wg umowy : przeanalizować dane w tabeli głównej, odnośnie czasów wg umowy
+
+	
+	1. przy rejestracji zgłoszenia i wyborze treści ze słownika, dla kategorii "konsultacje" nie zapisuje podkategorii i statusu.
+	2. 
+	1. przy zmianie daty (dla awarii krytycznych) obok pola "Godzina rozpoczęcia" dodać wyliczane automatycznie graniczna godzina rozpoczęcia zgodna z umową (np. dla UP I kategorii, zgł. o 20:50: graniczna godzina rozpoczęcia ma być 08:50)
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	2. Wycofanie sprzętu klienta ze swojego serwis - dodać wybór zgłoszenia z listy bądź uzupełenie po wpisaniu nr zgłoszenia
+	2. oczyszczenie pliku hd_d_zgloszenie i hd_d_zgloszenie_s (i plików powiązanych JS) z elementów niewykorzystywanych (np. obsł. w serwisie zewnętrznym).
+
+	do analizy: 65566
+	
+	nr zgloszeń ze Szczecina (zerowy sumarczny czas) 13480     45min pow. być - j	est w rap. 0
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	1. przy zamykaniu awarii (pow. z naprawą) jeżeli zakończymy, a naprawa nie jest zakończona, a w pytaniu czy otwieramy nowe zgłoszenie z tego wybierzemy NIE - wtedy pozostaje nam sprzęt powiązany ze zgł. zamkniętym. Dać możliwość powiązania go z nowym zgłoszeniem.	
+	3. sprawdzić czy godzina wpisu zgłoszenia jest pobierana z serwera czy ze stacji roboczej
+	4. dodać wyszukiwanie sprzętu pocztowego (po numerze seryjnym lub inwentarzowym) z podaniem informacji o gwarancji (hd_zgl_wymiana_podzespolow + serwis_faktura_szcz) T. Starosta
+	
+
+	
+	
+	nowy						2011-08-09 08:00								60minut		ETAP REAKCJI	
+	przypisany
+
+ETAP REAKCJI
+	
+	rozpoczęte i reszta			2011-08-09 10:00					60			60 min.		
+	w serw. zewn.				11:00 -> 2011-08-10 12:00			60
+	
+	
+	Przestoje:
+		w serwisie zewn.
+		oczekiwanie na odp. klienta
+		
+	
+	
+	
+ETAP ROZWIĄZANIA
+
+
+ETAP ZAKOŃCZENIA	
+	
+	

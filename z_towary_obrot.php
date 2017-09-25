@@ -1,0 +1,879 @@
+<?php 
+include_once('header.php'); 
+include_once('cfg_helpdesk.php'); 
+
+?>
+<body OnLoad="document.forms[0].elements[0].focus();">
+<?php 
+
+$_SESSION[protokol_dodany_do_bazy]=0;
+$_SESSION[unr_session]='';
+$_SESSION[wykonaj_sprzedaz]=0;
+
+include('inc_encrypt.php');
+
+if ($submit) {
+
+/*
+$_POST=sanitize($_POST);
+$rok = substr($_POST[tdata],0,4);
+$miesiac = substr($_POST[tdata],5,2);
+
+$sql = "SELECT sr_miesiac FROM $dbname.serwis_sprzedaz_raport WHERE ((belongs_to=$es_filia) and (sr_rok=$rok) and (sr_miesiac=$miesiac))";
+$result = mysql_query($sql, $conn) or die($k_b);
+$count_rows = mysql_num_rows($result);
+
+if ($count_rows==0) {
+$unr='';
+$litery=array('a','b','c','d','e','f','g','h','i','j');
+for ($q=1;$q<26;$q++) { $unr.= rand(0,9); $unr.=$litery[rand(0,9)]; }
+	
+$dddd = Date('Y-m-d H:i:s');
+
+$cena = str_replace(',','.',$_POST[tcena]);
+$cenaodsp = str_replace(',','.',$_POST[tcenaodsp]);
+
+$przes = str_replace(',','.',$_POST[tprzesylka]);
+
+// if ($przes!="0") { $sumacena = (real) $cena+$przes;} else $sumacena=$cena;
+
+$cena_cr = crypt_md5($cena,$key);
+$cenaodsp_cr = crypt_md5($cenaodsp,$key);
+$przes_cr = crypt_md5($przes,$key);
+
+$sumacena_cr = crypt_md5($sumacena,$key);
+
+$nrup = $_POST['new_upid'];
+
+$sql_get_info = "SELECT * FROM $dbname.serwis_komorki WHERE up_id=$nrup LIMIT 1";
+$wynik_get_info = mysql_query($sql_get_info, $conn) or die($k_b);
+$gi = mysql_fetch_array($wynik_get_info);
+$nazwaup = $gi['up_nazwa'];
+$pionid = $gi['up_pion_id'];
+$umowaid = $gi['up_umowa_id'];
+
+$sql_get_pion = "SELECT pion_nazwa FROM $dbname.serwis_piony WHERE pion_id=$pionid LIMIT 1";
+$wynik_get_pion = mysql_query($sql_get_pion, $conn) or die($k_b);
+$pi = mysql_fetch_array($wynik_get_pion);
+$pionnazwa = $pi['pion_nazwa'];
+
+$sql_get_umowanr = "SELECT umowa_nr FROM $dbname.serwis_umowy WHERE umowa_id=$umowaid LIMIT 1";
+$wynik_get_umowanr = mysql_query($sql_get_umowanr, $conn) or die($k_b);
+$ui = mysql_fetch_array($wynik_get_umowanr);
+$umowanr = $ui['umowa_nr'];
+
+$sql_t = "INSERT INTO $dbname.serwis_sprzedaz VALUES ('', '$_POST[tid]', '$_POST[tnazwa]','$_POST[tsn]','$cena_cr','$cenaodsp_cr','','$_POST[tdata]','$dddd','$currentuser','$umowanr','$pionnazwa','$nazwaup','".nl2br($_POST[tuwagi])."',$es_filia,'$_POST[tidf]','$_POST[trodzaj]','1','$_POST[ttyp]','','$unr')";
+
+if (mysql_query($sql_t, $conn)) {
+		
+		$sql1a="UPDATE $dbname.serwis_faktura_szcz SET pozycja_status = '1', pozycja_datasprzedazy = '$_POST[tdata]' WHERE pozycja_id = '$_POST[tid]'";
+		
+		if (mysql_query($sql1a, $conn)) {
+			?><script> opener.location.reload(true); self.close();  </script><?php
+		}
+} else 
+	{
+		?><script>info('Wystąpił błąd podczas zapisywania zmian do bazy'); self.close(); </script><?php	
+	}
+
+} else
+	{
+	errorheader("Sprzedaż towaru na dzień ".$_POST[tdata]." jest niemożliwa - wygenerowano już raport ze sprzedaży");	
+	startbuttonsarea("right");
+	addbuttons("wstecz","zamknij");
+	endbuttonsarea();
+	}
+*/
+	
+} else { ?>
+	
+<?php
+
+function toUpper($string) {
+	$string = strtr($string,'qwertyuiopasdfghjklzxcvbnm','QWERTYUIOPASDFGHJKLZXCVBNM');
+	return (strtr($string, 'ęóąśłżźćń','ĘÓĄŚŁŻŹĆŃ' )); 
+}; 
+
+pageheader("Obrót magazynowy towaru");
+
+?><script>ShowWaitingMessage();</script><?php ob_flush(); flush();
+
+$sql9r="SELECT * FROM $dbname.serwis_faktury WHERE ((belongs_to=$es_filia) and (faktura_id='$f')) LIMIT 1";
+$result9r = mysql_query($sql9r, $conn) or die($k_b);
+while ($newArray9r = mysql_fetch_array($result9r)) 
+{
+	$temp_id9r  			= $newArray9r['faktura_id'];
+	$temp_numer9r			= $newArray9r['faktura_numer'];
+	$temp_data9r			= $newArray9r['faktura_data'];
+	$temp_dostawca9r		= $newArray9r['faktura_dostawca'];
+	$temp_koszty9r			= $newArray9r['faktura_koszty_dodatkowe'];	
+	$temp_ilpoz				= $newArray9r['faktura_ilosc_pozycji'];	
+	
+}		
+
+$il_podfaktur="SELECT * FROM $dbname.serwis_podfaktury WHERE pf_nr_faktury_id=$f and belongs_to=$es_filia";
+$wykonaj = mysql_query($il_podfaktur,$conn) or die($k_b);
+
+$sumapf = 0;
+while ($wynik_ilpod = mysql_fetch_array($wykonaj)) {
+	$pfkwota_cr = $wynik_ilpod['pf_kwota_netto'];
+	$pfkwota = decrypt_md5($pfkwota_cr,$key);
+	$sumapf+=$pfkwota;
+}
+
+$sql9="SELECT * FROM $dbname.serwis_faktura_szcz WHERE ((belongs_to=$es_filia) and (pozycja_id='$id')) LIMIT 1";
+$result9 = mysql_query($sql9, $conn) or die($k_b);
+while ($newArray9 = mysql_fetch_array($result9)) {
+	$temp_id9  			= $newArray9['pozycja_id'];
+	$temp_nazwa9		= $newArray9['pozycja_nazwa'];
+	$temp_sn9			= $newArray9['pozycja_sn'];
+	$temp_ttyp			= $newArray9['pozycja_typ'];
+	$temp_uwagi1		= $newArray9['pozycja_uwagi'];
+	
+	$temp_cenanetto9_cr		= $newArray9['pozycja_cena_netto'];
+	$temp_cenaodsp_cr		= $newArray9['pozycja_cena_netto_odsprzedazy'];
+	
+	$temp_cenanetto9 = decrypt_md5($temp_cenanetto9_cr,$key);
+	$temp_cenaodsp = decrypt_md5($temp_cenaodsp_cr,$key);
+	//"$temp_cenanetto9<br/>$temp_cenaodsp";
+}
+	//echo "Suma pf : $sumapf | $temp_cenanetto9 | $temp_cenaodsp";
+/*	if (($temp_cenanetto9==$temp_cenaodsp) && ($sumapf!=0)) {
+	?>
+	<script>
+		alert('Cena zakupu towaru/usługi nie ma doliczonych kosztów podfaktur(y). \n\nJeżeli potwierdzasz ten stan - kontynuuj sprzedaż.\nJeżeli nie - skontaktuj się z osobą odpowiedzialną za ustalanie cen');
+	</script>
+	<?php
+	
+	}
+*/	
+	startbuttonsarea("center");
+	echo "Nazwa towaru : <b>$temp_nazwa9</b><br />Numer seryjny : <b>$temp_sn9</b>";
+	echo "<br /><br />";
+	
+	
+	echo "<a id=PokazUwagi class=normalfont style='display:'; href=# onClick=\"document.getElementById('Uwagi').style.display=''; document.getElementById('PokazUwagi').style.display='none'; document.getElementById('UkryjUwagi').style.display='';\">";	
+	echo "Uwagi (+) ";
+	echo substr($temp_uwagi1,0,20).'...';
+	echo "</a>";
+	
+	echo "<a id=UkryjUwagi class=normalfont style='display:none'; href=# onClick=\"document.getElementById('Uwagi').style.display='none'; document.getElementById('PokazUwagi').style.display=''; document.getElementById('UkryjUwagi').style.display='none';\"> Uwagi (-) </a>";
+	
+	echo "<div id=Uwagi style='display:none'>";
+	oddziel();
+	echo cleanup($temp_uwagi1);
+	oddziel();
+	echo "</div>";
+	
+	endbuttonsarea();
+/*
+	if (($_REQUEST[new_upid]=='') && ($_REQUEST[hd_zgl_nr]!='')) {
+		$result99 = mysql_query("SELECT zgl_komorka FROM $dbname_hd.hd_zgloszenie WHERE zgl_nr='$_REQUEST[hd_zgl_nr]' LIMIT 1", $conn) or die($k_b);
+		list($zgl_komorka) = mysql_fetch_array($result99);
+
+		$r2 = mysql_query("SELECT up_id FROM $dbname.serwis_komorki,$dbname.serwis_piony WHERE (serwis_komorki.up_pion_id=serwis_piony.pion_id) and (serwis_komorki.belongs_to=$es_filia) and (up_active=1) and (UPPER(CONCAT(serwis_piony.pion_nazwa,' ',serwis_komorki.up_nazwa))='$zgl_komorka') LIMIT 1", $conn_hd) or die($_k_b);
+		list($komorkaid)=mysql_fetch_array($r2);
+		
+		$select_up_id='';
+		if ($komorkaid>0) {
+			$select_up_id = $komorka_id;
+		} else {
+			errorheader('Nazwa komórki: <b>'.$zgl_komorka.'</b><br />wpisana w zgłoszeniu nr <b>'.$_REQUEST[hd_zgl_nr].'</b>, nie została odnaleziona w bazie komórek.<br />Należy zmienić komórkę zgłaszającą w zgłoszeniu.');
+			
+			startbuttonsarea("right");
+			addbuttons("zamknij");
+			endbuttonsarea();
+			?>
+			<script>HideWaitingMessage();</script>
+			<?php 
+			exit;
+		}
+	}
+*/	
+	starttable();
+	echo "<form name=addt action=utworz_protokol.php method=POST>";
+
+
+	tbl_empty_row(2);
+
+/*		echo "<tr>";
+		echo "<td width=220 class=right>Pion</td>";
+
+		$sql7="SELECT * FROM $dbname.serwis_piony";
+		$result7 = mysql_query($sql7, $conn) or die($k_b);
+		$count_rows = mysql_num_rows($result7);
+		$i = 0;
+		
+		echo "<td>";		
+		echo "<select class=wymagane name=tpion onkeypress='return handleEnter(this, event);'>\n"; 					 				
+		echo "<option value=''>Wybierz pion...";
+				
+		while ($newArray7 = mysql_fetch_array($result7)) 
+		 {
+			$temp_id7  				= $newArray7['pion_id'];
+			$temp_nazwa7				= $newArray7['pion_nazwa'];
+			
+		//	echo "<option value='$temp_id'>$temp_nazwa</option>\n"; 
+			echo "<option value='$temp_nazwa7'>$temp_nazwa7</option>\n"; 
+		
+		}
+		
+		echo "</select>\n"; 
+		echo "</td>";
+	echo "</tr>";
+*/
+	echo "<tr>";
+	
+		echo "<td width=100 class=righttop>Sprzedaż sprzętu dla</td>";
+		
+		echo "<td>";
+		
+			if ($_REQUEST[readonly]!=1) {
+				
+				$sql44="SELECT * FROM $dbname.serwis_komorki, $dbname.serwis_piony WHERE (belongs_to=$es_filia) and (serwis_komorki.up_pion_id=serwis_piony.pion_id) and (serwis_komorki.up_active=1) ORDER BY serwis_piony.pion_nazwa,up_nazwa";
+
+				$result44 = mysql_query($sql44, $conn) or die($k_b);
+				$count_rows = mysql_num_rows($result44);
+				$i = 0;		
+		//		echo ">>>".$selected_up_id;
+				echo "<select class=wymagane name=new_upid id=new_upid onkeypress='return handleEnter(this, event);' onchange=\"reload1_obrot(this.form); this.focus();\">\n"; 					 				
+				echo "<option value=''>Wybierz UP / komórkę z listy...";
+
+				while ($newArray44 = mysql_fetch_array($result44)) {
+					$temp_id  				= $newArray44['up_id'];
+					$temp_nazwa				= $newArray44['up_nazwa'];
+					$temp_pion_id			= $newArray44['up_pion_id'];
+					$temp_umowa_id			= $newArray44['up_umowa_id'];
+
+					$sql444="SELECT pion_nazwa FROM $dbname.serwis_piony WHERE pion_id=$temp_pion_id LIMIT 1";
+					$result444=mysql_query($sql444,$conn) or die($k_b);
+					$wynik = mysql_fetch_array($result444);
+					$temp_pion = $wynik['pion_nazwa'];
+					
+					echo "<option value=$temp_id";
+					if ($temp_id==$_REQUEST[new_upid]) { 
+						echo " SELECTED"; 
+						$nazwawybranejkomorki = $temp_pion." ".$temp_nazwa; 
+						$temp_nazwa_1 = $temp_nazwa;
+					} else {
+						if ($selected_up_id==$temp_id) echo " SELECTED";
+					}
+					
+					echo ">$temp_pion $temp_nazwa</option>\n"; 
+				}
+				
+				echo "</select>\n";
+				
+				if ($_REQUEST[new_upid]>0) {			
+					echo "<br /><input type=button class=buttons style='color:blue; margin-top:5px;' value='Pokaż zgłoszenia z wybranej komórki' onClick=\"newWindow_r(800,600,'hd_p_zgloszenia_dla_komorki.php?randval=".date('Ymdhim')."".rand()."&komorka=".urlencode($nazwawybranejkomorki)."&showall=0&id=".$_REQUEST[id]."&f=".$_REQUEST[f]."&new_upid=".$_REQUEST[new_upid]."&hd_zgl_nr=".$_REQUEST[hd_zgl_nr]."&trodzaj=".$_REQUEST[trodzaj]."&tdata=".$_REQUEST[tdata]."&nazwa_sprzetu=".urlencode($_REQUEST[nazwa_sprzetu])."&sn_sprzetu=".urlencode($_REQUEST[sn_sprzetu])."&tuwagi=".urlencode($_REQUEST[tuwagi])."&obzp=".$_REQUEST[obzp]."&tumowa=".urlencode($_REQUEST[tumowa])."&allow_change_rs=".$_REQUEST[allow_change_rs]."&ewid_id=".$_REQUEST[ewid_id]."&quiet=".$_REQUEST[quiet]."&nazwa_urzadzenia=".urlencode($_REQUEST[nazwa_urzadzenia])."&sn_urzadzenia=".urlencode($_REQUEST[sn_urzadzenia])."&ni_urzadzenia=".urlencode($_REQUEST[ni_urzadzenia])."&readonly=".$_REQUEST[readonly]."&dodajwymianepodzespolow=".$_REQUEST[dodajwymianepodzespolow]."&_wp_opis=".urlencode($_REQUEST[_wp_opis])."&_wp_sn=".urlencode($_REQUEST[_wp_sn])."&_wp_ni=".urlencode($_REQUEST[_wp_ni])."&file=".urlencode(basename($PHP_SELF))."&sprzedaz=1'); return false; \" />";
+				}		
+				//}
+				
+			} else {
+			
+				$sql44="SELECT * FROM $dbname.serwis_komorki, $dbname.serwis_piony WHERE (belongs_to=$es_filia) and (serwis_komorki.up_pion_id=serwis_piony.pion_id) and (serwis_komorki.up_active=1) and (serwis_komorki.up_id = $_REQUEST[new_upid]) LIMIT 1";
+				
+				$result44 = mysql_query($sql44, $conn) or die($k_b);
+				while ($newArray44 = mysql_fetch_array($result44)) 
+					{
+						$temp_id  				= $newArray44['up_id'];
+						$temp_nazwa				= $newArray44['up_nazwa'];
+						$temp_pion_id			= $newArray44['up_pion_id'];
+						$temp_umowa_id			= $newArray44['up_umowa_id'];
+
+						$sql444="SELECT pion_nazwa FROM $dbname.serwis_piony WHERE pion_id=$temp_pion_id LIMIT 1";
+						$result444=mysql_query($sql444,$conn) or die($k_b);
+						$wynik = mysql_fetch_array($result444);
+						$temp_pion = $wynik['pion_nazwa'];
+						
+						echo "<b>$temp_pion $temp_nazwa</b>";
+						echo "<input type=hidden name=new_upid id=new_upid value='$_REQUEST[new_upid]'>";
+					}
+				}
+			
+			
+		echo "</td>";
+	echo "</tr>";
+		
+	$dddd = Date('Y-m-d');
+	if ($_REQUEST[tdata]!='') $dddd = $_REQUEST[tdata];
+	
+	$from_krok = false;
+	if (($_REQUEST[tdata]=='') && ($_REQUEST[hd_zgl_nr]!='')) {
+		$sql88="SELECT wp_sprzet_data FROM $dbname_hd.hd_zgl_wymiany_podzespolow WHERE (wp_zgl_id=$_REQUEST[hd_zgl_nr]) and (wp_sprzedaz_fakt_szcz_id=$_REQUEST[id]) LIMIT 1";
+		$result88 = mysql_query($sql88, $conn_hd) or die($k_b);
+		list($data_sprzedazy)=mysql_fetch_array($result88);
+	
+		if ($data_sprzedazy!='') {
+			$data_sprzedazy = substr($data_sprzedazy,0,10);
+			$dddd = $data_sprzedazy;
+			$from_krok = true;
+		}
+	} 
+	if (($_REQUEST[tdata]!='') && ($_REQUEST[hd_zgl_nr]!='')) {
+		$sql88="SELECT wp_sprzet_data FROM $dbname_hd.hd_zgl_wymiany_podzespolow WHERE (wp_zgl_id=$_REQUEST[hd_zgl_nr]) and (wp_sprzedaz_fakt_szcz_id=$_REQUEST[id]) LIMIT 1";
+		$result88 = mysql_query($sql88, $conn_hd) or die($k_b);
+		list($data_sprzedazy)=mysql_fetch_array($result88);	
+		
+		if ($data_sprzedazy!='') {
+			$data_sprzedazy = substr($data_sprzedazy,0,10);
+		}		
+	}
+	
+	echo "<tr>";
+		echo "<td width=150 class=righttop>Data sprzedaży";
+		echo "</td>";
+
+		echo "<td><input class=wymagane size=10 type=text maxlength=10 id=tdata name=tdata value='$dddd'  onBlur=\"reload1_obrot(this.form); this.focus();\" />";
+		
+		echo "&nbsp;<a tabindex=-1 href=javascript:cal1.popup(); title=' Kliknij, aby wybrać datę '><img src=img/cal.gif width=16 height=16 border=0></a>";
+		if ($_today==1) echo "<input title=' Ustaw datę na dzień bieżący ' type=image class=imgoption src=img/hd_note_today.gif width=16 height=16 border=0 onClick=\"document.getElementById('tdata').value='".Date('Y-m-d')."'; return false;\">";
+		
+		if ($from_krok) {
+			echo "<br /><font color=red>Data pobrana z kroku zgłoszenia</font>";
+		} else {
+			if (($data_sprzedazy!='') && ($_REQUEST[tdata]!=$data_sprzedazy)) {
+				echo "<br /><input type=button class=buttons style='margin-top:5px;' id=btn_ud value='Ustaw datę sprzedaży z daty wykonania kroku' onClick=\"document.getElementById('tdata').value='".$data_sprzedazy."'; reload1_obrot(this.form); this.focus(); return false;\" />";
+			}
+		}
+		
+		// sprawdzenie czy nie zamknięto sprzedaży dla danej daty
+			if ($_REQUEST[tdata]!='') {
+				if (check_date($_REQUEST[tdata])) {
+				
+					$rok = substr($_REQUEST[tdata],0,4);
+					$miesiac = substr($_REQUEST[tdata],5,2);
+					
+					$sql66 = "SELECT sr_miesiac FROM $dbname.serwis_sprzedaz_raport WHERE ((belongs_to=$es_filia) and (sr_rok=$rok) and (sr_miesiac=$miesiac))";
+				
+					$result = mysql_query($sql66, $conn) or die($k_b);
+					$count_rows11 = mysql_num_rows($result);
+					
+					if ($count_rows11>0) {
+						echo "<br /><br />";
+						errorheader("<font style='font-weight:normal'>Sprzedaż z wybraną datą jest niemożliwa. Zatwierdzono już raport za okres <b>$rok-$miesiac</b></font>");
+						
+					}
+				} else {
+					echo "<br /><font color=red><b>Niepoprawnie wpisana data sprzedaży</b></font>";
+					$count_rows11=11;
+				}
+			}		
+		echo "</td>";
+	echo "</tr>";
+
+	if ($_GET[new_upid]!='') {
+		echo "<tr>";
+		
+			$r40 = mysql_query("SELECT up_umowa_id FROM $dbname.serwis_komorki WHERE (up_id='$_GET[new_upid]') LIMIT 1", $conn) or die($k_b);
+			list($umowy_ids)=mysql_fetch_array($r40);
+		
+			echo "<td width=100 class=right>Realizacja umowy nr</td>";
+			
+			//$umowy_ids = "'1','5'";
+			
+		if (strpos($umowy_ids,',')>0) {
+			
+			$sql7a="SELECT * FROM $dbname.serwis_umowy WHERE (belongs_to=$es_filia) and (umowa_id IN (".$umowy_ids."))";
+			//echo $sql7a;
+			
+			$result7a = mysql_query($sql7a, $conn) or die($k_b);
+			$count_rows = mysql_num_rows($result7a);
+			$i = 0;
+			
+			echo "<td>";		
+			echo "<select class=wymagane id=tumowa name=tumowa onkeypress='return handleEnter(this, event);' onchange=\"reload1_obrot(this.form); this.focus();\" >\n"; 					 				
+			//echo "<option value=''>Wybierz umowę...";
+
+			while ($newArray7a = mysql_fetch_array($result7a)) 
+			{
+				$temp_id7a  			= $newArray7a['umowa_id'];
+				$temp_nr7a				= $newArray7a['umowa_nr'];
+				$temp_nrzlecenia7a		= $newArray7a['umowa_nr_zlecenia'];
+				$temp_opis7a			= $newArray7a['umowa_opis'];
+				
+			//	echo "<option value='$temp_id'>$temp_nazwa</option>\n"; 
+				echo "<option value='$temp_nr7a'";
+				if ($_REQUEST[tumowa]==$temp_nr7a) { 
+					echo " SELECTED";
+				}
+				echo ">$temp_opis7a (Nr : $temp_nr7a, Nr zlecenia : $temp_nrzlecenia7a)</option>\n"; 
+			}
+			
+			echo "</select>\n"; 
+			echo "<input type=hidden name=jedna_umowa id=jedna_umowa value=0>";
+			echo "</td>";
+		} 
+		
+		if ($umowy_ids=='') {
+			echo "<input type=hidden name=jedna_umowa id=jedna_umowa value='-'>";
+			echo "<input type=hidden name=tumowa value=''>";
+			echo "<td><b><font color=red>Wybrana komórka nie ma podpiętej umowy</font></b></td>";
+			
+		} else if (strpos($umowy_ids,',')==0) {
+			$r41 = mysql_query("SELECT umowa_nr, umowa_nr_zlecenia,umowa_opis FROM $dbname.serwis_umowy WHERE (umowa_id=$umowy_ids) LIMIT 1", $conn) or die($k_b);
+			list($umowa_numer,$umowa_zlecenia,$umowa_o)=mysql_fetch_array($r41);
+			echo "<input type=hidden name=jedna_umowa id=jedna_umowa value=1>";
+			echo "<input type=hidden name=tumowa value='$umowa_numer'>";
+			echo "<td><b>$umowa_numer ($umowa_o)</b>, nr zlecenia: <b>$umowa_zlecenia</b></td>";
+		}
+		
+		echo "</tr>";
+	}
+	
+		echo "<tr>";
+		echo "<td width=100 class=right>Rodzaj sprzedaży</td>";
+			
+		echo "<td>";
+		echo "<input type=hidden name=acrs value=$_REQUEST[allow_change_rs]>";
+		
+		if ($_REQUEST[trodzaj]=='') {
+			if ($_REQUEST[allow_change_rs]==1) {
+				echo "<input type=hidden name=rs_select value=1>";
+				echo "<select class=wymagane name=trodzaj onkeypress='return handleEnter(this, event);' onchange=\"reload1_obrot(this.form); this.focus();\">\n"; 					 				
+				echo "<option value=''>Wybierz rodzaj sprzedaży...";
+						
+				echo "<option value='Towar'";
+				if ($_REQUEST[trodzaj]=='Towar') echo " SELECTED";
+				echo ">sprzedaż towaru</option>\n"; 
+				
+				echo "<option value='Materiał'";
+				if ($_REQUEST[trodzaj]=='Materiał') echo " SELECTED";
+				echo ">sprzedaż materiału do wykonania usługi</option>\n"; 
+				
+				echo "<option value='Usługa'";
+				if ($_REQUEST[trodzaj]=='Usługa') echo " SELECTED";
+				echo ">sprzedaż usługi</option>\n"; 
+				
+				echo "</select>\n"; 
+			} else {
+				echo "<input type=hidden name=rs_select value=0>";
+				echo "<input type=hidden name=trodzaj value='$_REQUEST[trodzaj]'>";
+				if ($_REQUEST[trodzaj]=='Towar') $opis_rs = 'sprzedaż towaru';
+				if ($_REQUEST[trodzaj]=='Materiał') $opis_rs = 'sprzedaż materiału do wykonania usługi';
+				if ($_REQUEST[trodzaj]=='Usługa') $opis_rs = 'sprzedaż usługi';
+				
+				echo "<b>$opis_rs</b>&nbsp;&nbsp;<a title=' Rodzaj sprzedaży określono na poziomie wprowadzania faktury. Jeżeli chcesz go zmienić - skontaktuj się z osobą, która ma uprawnienia do zmian w pozycjach na fakturach ' class=normalfont style='border:1px solid red; color:red' href=#>&nbsp;?&nbsp;</a>";			
+			}
+		} else {
+		
+			if ($_REQUEST[allow_change_rs]==1) {
+				echo "<input type=hidden name=rs_select value=1>";
+				echo "<select class=wymagane name=trodzaj onkeypress='return handleEnter(this, event);' onchange=\"reload1_obrot(this.form); this.focus();\">\n"; 					 				
+				echo "<option value=''>Wybierz rodzaj sprzedaży...";
+						
+				echo "<option value='Towar'";
+				if ($_REQUEST[trodzaj]=='Towar') echo " SELECTED";
+				echo ">sprzedaż towaru</option>\n"; 
+				
+				echo "<option value='Materiał'";
+				if ($_REQUEST[trodzaj]=='Materiał') echo " SELECTED";
+				echo ">sprzedaż materiału do wykonania usługi</option>\n"; 
+				
+				echo "<option value='Usługa'";
+				if ($_REQUEST[trodzaj]=='Usługa') echo " SELECTED";
+				echo ">sprzedaż usługi</option>\n"; 
+				
+				echo "</select>\n"; 
+			} else {		
+				echo "<input type=hidden name=rs_select value=0>";
+				echo "<input type=hidden name=trodzaj value='$_REQUEST[trodzaj]'>";
+				if ($_REQUEST[trodzaj]=='Towar') $opis_rs = 'sprzedaż towaru';
+				if ($_REQUEST[trodzaj]=='Materiał') $opis_rs = 'sprzedaż materiału do wykonania usługi';
+				if ($_REQUEST[trodzaj]=='Usługa') $opis_rs = 'sprzedaż usługi';
+				
+				echo "<b>$opis_rs</b>&nbsp;&nbsp;<a title=' Rodzaj sprzedaży określono na poziomie wprowadzania faktury. Jeżeli chcesz go zmienić - skontaktuj się z osobą, która ma uprawnienia do zmian w pozycjach na fakturach ' class=normalfont style='border:1px solid red; color:red' href=#>&nbsp;?&nbsp;</a>";
+			}
+			
+		}
+		
+		echo "</td>";
+	echo "</tr>";
+
+	echo "<tr>";
+		echo "<td width=100 class=righttop>Uwagi</td>";
+		echo "<td><textarea name=tuwagi cols=55 rows=4>";
+			if ($_REQUEST[sz]==0) $_REQUEST[tuwagi]='';
+			if ($_REQUEST[tuwagi]!='') echo cleanup(cleanup($_REQUEST[tuwagi]));
+			if ($tuwagi!='') echo cleanup(cleanup($tuwagi));
+			
+		echo "</textarea></td>";
+	echo "</tr>";
+	
+	if ($_REQUEST[trodzaj]=='Usługa') {
+	
+			
+			$result = mysql_query("SELECT naprawa_id, naprawa_nazwa, naprawa_model, naprawa_sn, naprawa_uwagi, naprawa_sprzet_zastepczy_id, naprawa_ew_id FROM $dbname.serwis_naprawa WHERE (belongs_to=$es_filia) and (naprawa_status=3) and (naprawa_pobrano_z='$temp_nazwa_1') ORDER BY naprawa_data_odbioru_z_serwisu DESC", $conn) or die($k_b);
+			
+			if (mysql_num_rows($result)>0) { 
+			echo "<tr>";
+			echo "<td width=150 class=righttop>Sprzedaż powiązana z naprawą sprzętu</td>";
+			echo "<td>";
+			
+			echo "<select name=pn onkeypress='return handleEnter(this, event);'  onchange=\"reload2_obrot(this.form)\">\n";			 				
+			echo "<option value=''>Sprzedaż nie powiązana jest z naprawą</option>\n";
+			while (list($temp_id,$temp_nazwa,$temp_model,$temp_sn,$temp_uwagi,$temp_sprzet_zast,$temp_ew_id)=mysql_fetch_array($result)) {
+				echo "<option value='$temp_id'";
+				if ($_REQUEST[pn]==$temp_id) {
+					echo " SELECTED";
+					$sprzet_zast_id = $temp_sprzet_zast;
+					$naprawa_id5 = $temp_id;
+				}
+				echo ">$temp_nazwa $temp_model (SN: $temp_sn)</option>\n"; 
+			}
+			echo "</select>\n"; 
+			
+			echo "</td>";
+		echo "</tr>";
+		echo "<tr><td></td><td><font color=red>Wybranie powiązania spowoduje zmianę statusu naprawy na <b>\"oddany do klienta\"</b></font></td></tr>";
+		
+		}
+
+		
+	if ($sprzet_zast_id!=0) {
+		
+		echo "<tr>";
+			echo "<td width=150 class=righttop>Pobierz sprzęt serwisowy z<br /><b>$temp_nazwa_1</b></td>";
+			echo "<td>";
+			
+			$result1 = mysql_query("SELECT naprawa_nazwa,naprawa_sprzet_zastepczy_id FROM $dbname.serwis_naprawa WHERE (naprawa_id=$naprawa_id5) LIMIT 1", $conn) or die($k_b);
+			list($temp_typ,$temp_sprzet_zastepczy_id)=mysql_fetch_array($result1);
+
+			//echo "SELECT magazyn_id,magazyn_nazwa,magazyn_model,magazyn_sn FROM $dbname.serwis_magazyn WHERE (belongs_to=$es_filia) and (magazyn_status=1) and (magazyn_nazwa='$temp_typ') ORDER BY magazyn_model";
+			
+			//echo "SELECT magazyn_id,magazyn_nazwa,magazyn_model,magazyn_sn FROM $dbname.serwis_magazyn,serwis_naprawa WHERE (serwis_magazyn.belongs_to=$es_filia) and (serwis_magazyn.magazyn_status=1) and (serwis_magazyn.magazyn_nazwa='$temp_typ') and (naprawa_pobrano_z='$temp_nazwa_1') and (serwis_magazyn.magazyn_id=serwis_naprawa.naprawa_sprzet_zastepczy_id) ORDER BY serwis_magazyn.magazyn_model";
+			
+			$result = mysql_query("SELECT magazyn_id,magazyn_nazwa,magazyn_model,magazyn_sn FROM $dbname.serwis_magazyn,serwis_naprawa WHERE (serwis_magazyn.belongs_to=$es_filia) and (serwis_magazyn.magazyn_status=1) and (serwis_magazyn.magazyn_nazwa='$temp_typ') and (naprawa_pobrano_z='$temp_nazwa_1') and (serwis_magazyn.magazyn_id=serwis_naprawa.naprawa_sprzet_zastepczy_id) ORDER BY serwis_magazyn.magazyn_model", $conn) or die($k_b);
+
+			if (mysql_num_rows($result)>0) { 
+
+			echo "<select name=sz onkeypress='return handleEnter(this, event);'  onchange=\"reload3_obrot(this.form)\">\n";			 				
+			echo "<option value='0'";
+			if ($_REQUEST[sz]=='0') echo " SELECTED";
+			echo ">Nic nie pobieraj z UP</option>\n";
+			while (list($temp_id,$temp_nazwa,$temp_model,$temp_sn)=mysql_fetch_array($result)) {
+				echo "<option value='$temp_id'";
+				
+				if (($temp_sprzet_zastepczy_id==$temp_id) && ($_REQUEST[sz]!=0)) { 
+					echo " SELECTED";
+					$nazwa = $temp_nazwa." ".$temp_model." (SN:".$temp_sn.")";
+				}
+
+				if ($_REQUEST[sz]==$temp_id) { 
+					echo " SELECTED";
+					$nazwa = $temp_nazwa." ".$temp_model." (SN:".$temp_sn.")";
+				}
+				echo ">$temp_nazwa ($temp_model, $temp_sn)</option>\n"; 
+			}
+			
+			echo "<input type=hidden name=zastepczy value='$nazwa'>";
+			
+			echo "</select>\n"; 
+			} else if ($clear_typ==1) { echo "<b>wybierz typ sprzętu z listy</b>"; } else echo "<b>brak dostępnego sprzętu serwisowego tego typu na stanie</b>";
+			
+			echo "</td>";
+		echo "</tr>";
+	}
+}
+
+	echo "<tr ";
+//	if (($_REQUEST[hd_zgl_nr]!='') && ($_REQUEST[hd_zgl_nr]!='0')) {
+//		echo " style='display:' ";
+//	} else {
+//		echo " style='display:none' ";
+//	}
+	echo ">";
+		$nowe_pola = 0;
+		td("150;r;Nr zgłoszenia Helpdesk");
+		td_(";;");	
+			
+		//	if (($_REQUEST[hd_zgl_nr]=='') || ($_REQUEST[hd_zgl_nr]=='0')) echo "<input class=wymagane type=text id=hd_zgl_nr name=hd_zgl_nr value='' size=10 maxlength=10>";
+			
+		//	if ($_REQUEST[hd_zgl_nr]>0) {
+				//echo "<input type=hidden name=hd_zgl_nr value='$_REQUEST[hd_zgl_nr]'>";
+				//echo "<b>$_REQUEST[hd_zgl_nr]</b>";
+				if ($_REQUEST[dodajwymianepodzespolow]=='1') {
+					echo "<input class=wymagane type=text id=hd_zgl_nr name=hd_zgl_nr value='$_REQUEST[hd_zgl_nr]' size=10 maxlength=10 onchange=\"reload1_obrot(this.form); this.focus();\" onKeyPress=\"return filterInput(1, event, false); \">";
+				} else {
+					echo "<b>$_REQUEST[hd_zgl_nr]</b>";
+					echo "<input type=hidden id=hd_zgl_nr name=hd_zgl_nr value='$_REQUEST[hd_zgl_nr]'>";
+				}
+				
+				$block = 1;
+				if ($_REQUEST[hd_zgl_nr]>0) {
+					//echo "SELECT zgl_id FROM $dbname_hd.hd_zgloszenie WHERE (zgl_nr='$_REQUEST[hd_zgl_nr]') and (belongs_to=$es_filia) and (zgl_widoczne=1) LIMIT 1";
+					$r4 = mysql_query("SELECT zgl_id, zgl_komorka,zgl_kategoria,zgl_podkategoria,zgl_status FROM $dbname_hd.hd_zgloszenie WHERE (zgl_nr='$_REQUEST[hd_zgl_nr]') and (belongs_to=$es_filia) and (zgl_widoczne=1) LIMIT 1", $conn_hd) or die($k_b);
+					list($z_id,$temp_komorka,$temp_kategoria,$temp_podkategoria,$temp_status)=mysql_fetch_array($r4);
+					if ($z_id==$_REQUEST[hd_zgl_nr]) $block=0;
+				}
+				
+				
+		//	} else {
+			//	echo "<input class=wymagane type=text id=hd_zgl_nr  name=hd_zgl_nr value='' size=10 maxlength=10>";
+		//	}
+			if ($block==0) echo "&nbsp;&nbsp;<input type=button class=buttons value='Szczegóły zgłoszenia' onClick=\"PokazZgloszenie(document.getElementById('hd_zgl_nr').value); \">";
+		
+		_td();
+	_tr();
+
+	if ($block==0) {
+		echo "<tr>";
+			echo "<td></td>";
+			echo "<td>";
+					$r1 = mysql_query("SELECT hd_kategoria_opis FROM $dbname_hd.hd_kategoria WHERE (hd_kategoria_nr='$temp_kategoria') LIMIT 1", $conn_hd) or die($k_b);
+					list($kat_opis)=mysql_fetch_array($r1);
+					$r2 = mysql_query("SELECT hd_podkategoria_opis FROM $dbname_hd.hd_podkategoria WHERE (hd_podkategoria_nr='$temp_podkategoria') LIMIT 1", $conn_hd) or die($k_b);
+					list($podkat_opis)=mysql_fetch_array($r2);
+					$r2 = mysql_query("SELECT hd_status_opis FROM $dbname_hd.hd_status WHERE (hd_status_nr='$temp_status') LIMIT 1", $conn_hd) or die($k_b);
+					list($status_opis)=mysql_fetch_array($r2);
+					
+					okheader("<font style='font-weight:normal;'>".$temp_komorka."<br />".$kat_opis." -> ".$podkat_opis."<br />Status zgłoszenia: <b>".$status_opis."</b></font>");
+					
+					echo "<input type=hidden name=nazwakomorkizezgloszenia id=nazwakomorkizezgloszenia value='$temp_komorka' />";
+					
+					$r2 = mysql_query("SELECT up_id FROM $dbname.serwis_komorki,$dbname.serwis_piony WHERE (serwis_komorki.up_pion_id=serwis_piony.pion_id) and (serwis_komorki.belongs_to=$es_filia) and (up_active=1) and (CONCAT(serwis_piony.pion_nazwa,' ',serwis_komorki.up_nazwa)='$temp_komorka') LIMIT 1", $conn_hd) or die($_k_b);
+					list($komorkaid)=mysql_fetch_array($r2);
+					echo "<input type=hidden name=idkomorkizezgloszenia id=idkomorkizezgloszenia value='$komorkaid' />";
+					
+					if ($_REQUEST[new_upid]!='') {
+						
+						$sql445="SELECT up_nazwa, up_pion_id FROM $dbname.serwis_komorki, $dbname.serwis_piony WHERE (belongs_to=$es_filia) and (serwis_komorki.up_pion_id=serwis_piony.pion_id) and (serwis_komorki.up_active=1) and (serwis_komorki.up_id = $_REQUEST[new_upid]) LIMIT 1";
+						$result445 = mysql_query($sql445, $conn) or die($k_b);
+						
+						while ($newArray445 = mysql_fetch_array($result445)) {
+							
+							$temp_nazwa				= $newArray445['up_nazwa'];
+							$temp_pion_id			= $newArray445['up_pion_id'];
+							
+							$sql444="SELECT pion_nazwa FROM $dbname.serwis_piony WHERE pion_id=$temp_pion_id LIMIT 1";
+							$result444=mysql_query($sql444,$conn) or die($k_b);
+							$wynik = mysql_fetch_array($result444);
+							$temp_pion = $wynik['pion_nazwa'];
+							
+							$komorka_wybrana = toUpper($temp_pion." ".$temp_nazwa);
+						}				
+					} else {
+						$komorka_wybrana = '';
+					}					
+					
+					if ((trim(toUpper($temp_komorka))!=trim(toUpper($komorka_wybrana))) && ($komorka_wybrana!='')) { 
+						errorheader("<font style='font-weight:normal;'>Komórka ze zgłoszenia nr $_REQUEST[hd_zgl_nr] jest niezgodna z tą dla której chcesz wykonać sprzedaż</font>"); 
+						$block=2;
+					} else {
+						
+						if ($_REQUEST[dodajwymianepodzespolow]=='1') {
+							// sprawdź czy były wymieniane podzespoły we wcześniejszych krokach. Jeżeli tak - pokaż do jakiego sprzętu. 
+							// Jeżeli nie - sprawdź czy nie było przyjęcia uszkodzonego sprzętu dla tego zgłoszenia. Jeżeli tak - pokaż dane sprzętu. Jeżeli nie - pozwól wpisać z "ręki"
+							
+							$r4 = mysql_query("SELECT wp_sprzet_opis, wp_sprzet_sn, wp_sprzet_ni,wp_zgl_szcz_unique_nr FROM $dbname_hd.hd_zgl_wymiany_podzespolow WHERE (wp_zgl_id='$_REQUEST[hd_zgl_nr]') and (belongs_to=$es_filia) and (wp_sprzet_active=1) LIMIT 1", $conn_hd) or die($k_b);
+							list($temp_wp_opis,$temp_wp_sn,$temp_wp_ni, $temp_wp_unique)=mysql_fetch_array($r4);
+							
+							if ($temp_wp_opis!='') { 
+								infoheader("<b>Sprzedaż na potrzeby wymiany podzespołów w:</b><br /><br />".$temp_wp_opis."<br />SN: ".$temp_wp_sn."<br />NI: ".$temp_wp_ni."");
+								
+								echo "<input type=hidden name=_wp_opis value='".$temp_wp_opis."'>";
+								echo "<input type=hidden name=_wp_sn value='".$temp_wp_sn."'>";
+								echo "<input type=hidden name=_wp_ni value='".$temp_wp_ni."'>";
+								echo "<input type=hidden name=_wp_unique value='".$temp_wp_unique."'>";
+								
+							} else { 
+								// sprawdź czy nie było przyjęcia uszkodzone sprzętu na stan
+								$r4 = mysql_query("SELECT zgl_naprawa_id FROM $dbname_hd.hd_zgloszenie WHERE (zgl_nr='$_REQUEST[hd_zgl_nr]') and (belongs_to=$es_filia) and (zgl_widoczne=1) LIMIT 1", $conn_hd) or die($k_b);
+								list($_n_id)=mysql_fetch_array($r4);
+								
+								// jeżeli była naprawa powiązana - pobierz dane o komputerze
+								if ($_n_id>0) {
+									$r4 = mysql_query("SELECT zgl_naprawa_id FROM $dbname_hd.hd_zgloszenie WHERE (zgl_nr='$_REQUEST[hd_zgl_nr]') and (belongs_to=$es_filia) and (zgl_widoczne=1) LIMIT 1", $conn_hd) or die($k_b);
+									list($_n_id)=mysql_fetch_array($r4);
+								
+									// ustal unique_nr ostatniego kroku ze zgłoszenia
+									$r4 = mysql_query("SELECT zgl_szcz_unikalny_numer FROM $dbname_hd.hd_zgloszenie_szcz WHERE (zgl_szcz_zgl_id='$_REQUEST[hd_zgl_nr]') and (belongs_to=$es_filia) and (zgl_szcz_widoczne=1) ORDER BY zgl_szcz_nr_kroku DESC LIMIT 1", $conn_hd) or die($k_b);
+									list($temp_wp_unique)=mysql_fetch_array($r4);
+							
+									$result99 = mysql_query("SELECT naprawa_nazwa, naprawa_model, naprawa_sn, naprawa_ni FROM $dbname.serwis_naprawa WHERE naprawa_hd_zgl_id='$_REQUEST[hd_zgl_nr]' LIMIT 1");
+									$dane99 = mysql_fetch_array($result99);
+									$mnazwa	= $dane99['naprawa_nazwa'];
+									$mmodel	= $dane99['naprawa_model'];		
+									$msn 	= $dane99['naprawa_sn'];
+									$mni	= $dane99['naprawa_ni'];
+									
+									infoheader("<b>Sprzedaż na potrzeby wymiany podzespołów w:</b><br /><br />".$mnazwa." ".$mmodel."<br />SN: ".$msn."<br />NI: ".$mni."");
+									
+									echo "<input type=hidden name=_wp_opis value='".$mnazwa." ".$mmodel."'>";
+									echo "<input type=hidden name=_wp_sn value='".$msn."'>";
+									echo "<input type=hidden name=_wp_ni value='".$mni."'>";
+									echo "<input type=hidden name=_wp_unique value='".$temp_wp_unique."'>";									
+									
+								} else {
+									// jeżeli nie było naprawy powiązane - pozwól wpisać dane
+									//echo "pozwól wpisać";
+
+									// ustal unique_nr ostatniego kroku ze zgłoszenia
+									$r4 = mysql_query("SELECT zgl_szcz_unikalny_numer FROM $dbname_hd.hd_zgloszenie_szcz WHERE (zgl_szcz_zgl_id='$_REQUEST[hd_zgl_nr]') and (belongs_to=$es_filia) and (zgl_szcz_widoczne=1) ORDER BY zgl_szcz_nr_kroku DESC LIMIT 1", $conn_hd) or die($k_b);
+									list($temp_wp_unique)=mysql_fetch_array($r4);
+									
+									starttable();
+									echo "<tr>";
+										echo "<td>";
+											echo "Typ sprzętu, model";
+										echo "</td>";
+										echo "<td>";
+											echo "<input type=text class=wymagane size=50 id=_wp_opis name=_wp_opis value='$_REQUEST[_wp_opis]'>";
+										echo "</td>";
+									echo "</tr>";
+									echo "<tr>";
+										echo "<td>";
+											echo "Numer seryjny";
+										echo "</td>";
+										echo "<td>";
+											echo "<input type=text class=wymagane size=30 id=_wp_sn name=_wp_sn value='$_REQUEST[_wp_sn]'>";
+										echo "</td>";
+									echo "</tr>";
+									echo "<tr>";
+										echo "<td>";
+											echo "Numer inwentarzowy";
+										echo "</td>";
+										echo "<td>";
+											echo "<input type=text class=wymagane size=30 id=_wp_ni name=_wp_ni value='$_REQUEST[_wp_ni]'>";
+										echo "</td>";
+									echo "</tr>";
+									
+									endtable();
+									echo "<input type=hidden name=_wp_unique value='".$temp_wp_unique."'>";	
+									$nowe_pola = 1;
+									//echo $temp_wp_unique;
+									
+								}
+							}
+						}
+					}
+					
+			echo "</td>";
+		_tr();
+	}
+	
+	if (($block==1) && ($_REQUEST[hd_zgl_nr]!='')) {
+		echo "<tr>";
+			echo "<td></td>";
+			echo "<td>";
+				errorheader('Zgłoszenie o podanym numerze nie istnieje lub jest przypisane do innej filii/oddziału');
+			echo "</td>";
+		_tr();
+	}
+	
+	tbl_empty_row();
+	
+	echo "<input type=hidden name=tprzesylka value=0>"; 	
+	echo "<input type=hidden name=tstatus value='1'>";
+	
+	/*
+	   -1 - faktura nie zatwierdzona
+		0 - towar dostępny
+		1 - towar sprzedany
+	*/
+	
+//	echo "<input size=10 type=hidden name=tutworzoneprzez value=''>";
+
+	echo "<tr><td class=right colspan=2>&nbsp;</td></td>";
+	endtable();
+	
+//}
+
+	echo "<input type=hidden name=ttyp value='$temp_ttyp'>";
+	echo "<input type=hidden name=tidf value='$f'>";
+	echo "<input type=hidden name=tid value='$id'>";
+	echo "<input type=hidden name=tcenaodsp value='$temp_cenaodsp'>";
+	echo "<input type=hidden name=tcena value='$temp_cenanetto9'>";
+	echo "<input type=hidden name=tnazwa value='$temp_nazwa9'>";
+	echo "<input type=hidden name=tsn value='$temp_sn9'>";	
+	
+	echo "<input type=hidden name=source value='towary-sprzedaz'>";
+	echo "<input type=hidden name=findpion value=1>";
+	echo "<input type=hidden name=state value='empty'>";
+//	echo "<input type=hidden name=c_7 value='on'>";
+
+	if ($_REQUEST[trodzaj]=='Usługa') echo "<input type=hidden name=c_3 value='on'>";
+	if ($_REQUEST[trodzaj]=='Towar') echo "<input type=hidden name=c_8 value='on'>";	
+	
+	echo "<input type=hidden name=wstecz value='1'>";
+	echo "<input type=hidden name=nowy value='0'>";
+	
+	echo "<input type=hidden name=nazwa_sprzetu value='$temp_nazwa9'>";
+	echo "<input type=hidden name=sn_sprzetu value='$temp_sn9'>";
+
+	echo "<input type=hidden name=obzp value='$obzp'>";
+	
+	echo "<input type=hidden name=nazwa_urzadzenia value='$_REQUEST[nazwa_urzadzenia]'>";
+	echo "<input type=hidden name=sn_urzadzenia value='$_REQUEST[sn_urzadzenia]'>";
+	echo "<input type=hidden name=ni_urzadzenia value='$_REQUEST[ni_urzadzenia]'>";
+	
+	echo "<input type=hidden name=ewid_id value='$_REQUEST[ewid_id]'>";
+	echo "<input type=hidden name=quiet value='$_REQUEST[quiet]'>";
+	echo "<input type=hidden id=readonly name=readonly value='$_REQUEST[readonly]'>";
+	
+	echo "<input type=hidden name=dodajwymianepodzespolow value='$_REQUEST[dodajwymianepodzespolow]'>";
+	
+	if ($_REQUEST[nazwa_urzadzenia]!='') 
+		infoheader("<b>Sprzedaż na potrzeby wymiany podzespołów w:</b><br /><br />".$_REQUEST[nazwa_urzadzenia]."<br />SN: ".$_REQUEST[sn_urzadzenia]."<br />NI: ".$_REQUEST[ni_urzadzenia]."");
+	
+	startbuttonsarea("right");
+	if (($umowy_ids!='') && ($block==0)) {
+		echo "<input class=buttons type=submit name=submit id=dalej value=Dalej "; 
+		if ($count_rows11>0) { echo " style='display:none' "; }
+		echo ">";
+	}
+	addbuttons("anuluj");
+	endbuttonsarea();
+
+	_form();
+
+?>
+
+<script language="JavaScript">
+var cal1 = new calendar1(document.forms['addt'].elements['tdata']);
+	cal1.year_scroll = true;
+	cal1.time_comp = false;
+</script>
+
+<script language="JavaScript" type="text/javascript">
+  var frmvalidator  = new Validator("addt");
+  
+//  frmvalidator.addValidation("tpion","dontselect=0","Nie wybrano pionu");  
+  <?php if ($_REQUEST[readonly]!=1) { ?>
+	frmvalidator.addValidation("new_upid","dontselect=0","Nie wybrano komórki"); 
+  <?php } ?>
+  frmvalidator.addValidation("tdata","req","Nie podano daty sprzedaży");
+  frmvalidator.addValidation("hd_zgl_nr","req","Nie podano numeru zgłoszenia Helpdesk");
+//  frmvalidator.addValidation("tumowa","req","Nie wybrano umowy");  
+<?php if ($allow_change_rs!=0) { ?>
+  frmvalidator.addValidation("trodzaj","dontselect=0","Nie wybrano rodzaju sprzedaży");  
+<?php } ?>
+
+<?php if ($nowe_pola==1) { ?>
+  frmvalidator.addValidation("_wp_opis","req","Nie podałeś typu i modelu sprzętu");  
+  frmvalidator.addValidation("_wp_sn","req","Nie podałeś numeru seryjnego sprzętu");  
+  frmvalidator.addValidation("_wp_ni","req","Nie podałeś numeru inwentarzowego sprzętu");  
+<?php } ?>
+
+//reload1_obrot(this.form);  
+</script>
+
+<script>
+if ((document.getElementById('new_upid').value=='') && (document.getElementById('hd_zgl_nr').value!='')) {
+	if (confirm('Czy ustawić sprzedaż sprzętu dla: \n\r\n\r'+document.getElementById('nazwakomorkizezgloszenia').value+'\n\r\n\r (nazwa komórki zgodna z zarejestrowaną w zgłoszeniu nr <?php echo $_REQUEST[hd_zgl_nr]; ?>) ?')) {
+		//alert(document.getElementById('idkomorkizezgloszenia').value);
+		if (document.getElementById('idkomorkizezgloszenia').value>0) {
+			document.getElementById('new_upid').value = document.getElementById('idkomorkizezgloszenia').value;
+			reload1_obrot(document.addt);
+		}
+	}
+
+}
+</script>
+
+<script>HideWaitingMessage();</script>
+
+<?php } ?>
+
+</body>
+</html>

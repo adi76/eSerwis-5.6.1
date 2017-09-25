@@ -1,0 +1,6 @@
+-1	Sprzêt pobrany od klienta - na stanie		snapraw-1.gif
+0	Sprzêt naprawiany we w³asnym zakresie		snapraw_p.gif
+1	Sprzêt naprawiany w serwisie zewnêtrznym	snapraw_w.gif
+2	Sprzêt naprawiany na rynku lokalnym		snapraw2.gif
+3	Sprzêt naprawiony - na stanie			snapraw_ok.gif
+7	Sprzêt wycofany z serwisu - na stanie		snapraw7.gif

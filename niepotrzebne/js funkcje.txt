@@ -1,0 +1,25 @@
+
+
+function go_tel2(){
+var xhr = getXhr();
+
+	if (document.getElementById('hd_oz').value!='') {
+	//document.getElementById('podkat_id_value').value=document.getElementById('podkat_id').value;
+
+		xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+				leselect = xhr.responseText;
+				document.getElementById('tel_from_db').innerHTML = leselect;
+			}
+		}
+		xhr.open("POST","hd_get_telefon2.php",true);
+		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		sel = document.getElementById('hd_oz');
+		idkat = sel.value;
+		
+		var parametry = ""+idkat+"";
+		xhr.send("wybierzid="+parametry);
+
+		return true;
+	} else return true;
+}

@@ -1,0 +1,22 @@
+Opis działania skryptu: SP2000_Backup.bat
+
+1. Sprawdzenie czy istnieje plik konfiguracyjny SP2000_BACKUP_KONFIG.BAT. Jeżeli tak, idziemy dalej. Jeżeli nie - skrypt zostaje przerwany.
+2. Załadowanie pliku konfiguracyjnego z pliku SP2000_BACKUP_KONFIG.BAT
+3. Sprawdzenie czy występuje wymagany parametr do uruchomienia skryptu (FULL, DIFF). Jeżeli tak, idziemy dalej. Jeżeli nie - skrypt zostaje przerwany.
+4. Skrypt sam rozpoznaje czy wersja SQL'a wspiera kompresję, i jeżeli tak, backup jest robiony z kompresją.
+5. Sprawdzenie czy komputer na którym ma być zrobiona kopia jest dostępny. Jeżeli tak, idziemy dalej. Jeżeli nie - podejmowana jest próba "obudzenia" komputera poprzez program mc-wol.exe. Procedura budzenia jest uruchamiana jeżeli w konfiguracji skryptu SP2000_BACKUP_KONFIG.BAT parametr UZYJ_WON ustawiony jest na TAK. Do prawidłowego zadziałania tego programu konieczne jest zdefiniowanie zmiennej MAC_ADDRESS (w formacie XX:XX:XX:XX:XX:XX). Jeżeli UZYJ_WON jest ustawiony na NIE i komputer nie odpowiada, skrypt przechodzi do punktu 17.
+6. Sprawdzenie czy usługa MSSQL na komputerze na którym uruchamiamy skrypt jest uruchomiona. Jeżeli tak, idziemy dalej. Jeżeli nie, podejmowana jest próba jej uruchomienia. Jeżeli uruchomienie usługi jest niemożliwe, wykonywanie skryptu zostaje przerwane.
+7. Wykonywany jest backup (pełny lub przytostowy) w zależności od parametru przekazanego do skryptu. Wystapienie błędu podczas wykonywania backupu, przerywa działanie skryptu.
+8. Wykonywana jest weryfikacja backupu.
+9. Wykonywane jest generowanie sumy kontrolnej dla wykonanego backup'u
+10. Sprawdzanie (ponownie) czy komputer na którym ma być zrobiona kopia jest dostępny. Jeżeli tak, idziemy dalej. Jeżeli nie - podejmowana jest próba "obudzenia" komputera poprzez program mc-wol.exe. Po wysłaniu sygnału WON, skrypt czeka zdefiniowaną w pliku konfiguracyjnym (ILOSC_SEKUND_POTRZEBNYCH_NA_URUCHOMIENIE_KOMPUTERA) ilość sekund na uruchomienie komputera.
+11. Wykonanie zamapowania udziału z komputera (NAZWA_KOMPUTERA_DO_PRZECHOWYWANIA_KOPII) na dysk (MAPUJ_UDZIAL_NA_LITERZE)
+12. Wykonanie kopii pliku bazy na zamapowany dysk.
+13. Wykonanie weryfikacji sumy kontrolnej skopiowanego pliku bazy ze wzorcem zapisanym w pliku LOG na serwerze
+14. Wykonanie kopii logu na zamapowany dysk
+15. Wykonanie kasowania kopii i logów starszych niż określone w konfiguracji (ILOSC_DNI_DO_PRZECHOWYWANIA_KOPII) z zamapowanego dysku
+16. Wykonanie pobierania informacji o ilości wolnego miejsca na zamapowanym udziale.
+17. Wykonanie pobierania informacji o ilości wolnego miejsca na dysku na którym jest wykonywana kopia bazy (KATALOG_Z_KOPIAMI)
+18. Przygotowanie komend niezbędnych do wysyłki logów na FTP w Łódzi oraz wysyłka tych logów (jeżeli parametr WYSYLAJ_LOGI_NA_FTP ustawiony jest na TAK)
+19. Wykonanie kasowania kopii i logów starszych niż określone w konfiguracji (ILOSC_DNI_DO_PRZECHOWYWANIA_KOPII) z katalogu (KATALOG_Z_KOPIAMI)
+20. Wykonanie wyłączenia komputera (NAZWA_KOMPUTERA_DO_PRZECHOWYWANIA_KOPII) o ile ustawiony jest parametr WYLACZ_KOMPUTER_PO_WYKONANIU_KOPII na TAK

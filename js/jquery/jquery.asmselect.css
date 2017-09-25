@@ -1,0 +1,58 @@
+.asmContainer {
+}
+
+.asmSelect {
+	display: inline; 
+}
+
+.asmOptionDisabled {
+	color: #999; 
+}
+
+.asmHighlight {
+	padding: 0;
+	margin: 0 0 0 1em;
+}
+
+.asmList {
+	margin: 0.25em 0 1em 0; 
+	position: relative;
+	display: block;
+	padding-left: 0; 
+	list-style: none; 
+}
+
+.asmListItem {
+	position: relative; 
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+	background: #ddd;
+	border: 1px solid #bbb; 
+	width: 100%; 
+	margin: 0 0 -1px 0; 
+	line-height: 1em;
+	color: #000;
+}
+
+.asmListItem:hover {
+	background-color: #e5e5e5;
+}
+
+.asmListItemLabel {
+	padding: 5px; 
+	display: block;
+}
+
+.asmListSortable .asmListItemLabel {
+	cursor: move; 
+}
+
+.asmListItemRemove,
+#content .story_text .asmListItemRemove {
+	position: absolute;
+	right: 0; 
+	top: 0;
+	padding: 5px; 
+	color: #d05d00;
+}

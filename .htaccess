@@ -1,0 +1,7 @@
+# This folder does not require access over HTTP
+# (the following directive denies access by default)
+
+ErrorDocument 403 http://127.0.0.1/serwis/blad_403.php
+ErrorDocument 404 http://127.0.0.1/serwis/blad_404.php
+
+# RewriteRule ^(.+)\.js$ jsProxy.php?js=/$1.js

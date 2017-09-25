@@ -1,0 +1,37 @@
+function newWindow(x, y, adres)
+{
+	if (window.screen) {
+		var ah = screen.availHeight - 30;
+		var aw = screen.availWidth - 10;
+		
+		var xx=(aw-x) / 2;
+		xx=Math.round(xx);
+		var yy=(ah-y) / 2;
+		yy=Math.round(yy);
+	}
+	
+	var opcje="width="+x+", innerWidth="+x+", height="+y+", innerHeight="+y+", top="+yy+", screenX="+xx+", screenY="+yy+", left="+xx;
+	var wname = "eSerwis" + Math.round(Math.random()*10000);
+	
+	neww=window.open(adres,wname,opcje);
+	neww.focus();
+}
+
+function newWindow_r(x, y, adres)
+{
+	if (window.screen) {
+		var ah = screen.availHeight - 30;
+		var aw = screen.availWidth - 10;
+		
+		var xx=(aw-x) / 2;
+		xx=Math.round(xx);
+		var yy=(ah-y) / 2;
+		yy=Math.round(yy);
+	}
+	
+	var opcje="scrollbars=yes, width="+x+", innerWidth="+x+", height="+y+", innerHeight="+y+", top="+yy+", screenX="+xx+", screenY="+yy+", left="+xx;
+	var wname = "eSerwis" + Math.round(Math.random()*10000);
+	
+	neww=window.open(adres,wname,opcje);
+	neww.focus();
+}

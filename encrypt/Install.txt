@@ -1,0 +1,39 @@
+********* INSTALL GUIDE FOR ENCRYPT.PHP *********
+
+File: Install.txt
+Author: Salman Majid :: www.netblase.net
+Date: Feb. 15, 2007
+Purpose: Install guide for encrypt.php
+
+Description
+-----------
+
+- Extract the package (encrypt.zip) to the document root of your webserver. Unzip creates this folder < encrypt > with only on .PHP file, i.e. encrypt.php
+
+- You can access the file in web browser using your webserve address, e.g. http://localhost/encrypt/encrypt.php
+
+- Open encrypt.php in any text editor (e.g. Note Pad) and find a variable $key with a string value. This is your secret key. Change it to desired value
+
+*****************************************************
+*****************		    *****************
+*****************  WORD OF CAUTION  *****************
+***************** 		    *****************
+*****************************************************
+
+THIS ENCRYPTION AND DECRYPTION WORKS PERFECTLY ON LINUX MACHINE RUNNING APACHE WEBSERVER. I HAD PROBLEMS RUNNING IT ON WINDOWS.
+
+
+
+PHP Help Says:
+***************
+
+These functions work using mcrypt. To use it, download libmcrypt-x.x.tar.gz from http://mcrypt.sourceforge.net/ and follow the included installation instructions. 
+
+Windows users will find all the needed compiled mcrypt binaries at http://ftp.emini.dk/pub/php/win32/mcrypt/.
+
+
+-----------------------------------------------------
+
+NEED ANY HELP? Visit www.netblase.net
+
+Net Blasé [www.netblase.net]

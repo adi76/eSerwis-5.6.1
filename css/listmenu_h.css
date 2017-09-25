@@ -1,0 +1,15 @@
+.menulist,.menulist ul{ruby-align:center;position:static;list-style:none;margin:0;padding:0}
+.menulist ul{visibility:hidden;position:absolute;top:1em;left:0;width:230px}
+.menulist ul ul{top:0;left:228px}
+.menulist li{float:left;position:relative;background:#5F6676;border:1px solid #5F6676;margin-right:-1px}
+.menulist ul li{float:none;margin-right:0;margin-bottom:-1px}
+.menulist ul>li:last-child{margin-bottom:1px}
+.menulist a{display:block;color:#000;text-decoration:none;float:none;padding:3px}
+.menulist a .subind{display:none}
+.menulist ul a .subind{display:block;float:right}
+.menulist ul a{float:none}
+* html .menulist ul li{float:left;height:1%}
+* html .menulist ul a{height:1%}
+a.menu_font{font-family:Tahoma;font-size:small;font-weight:normal;color:#FFF}
+a.menu_font_bold{font-family:Tahoma;font-size:small;font-weight:bold}
+.menulist a:hover,.menulist a.highlighted:hover,.menulist a:focus,.menulist a.highlighted{color:#000;background-color:#B0C4DE}

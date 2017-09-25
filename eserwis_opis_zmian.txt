@@ -1,0 +1,63 @@
+
+ OPIS ZMIAN W BAZIE eSerwis
+ ==========================
+
+3.1.6 [20.02.2009] - poprawka przy usuwaniu pozycji z faktury
+
+3.1.7 [02.03.2009] - poprawka przy wyświetlaniu aktualnych stanów magazynowych (nie ujmowane były częsci z zestawów)
+
+3.1.8 [30.07.2009] - poprawka w p_sprzedaz_w_okresie.php odnośnie sprawdzania spójności danych
+
+3.1.9 [10.08.2009] - poprawka w utworz_protokol_generuj.php odnośnie błędnego zapisywania protokołów do bazy (brak daty protokołu)
+
+3.2.0 [28.12.2009] - zmiana sposobu tworzenia XLS. Usunięto problem z błędnie generowanymi plikami XLS przy dużych ilościach danych
+
+3.2.1 [29.12.2009] 
+	
+	- poprawiono formatowanie generowanych plików XLS, dodano automatyczne formatowanie pól z kwotami + drobne kosmetyczne zmiany
+	- zmieniono ścieżki w pliku "header_begin.php" z bezwględnych na względne
+
+3.2.2 [29.12.2009] 
+	- zmiana sposobu sortowania w raportach ze sprzedaży i aktualnych stanów magazynowych. 
+	  Teraz w raporcie ze sprzedaży jest 1 wg nr zlecenia, 2 wg daty sprzedaży
+	   W aktualnych stanach magazynowych jest #1 wg daty zakupu, #2 wg nr faktury, #3 wg nazwy towaru
+
+3.2.3 [30.12.2009] 
+	- zmiana sortowania w generowanym raportcie (sortowanie wg typów). 
+	- dodano możliwość wpisania ręcznie daty wykonania zadania (domyślnie jest to aktualny czas). 
+	
+3.2.4 [30.12.2009] 
+	- dodano możliwość wpisania ręcznie daty wykonania czynności (domyślnie jest to aktualny czas).
+
+3.2.5 [05.01.2009] 
+	- poprawiono błąd w generowaniu raportu ze sprzedaży w aktualnych stanach magazynowych. Błąd się uwidaczniał gdy dokonywane są przesunięcia między filiami
+
+3.5.0 [08.01.2010 - 14.01.2010]
+	- możliwość ustawienia czy komórka jest aktywna czy nie. Jeżeli nie - znika wtedy z wszelkich możliwych miejsc wyboru (Wojtek Koćwin) 
+	- dodano funkcjonalność umożliwiającą zmianę firmy serwisowej (zewnętrznej) wykonującej naprawę sprzętu (M.Kolano)
+	- przy przyjmowaniu sprzętu do naprawy (sprzęt poza ewidencją) lista dostępnego sprzętu jest dynamicznie aktualizowana wedle wybranego typu sprzętu (WK)
+	- dodano opcję filtrowania wg typu sprzętu w 
+		a) pobieraniu sprzętu serwisowego
+		b) zwrocie sprzętu serwisowego
+	- dodano blokadę 4 pierwszych opcji w tworzeniu protokołu (dostępne one będą tylko poprzez moduły "sprzęt serwisowy" i moduł "naprawy"
+	- rozróżnienie po po zmiennej $oddzial funkcji pobierz i zwróć z serwisu (wersja dla O/Łódź zmieniona została o wymuszenie generowania protokołu w momencie wykonywania takiej operacji
+	- przy pobieraniu sprzętu serwisowego, zwrocie sprzętu serwisowego, pobieraniu sprzętu do naprawy, zwrocie sprzętu z naprawy trzeba przejść przez generowanie protokołu z jego zapisem. Zmiana wymuszona przez to, że osoby nie zdejmowały sprzętu z bazy a robili protokoły
+	- poprawione przejście przy przyjmowaniu nowego sprzętu na stan serwisu (usunięto komunikat który pojawiał się w momencie kliknięcia przycisku "sprzęt poza ewidencją". W momencie wyboru up i typu i kliknięciu "sprzęt poza ewidencją" w nowym oknie up i typ są przepisywane i kursor automatycznie ustawia się na polu "model". 
+	- usunięto w raporcie ze sprzedaży puste miejsce ok. 0,5cm na górze ekranu - poprawka kosmetyczna
+	- poprawki w oknie przekazywania sprzętu do naprawy przez serwis zewnętrzny, dodano możliwość zmiany wyboru
+	- usunięto możliwość generowania protokołu z poziomu przeglądania sprzętu uszkodzonego na stanie serwisu
+	- dodano możliwość zmiany serwisu w przypadku naprawy na rynku lokalnym
+	- w przypadku naprawy na rynku lokalnym pokazywana jest nazwa serwisu wykonującego naprawę
+	- zmiana prezentacji sprzętu w naprawie (więcej danych w przypadku naprawy na rynku lokalnym). Oddzielenie informacji hr() zamiast br()
+	- dodano możliwość wycofania sprzętu z serwisu (z podaniem przyczyny). Sprzęt taki wraca na stan serwisu. Sprzęt taki można zwrócić do klienta z opcją zabrania bądź nie przekazanego sprzętu zastępczego
+	- przy zwrocie sprzętu do klienta - skorygowano listę  urządzeń danego typu tak aby były pokazywane tylko te z wybranej placówki (wcześniej pokazywał wszystkie danego typu)
+	- sprzedaż towaru powiązano z generowaniem protokołu. Jeżeli sprzedawana jest usługa - jest możliwość powiązania jej usługą np. naprawy (wg nazwy UP). Na tym etapie jest również możliwość zdecydowania czy sprzęt serwisowy (o ile był użyty przy zgłoszeniu) pozostaje na UP czy jest pobierany.
+	- 04.02.2010 - poprawiono błąd w pliku p_towary_stany.php (źle pokazywał aktualny stan magazynu, nie uwzględniał przenoszonych towarów - błąd zgłoszony przez M.Kolano)
+	- 05.02.2010 - dodano pole z datą przy zamykaniu zgłoszenia awarii WAN'u (wcześniej brana była automatycznie data bieżąca)
+	- 05.02.2010 - dodano możliwość określenia czy użytkownik może czy nie, sprzedawać towary / usługi
+	- 09.02.2010 - wybór UP w f-cjach : przesunięcie, remont, likwidacja sprzętu
+	- 08.03.2010 - filtrowanie przy przypisaniu użytkownika - teraz pokazuje tylko użytkowników którzy nie są wyłączeni
+	- 31.03.2010 - dokończenie obługi sprzedaży towaru i naprawy powiązanej ze sprzedażą. Drobne poprawki, korekty
+	- 15.04.2010 - dodanie numeru telefonu do UP przy zgłaszaniu awarii łącza
+	- 29.04.2010 - poprawiono błąd przy tworzeniu protokołu po użyciu opcji "Dane o urządzeniu z ewidencji" i  wybraniu sprzętu w polu data pojawia się: onkeypress='return, zamiast daty
+	- 

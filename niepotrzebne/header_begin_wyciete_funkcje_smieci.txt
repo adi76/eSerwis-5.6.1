@@ -1,0 +1,119 @@
+if (array_search($PHP_SELF, $pliki_wyroznione)>-1) {
+?>
+<?php if (array_search($PHP_SELF, $pliki_wyroznione)>-1) { ?>
+
+
+
+<script>
+
+
+
+
+
+</script>
+
+<?php } ?>
+
+<?php if (array_search($PHP_SELF, $pliki_wyroznione2)>-1) { ?>
+<script type="text/javascript" src="js/jquery/jquery-1.4.2.min.js"></script>		
+
+
+<script type="text/javascript" src="js/jquery/jquery.autocomplete.js"></script>
+<link rel="stylesheet" type="text/css" href="js/jquery/jquery.autocomplete.css" />
+<link rel="stylesheet" type="text/css" href="js/jquery/jquery-ui-1.8.1.custom.css" />	
+<?php } ?>
+
+<?php if (array_search($PHP_SELF, $pliki_wyroznione1)>-1) { ?>
+
+<link rel="stylesheet" type="text/css" href="js/jquery/jquery-ui-1.8.1.custom.css" />
+<?php } ?>
+
+<script type="text/javascript">
+
+<?php if (array_search($PHP_SELF, $pliki_wyroznione2)>-1) { ?>
+	
+
+		
+<?php } ?>
+
+	
+<?php if (array_search($PHP_SELF, $pliki_wyroznione1)>-1) { ?>
+
+<?php } ?>
+
+
+
+
+
+
+function stateChanged()
+{
+   if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
+   {
+           document.getElementById("lista_pracownikow_from_ajax").innerHTML= xmlHttp.responseText;
+   }
+   else {
+           //alert(xmlHttp.status);
+   }
+}
+
+
+
+
+/*==========================================================================# 
+# * Function for adding a Filter to an Input Field                          # 
+# * @param  : [filterType  ] Type of filter 0=>Alpha, 1=>Num, 2=>AlphaNum   # 
+# * @param  : [evt         ] The Event Object                               # 
+# * @param  : [allowDecimal] To allow Decimal Point set this to true        # 
+# * @param  : [allowCustom ] Custom Characters that are to be allowed       # 
+#==========================================================================*/ 
+
+
+
+
+
+
+
+
+
+function kH(e) {
+<!--
+var pK = document.all? window.event.keyCode:e.which;
+return pK != 13;
+}
+
+function SZPDP(v) {	if (v==13) { document.getElementById('priorytet_id').focus(); }	return true; }
+function SZKDP(v) {	if (v==13) { document.getElementById('podkat_id').focus();}	return true; }
+function SZPDS(v) {	if (v==13) { document.getElementById('status_id').focus(); } return true; }
+function SZSD(v) { if (v==13) { document.getElementById('submit').focus(); } return true; }
+
+</script>
+
+<script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+function getIndex(input) {
+var index = -1, i = 0, found = false;
+	while (i < input.form.length && index == -1)
+	if (input.form[i] == input)index = i;
+	else i++;
+	return index;
+}
+
+
+
+
+
+
+</script>
+
+
+<?php } ?>

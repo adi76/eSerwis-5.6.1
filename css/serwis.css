@@ -1,0 +1,39 @@
+BODY{background-color:#F4F5F7;color:#000;font-size:11px;font-family:Tahoma, Arial;position:static;top:0;left:0;margin:0!important;padding:0!important}
+H2	/* komunikat RED */{font-size:small;font-weight:bold;background-color:#FF2A2A;color:#000;padding-top:10px;padding-bottom:10px;width:100%;text-align:center;margin:0 0 10px}
+H4	/* komunikat SIWY */{font-size:small;font-weight:bold;background-color:#5F6676;color:#F5F5F5;padding-top:5px;padding-bottom:5px;text-align:center;margin:0 0 10px}
+H5	/* komunikat KREMOWY */{font-size:small;font-weight:normal;background-color:#FFFFA1;color:#000;padding-top:10px;padding-bottom:10px;text-align:center;width:100%;margin:0 0 10px}
+.parzyste{color:#000;background:#AFB6BF}
+.nieparzyste{color:#000;background:#C9CDD3}
+TH{color:#F5F5F5;font-weight:bold;background-color:#5F6676;text-decoration:none;text-align:left;border-style:none;border-width:0;margin:10px}
+.titlebar_add /* wygl¹d wierszy w tabelach */{color:#F5F5F5;font-weight:normal;background-color:#8D94A3;text-decoration:none;border-style:none;border-width:0;margin:10px}
+.titlebar_add_n{color:#F5F5F5;font-size:11px;font-weight:bold;background-color:#AFB6BF;height:25px;vertical-align:middle;border-style:none;border-width:0;margin:10px}
+.loginwindow_tlo	/* t³o okienka do logowania */{background:#AFB6BF;color:#000}
+.loginwindow_pasek	/* pasek okienka do logowania */{background:transparent;color:#000}
+.loginwindow_user{border:none;background:#F5F5F5;color:#000;margin-bottom:2px}
+.loginwindow_pass{border:none;background:#F5F5F5;color:#FF2A2A}
+.loginwindow_title{color:#F5F5F5;font-size:11px;font-weight:bold;background-color:#5F6676;height:24px;vertical-align:middle;border-style:none;border-width:0;margin:10px}
+A.nav_normal{background-color:#000;text-decoration:none;color:#000;font-size:11px;font-weight:normal;margin-left:0;margin-right:0;padding:1px}
+A.nav_normal:hover,visited{background-color:transparent;text-decoration:none;border-top:solid;border-bottom:solid;color:#5F6676;font-size:11px;font-weight:normal;margin-left:0;margin-right:0;border-width:1px;padding:1px}
+A.endpoint_s{text-decoration:none;color:#004080;font-size:11px;font-weight:normal}
+A.endpoint_s:hover,visited{text-decoration:none;background-color:transparent;color:#F5F5F5;font-size:11px;font-weight:normal;cursor:hand}
+A.opt_r{text-decoration:none;color:#FF2A2A;font-size:11px;font-weight:bold}
+A.opt_b{text-decoration:none;color:#000;font-size:11px;font-weight:bold}
+A.opt_blue{text-decoration:none;color:blue;font-size:11px;font-weight:bold}
+hr{color:#5F6676;border-width:1px}
+.gold_font{color:#FFFFA6}
+.black_font{text-decoration:none;color:#000}
+.red_font{color:#FF2A2A}
+.white_font{color:#F5F5F5}
+.blue_font{color:Blue}
+.buttons,.buttons_ok,.startpage{font-size:12px;color:#F5F5F5;border:1px #000;margin-bottom:0;background-color:#5F6676;border-style:solid;padding:3px 15px 4px}
+.wymagane{background-color:#FFFFA6;color:#000}
+.tooltip,.tooltip *{display:block}
+.tooltip{width:200px;color:#000;font:bold 11px/1.3 Tahoma;text-decoration:none;text-align:center}
+.tooltip span.top{background:url(bt.gif) no-repeat top;padding:4px 5px 0}
+.tooltip b.bottom{color:#5F6676;background:url(bt.gif) no-repeat bottom;padding:3px 5px}
+.pokazwszystko{margin-bottom:0}
+.titlebar,.titlebar_menu{background-color:#5F6676}
+A.nav_current,A.nav_current:hover,visited{background-color:transparent;text-decoration:none;font-weight:bold;color:#5F6676;font-size:11px;margin-left:0;margin-right:3px;padding:1px}
+A.nav_current_first,A.nav_current_last,A.nav_current_first,A.nav_current_last:hover,visited{background-color:transparent;text-decoration:none;color:#CCC;font-size:11px;font-weight:normal;margin-left:0;margin-right:3px;padding:1px 0}
+A.opt,A.opt_g,A.opt_pink{text-decoration:none;color:#5F6676;font-size:11px;font-weight:normal}
+A.opt:hover,visited,A.opt_w{text-decoration:none;color:#F5F5F5;font-size:11px;font-weight:bold}

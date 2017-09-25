@@ -1,0 +1,408 @@
+BODY {
+	background-color: #F5F5F5;
+/*	text-align: center;*/
+	color : black;
+	font-family :  Tahoma;
+	font-size: 12px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 1px;
+	margin-top: 0;
+	padding: 0;
+	position: static;
+	top: 0;
+	left: 0;
+}
+
+/* H2 - error */
+H2 {
+   font-size: small;
+	font-weight: bold;
+	font-family: Tahoma;
+	background-color: #FF4500;
+	font-size: 13px;
+	color: black;
+	padding: 15px;
+	width: 97%;
+	text-align:center;
+}
+/* H3 - ok  */
+H3 {
+   font-size: small;
+	font-weight: bold;
+	font-family: Tahoma;
+	background-color: #98FB98;
+	font-size: 13px;
+	color: black;
+	padding: 15px;
+	width: 97%;
+}
+/* nag³ówki nad tabelami */
+H4 {
+   font-size: small;
+	font-weight: bold;
+	font-family: Tahoma;
+	background-color: #5F6676;
+	font-size: 13px;
+	color: white;
+	padding: 5px;
+	}
+
+/* H3 - info  */
+H5 {
+   font-size: small;
+	font-weight: bold;
+	font-family: Tahoma;
+	background-color: #FFD700;
+	font-size: 13px;
+	color: black;
+	padding: 15px;
+	width: 97%;
+}
+
+.titlebar_add {
+	color: white; 					/* midnightblue */
+	font-weight: normal;
+	background-color: #8E95A4;		/* lavender */
+	margin: 10px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+.titlebar_add_n {
+	color: white; 					/* midnightblue */
+	font-weight: bold;
+	background-color: #8E95A4;		/* lavender */
+	margin: 10px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+.maintablerow1 {
+	
+	background: #A7ACBA;
+	color: Black;
+}
+
+.maintablerow1a {
+	
+	background: transparent;
+	color: Black;
+}
+.maintable {
+	
+	background: #313131;
+	color: white;
+	padding: 0 2px 3px 2px;
+	letter-spacing: 1px;
+}
+
+.noborder {
+	color: #3B404B;
+	background: #A7ACBA;
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+	border-bottom-color: #A7ACBA;	
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: #A7ACBA;	
+	border-left-style: solid;
+	border-left-width: thin;
+	border-left-color: #A7ACBA;	
+ 	border-right-style: solid;
+	border-right-width: thin;
+	border-right-color: #A7ACBA;	
+  
+}
+
+.noborder1 {
+	color: #3B404B;
+	background: #A7ACBA;
+
+	border: 2px solid Black;
+	padding-bottom: 2;
+	padding-left: 2;
+	padding-right: 2;
+	border-color: #545A6B;
+	}
+
+.error {
+	color: red;
+	
+}
+
+TABLE {
+	color: rgb(0,0,0); 
+	background: #F5F5F5;
+	border: 2pt;
+	position: static;
+}
+
+.titlebarmain {
+	color: white;
+	background: #8E95A4;
+	border-width: 1pt;
+	border-color: #5C6D7B;
+}
+
+.titlebarmainwarning1 {
+	color: white;
+	background: #C60000;
+	border-width: 2pt;
+	border-color: #5C6D7B;
+}
+.titlebarmainwarning {
+	color: white;
+	background: Red;
+	border-width: 2pt;
+	border-color: #5C6D7B;
+}
+
+.titlebar {
+	color: white;
+	background: #606B7F;
+	border-style: solid;
+	border-width: 0pt;
+	border-color: #A52A2A;
+}
+
+
+.parzyste {
+	color: rgb(3,3,3); 
+	background: #C9CDD3;;
+}
+
+
+.parzyste_ {
+	color: rgb(3,3,3); 
+	background: #C9CDD3;;
+	border-bottom:1px;
+}
+
+.nieparzyste {
+	color: rgb(11,11,11); 
+	background: #AFB6BF;
+}
+
+.gold_font {
+	color: #FFD700;
+}
+
+.black_font {
+	color: black;
+	text-decoration:none;
+}
+
+.red_font {
+	color: Red;
+}
+
+.white_font {
+	color: White;
+}
+
+.blue_font {
+	color: Blue;
+}
+
+.black_font {
+	color: Black;
+}
+a.main, a.main:hover, a.main:focus {
+	color: White;
+	background: transparent;
+	font-weight: bold;
+   text-decoration: none;
+}
+
+a.tendpoint {
+	color: blue;
+	background: transparent;
+   text-decoration: none;
+}
+
+a.tendpoint:hover {
+	color: blue;
+	background: transparent;
+	font-weight: normal;
+   text-decoration: underline;
+}
+img.transparent {
+	border: none;
+}
+
+hr {
+	border-width: medium;
+	color: #788B9A;	
+}
+
+a.opcja_E {
+	color: blue;
+	background: transparent;
+   text-decoration: none;
+	font-weight: bold;
+}
+
+a.opcja_U {
+	color: red;
+	background: transparent;
+   text-decoration: none;
+	font-weight: bold;
+}
+
+A.opt {
+	text-decoration: none;
+	color: #004080;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+A.opt:hover,visited {
+	text-decoration: none;
+	background-color:#004080;
+	color: white;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+A.opte {
+	text-decoration: none;
+	color: #004080;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+}
+
+A.opte:hover,visited {
+	text-decoration: none;
+	color: white;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+}
+
+A.opt_g {
+	text-decoration: none;
+	color: #228B22;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+A.opt_r {
+	text-decoration: none;
+	color: Red;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+A.opt_b {
+	text-decoration: none;
+	color: black;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+A.opt_w {
+	text-decoration: none;
+	color: White;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+A.opt_blue {
+	text-decoration: none;
+	color: blue;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+A.opt_pink {
+	text-decoration: none;
+	color: #FFAA00;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+}
+H6 {
+   font-size: small;
+	font-weight: bold;
+	font-family: Tahoma;
+	background-color: #FF0000;
+	font-size: 13px;
+	color: white;
+	padding: 5px;
+	}
+
+.edit1 {
+	
+	border: none;
+	background: #F2F2F2;
+
+}
+
+.edit1a {
+	
+	border: none;
+	background: #F2F2F2;
+	color: red;
+}
+
+.change {
+ text-decoration:none;
+ font-weight:bold;
+}
+
+.wymagane {
+	background-color: #FFFFA6;
+	color: Black;
+}
+
+.buttons, .buttons_ok {
+  font-size        	: 12px;
+  color            	: White;
+  border           	: 1px solid black;
+  margin-bottom    	: 0px;
+  border-style		: solid;
+  background-color 	: #5F6676;
+  padding-top		: 3px;
+  padding-bottom	: 3px;
+  padding-left		:5px;
+  padding-right		:5px;
+}
+
+input.text {
+  border          	 : 1px solid #123A94;
+/*  background-color : #ebf1fc;*/
+  background-color	 : #F9FBFF;
+  margin-top	   	: 1px;
+  color		   		: #23407d;
+  font-size: 12px;
+}
+
+select {
+	border-style: none;
+	border-color: #757D90;
+	border-width: 0px;
+	font-family: Tahoma;
+	font-size: 12px;
+	padding: 2px;
+}

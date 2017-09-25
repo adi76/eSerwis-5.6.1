@@ -1,0 +1,117 @@
+#STEP_0#Konfiguracja skryptu#2015-12-27  2:00:02#
+#STEP_0#INFO_WERSJA_SKR#1.9.1#
+#STEP_0#INFO_DATA_SKR#05.12.2014#
+#STEP_0#ILOSCKOPII#2#
+#STEP_0a#ILOSCKOPII_NA_STACJI_ROBOCZEJ#2#
+#STEP_0#PREFIX_NAZWY_PLIKU_Z_KOPIA#Kopia_UP_Zdunska_Wola_1#
+#STEP_0#NAZWA_KOMPUTERA_LOKALNA#P216038VCP050A#
+#STEP_0#KATALOG_Z_KOPIAMI#D:\KOPIA\SP2000#
+#STEP_0#NAZWA_BAZY_DANYCH_DO_BACKUPU#SP2000#
+#STEP_0#NAZWA_KOMPUTERA_DO_PRZECHOWYWANIA_KOPII#P216038rcp100#
+#STEP_0#NAZWA_UDZIALU_NA_KOMPUTERZE_DOCELOWYM#KOPIA#
+#STEP_0#MAPUJ_UDZIAL_NA_LITERZE#Z#
+#STEP_0#WYLACZ_KOMPUTER_PO_WYKONANIU_KOPII#NIE#
+#STEP_0#UZYJ_WON#TAK#
+#STEP_0#MAC_ADDRESS#78:2B:CB:B4:4B:4D#
+#STEP_0#ILOSC_SEKUND_POTRZEBNYCH_NA_URUCHOMIENIE_KOMPUTERA#120#
+#STEP_0#WYSYLAJ_LOGI_NA_FTP#TAK#
+#STEP_0#FTP_FILIA#SI#
+#STEP_0#FTP_IP#10.214.78.14#
+
+#STEP_0#INFO#SPRAWDZENIE CZY KOMPUTER DOCELOWY P216038rcp100 JEST DOSTEPNY W SIECI#2015-12-27  2:00:02#
+#STEP_0#ERROR#Komputer P216038rcp100 nie jest dostepny w sieci #2015-12-27  2:00:06#
+#STEP_0#INFO#Podjecie proby wzbudzenia komputera P216038rcp100#2015-12-27  2:00:06#
+
+WakeOnLAN v1.0 Copyright (c)2001, MATCODE Software.
+Web: http://www.matcode.com
+Author: Vitaly Evseenko, ve@matcode.com
+Sending "Magic Packet" to 78:2b:cb:b4:4b:4d - Success!
+#STEP_0#CHECKSQL#Sprawdzenie czy uruchomiona jest usluga MSSQLSERVER#2015-12-27  2:00:06# 
+#STEP_0#INFO#Usluga MSSQLSERVER jest uruchomiona#2015-12-27  2:00:06# 
+#BACKUPTYPE#FULL#ROZPOCZECIE PROCESU WYKONYWANIA PELNEJ KOPII 
+#STEP_1#INFO#Sprawdzenie czy jest mozliwosc wlaczenia opcji kompresji dla backup'u#2015-12-27  2:00:06# 
+#STEP_1#SQLEDITION#Standard Edition#2015-12-27  2:00:07# 
+	Standard Edition on Windo
+#STEP_1#COMPRESSION#TAK#2015-12-27  2:00:07# 
+#STEP_1#START#Rozpoczecie wykonywania backupu#2015-12-27  2:00:07# 
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 920264 pages for database 'SP2000', file 'SP2000_413_DAT' on file 1.
+Processed 12872 pages for database 'SP2000', file 'SP2000_SP2KSYS' on file 1.
+Processed 24 pages for database 'SP2000', file 'SP2000_SP2KOP01' on file 1.
+100 percent processed.
+Processed 1 pages for database 'SP2000', file 'SP2000_413_LOG' on file 1.
+BACKUP DATABASE successfully processed 933161 pages in 113.372 seconds (64.304
+MB/sec).
+#STEP_1#STOP#Zakonczenie wykonywania backupu#2015-12-27  2:02:01# 
+#STEP_1#INFO#Rozmiar pliku#2069895680 
+
+#STEP_2#START#Rozpoczecie procesu weryfikacji backupu#2015-12-27  2:02:01# 
+The backup set on file 1 is valid.
+#STEP_2#STOP#Zakonczenie procesu weryfikacji backupu#2015-12-27  2:02:28# 
+
+#STEP_3#START#Rozpoczecie generowania sumy kontrolnej backupu#2015-12-27  2:02:28# 
+//
+// File Checksum Integrity Verifier version 2.05.
+//
+Error loading XML document.
+Create New XML database
+#STEP_3#INFO_GEN_SUMY_KONTR#TAK 
+#STEP_3#STOP#Zakonczenie procesu generowania sumy kontrolnej#2015-12-27  2:02:48# 
+
+#STEP_4#START#Rozpoczecie sprawdzania czy komputer docelowy jest dostepny w sieci#2015-12-27  2:02:48# 
+#STEP_4#ERROR#Komputer P216038rcp100 nie jest dostepny w sieci#2015-12-27  2:02:52#
+#STEP_4#INFO#Podjecie proby wzbudzenia komputera P216038rcp100#2015-12-27  2:02:52#
+
+WakeOnLAN v1.0 Copyright (c)2001, MATCODE Software.
+Web: http://www.matcode.com
+Author: Vitaly Evseenko, ve@matcode.com
+Sending "Magic Packet" to 78:2b:cb:b4:4b:4d - Success!
+#STEP_4#ERRORWOL#Komputer P216038rcp100 nie reaguje na sygnal wzbudzenia. Proces kopii na komputer docelowy zostaje pominiety#2015-12-27  2:13:56#
+
+#STEP_10#START#Rozpoczecie pobierania informacji o ilosci wolnego miejsca na dysku D:, na ktorym wykonywane sa kopie
+Information for volume D:
+total  65 GB
+avail. 35 GB
+#STEP_10#STOP#Zakonczenie pobierania informacji o ilosci wolnego miejsca na dysku D:, na ktorym wykonywane sa kopie
+#STEP_4#ERROR_COPY#Nieudana synchronizacja katalogow z kopiami#2015-12-27  2:13:56# 
+#STEP_5#INFO_O_WYK_KOPII#NIE 
+#STEP_6#INFO_WER_OK#NIE 
+
+#STEP_11#START#Rozpoczecie wysylki plikow LOG na FTPa#2015-12-27  2:13:56# 
+#STEP_11#STOP#ZAKONCZENIE wysylki plikow LOG na FTPa#2015-12-27  2:13:58# 
+
+#STEP_12#START#Rozpoczecie procedury kasowania plikow kopii starszych niz 2 dni z katalogu D:\KOPIA\SP2000 oraz logow z katalogu D:\KOPIA\SP2000\LOGS#2015-12-27  2:13:58# 
+#STEP_12#INFO#Lista plikow kopii, starszych niz 2 dni w katalogu D:\KOPIA\SP2000#2015-12-27  2:13:58# 
+D:\KOPIA\SP2000\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__06_00.BAK
+D:\KOPIA\SP2000\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__08_00.BAK
+D:\KOPIA\SP2000\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__10_00.BAK
+D:\KOPIA\SP2000\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__12_00.BAK
+D:\KOPIA\SP2000\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__14_00.BAK
+D:\KOPIA\SP2000\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__16_00.BAK
+D:\KOPIA\SP2000\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__18_00.BAK
+D:\KOPIA\SP2000\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__20_00.BAK
+D:\KOPIA\SP2000\Kopia_UP_Zdunska_Wola_1_SP2000_FULL_2015_12_25__02_00.BAK
+#STEP_12#INFO#Kasowanie plikow kopii starszych niz 2 dni z katalogu D:\KOPIA\SP2000 zostalo zakonczone pomyslnie#2015-12-27  2:13:59# 
+#STEP_12#INFO#Lista plikow logow, starszych niz 2 dni w katalogu D:\KOPIA\SP2000\LOGS#2015-12-27  2:13:59# 
+D:\KOPIA\SP2000\LOGS\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__06_00.LOG
+D:\KOPIA\SP2000\LOGS\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__08_00.LOG
+D:\KOPIA\SP2000\LOGS\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__10_00.LOG
+D:\KOPIA\SP2000\LOGS\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__12_00.LOG
+D:\KOPIA\SP2000\LOGS\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__14_00.LOG
+D:\KOPIA\SP2000\LOGS\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__16_00.LOG
+D:\KOPIA\SP2000\LOGS\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__18_00.LOG
+D:\KOPIA\SP2000\LOGS\Kopia_UP_Zdunska_Wola_1_SP2000_DIFF_2015_12_25__20_00.LOG
+D:\KOPIA\SP2000\LOGS\Kopia_UP_Zdunska_Wola_1_SP2000_FULL_2015_12_25__02_00.LOG
+#STEP_12#INFO#Kasowanie plikow logow starszych niz 2 dni z katalogu D:\KOPIA\SP2000\LOGS zostalo zakonczone pomyslnie#2015-12-27  2:14:00# 
+#STEP_12#STOP#Zakonczenie procedury kasowania plikow kopii i logow starszych niz 2 dni#2015-12-27  2:14:00# 
+ZAKONCZENIE PROCESU WYKONYWANIA PELNEJ KOPII#2015-12-27  2:14:00 
+#STEP_13#START#Rozpoczecie procedury wylaczenia komputera P216038rcp100#2015-12-27  2:14:00 
+#STEP_13#STOP#Procedura wylaczenia komputera P216038rcp100 zostala wykonana#2015-12-27  2:14:47 

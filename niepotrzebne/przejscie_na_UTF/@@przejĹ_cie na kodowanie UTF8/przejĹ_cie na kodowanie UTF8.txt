@@ -1,0 +1,54 @@
+1. Backup bazy i programu
+================================================================================================
+2. zrobiæ konwersjê Start->Administracyjne->
+	szprzeda¿ -> normalne, 
+	f.szcz -> normalne, 
+	podfaktury ->normalne
+================================================================================================
+3. w pliku inc_encrypt.php zmieniæ 2 funkcje na: 
+
+  function decrypt_md5($msg,$heslo) { 
+  /*  $key=$heslo;$sifra="";
+    $key1=binmd5($key);
+    while($msg) {
+      $m=substr($msg,0,16);
+      $msg=substr($msg,16);
+      $sifra.=$m=bytexor($m,$key1,16);
+      $key1=binmd5($key.$key1.$m);
+    }
+    echo "\n";
+    return($sifra);
+	*/
+	return($msg);
+  }
+
+  function crypt_md5($msg,$heslo) { 
+/*    $key=$heslo;$sifra="";
+    $key1=binmd5($key);
+    while($msg) {
+      $m=substr($msg,0,16);
+      $msg=substr($msg,16);
+      $sifra.=bytexor($m,$key1,16);
+      $key1=binmd5($key.$key1.$m);
+    }
+    echo "\n";
+    return($sifra);
+*/
+return($msg);
+  }
+
+================================================================================================
+4. Je¿eli wszystkie kwoty w tabelach : serwis_faktura_szcz, serwis_sprzedaz, serwis_podfaktury 
+bêd¹ niezaszyfrowane przechodzimy do punktu 5.
+Sprawdzamy równie¿ jak wygl¹daj¹ kwoty w programie (np. Towary na stanie, Generowanie zestawienia)
+================================================================================================
+5. dodaæ w sekcji [mysqld] po "myisam_sort_buffer_size":
+
+init_connect='SET NAMES utf8'
+default-character-set=utf8
+default-collation=utf8_polish_ci
+================================================================================================
+6. zrobiæ konwersjê Start->Administracyjne->konwersja wszystkich tabel na UTF8
+================================================================================================
+7. zmieniæ System porównañ dla po³¹czenia MySQL: utf_unicode_ci
+================================================================================================

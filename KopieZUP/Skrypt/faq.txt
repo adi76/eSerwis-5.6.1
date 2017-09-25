@@ -1,0 +1,23 @@
+Problemy i ich rozwiazania, przy wdrazaniu i eksploatacji kopii:
+----------------------------------------------------------------
+
+===================================================================================================================
+
+Problem 1: zadanie aktualizacji nie konczy dzialania
+Rozwiazanie: zmienic nazwe pliku fc.exe na fc_.exe
+
+===================================================================================================================
+
+Problem 2: z poziomu serwera nie widac udostepnionych udzialow na stacji roboczej (po wykonaniu kilku kopii)
+Rozwiazanie: 
+	doraznie pomaga restart usługi Lanmanserver.  
+	
+	Rozwiazanie stale: dokonanie zmian w rejestrze: 
+	HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\LargeSystemCache	-> ustawienie wartosci na 1
+	HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\Size	-> ustawienie wartosci na 3
+	
+	dodatkowo w narzedziach administracyjnych->zasady zabezpieczen lokalnych->ustawienia zabezpieczen->zasady lokalne->opcje zabezpieczen->zabezpieczenia sieci: poziom uwierzytelniania LAN Manager, ustawiamy na wartosc: Wyślij LM i NTLM - uzyj zabezpieczen sesji NTLMv2 w przypadku negocjowania
+	
+	Po tych zmianach robimy restart komputera na ktorym dokonywane byly zmiany
+	
+===================================================================================================================

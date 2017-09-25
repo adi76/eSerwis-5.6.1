@@ -1,0 +1,662 @@
+Zmiany w wersji 5.3.3 (17.01.2013)
+==================================
+	Dodano:
+	=======
+		1. Dodano możlwość wrzucenia treści wykonywanych czynności lub treści wszystkich kroków w danym zgłoszeniu do bazy wiedzy. Można to zrobić, albo w zmianie statusu zgłoszenia, poprzez zaznaczenie checkbox'a "Dodaj wykonane czynności do bazy wiedzy", albo z poziomu widoku kroków zgłoszenia (nowa ikonka +BW). W tym drugim przypadku możemy dodać treść wszystkich kroków z całego zgłoszenia.
+		2. W bazie wiedzy, jeżeli dane pytanie powstało ze zgłoszenia w Helpdesk'u w opcjach pojawi się ikonka HD, która umożliwi przejście do tego zgłoszenia.
+		
+	Poprawiono:
+	===========
+		1. zmodyfikowano obsługę seryjną zgłoszeń, dla zgłoszeń powiązanych z naprawą, tak aby nie można było seryjnie zamknąć zgłoszenia powiązanego z niezakończoną naprawą. (P.Hauptman)
+		
+Zmiany w wersji 5.3.2 (19.11.2012)
+==================================
+	Dodano:
+	=======
+		1. możliwość włączenia dla użytkownika menu głównego w widoku zgłoszeń (Start->Edytuj profil->Menu główne w Helpdesku->[TAK / NIE]) (M.Kolano)
+		2. w informacjach o wykonanych kopiach dodano informację o tym z jakiego dnia jest to kopia (D-1, D-2, ...) 
+		3. dodano nową skórkę
+		4. poprawiono algorytm w sprawdzaniu kopii z komórki.
+		
+Zmiany w wersji 5.3.1 (09.11.2012)
+==================================
+	Dodano:
+	=======
+		1. dodano możliwość ukrycia zgłoszenia powiązanego z naprawą, jeżeli status zgłoszenia = zamknięty oraz z danym zgłoszeniem nie było powiązanej wymiany podzespołów. (W.Koćwin).
+		2. dodano możliwość ponownego zapisania raportu rozbudowanego z okresu do pliku XLS.
+
+	Poprawiono:
+	===========
+		1. zmodyfikowano rejestrowane przez system dane o przeglądarce z której uruchamiana jest baza. Będzie to pomocne przy diagnozowaniu "dziwnych" problemów z bazą (np. nieprzenoszenie kategorii i podkategorii zgłoszenia z zamykanej awarii). Do tej pory rejestrowana była tylko przeglądarka bez numeru wersji.
+		
+		
+Zmiany w wersji 5.3.0 (29.10.2012)
+==================================
+	Dodano:
+	=======
+		1. dodano dla kierowników możliwość weryfikacji zgłoszeń w nowym widoku (Helpdesk->Weryfikuj zgłoszenia)
+		2. w raporcie okresowym dodano przyciski umożliwiające utworzenie nowego zgłoszenia, utworzenie nowego zgłoszenia seryjnego oraz przejście do listy zgłoszeń (M.Knieć)
+		3. w raporcie dziennym dodano przyciski umożliwiające utworzenie nowego zgłoszenia, utworzenie nowego zgłoszenia seryjnego oraz przejście do listy zgłoszeń
+		4. w przeglądaniu zgłoszeń, w dymku pojawiającym się nad ikonką statusu dodano wiersz z informacją czy "Był wyjazd ?". (M.Kolano)
+		5. na liście pozycji zadania zmieniono kolor komórki która ma placówki podległe (ma to na celu umożliwienie szybkiego ustalenia komórek w WANie, na których np. można wymieniać wersje Poczty - które nie wymagają wyjazdów na placówki podległe. W tym momencie trzeba jednak pamiętać o powiązaniach między UP, które np. rozliczają listonoszy z innego UP.)
+		6. możliwość dodania do kroku zgłoszenia osoby z innej filii (M.Kolano).
+		7. Raporty ze sprzedaży w okresie dla komórki oraz dla sprzętu (po nr NI lub SN) (T.Starosta)
+		8. dodano formularz sprawdzający kopie bezpieczeństwa (powiązane jest to z nowym polem w bazie komórek ("Nazwa pliku z backup'em")
+		9. dodano możliwość tworzenia nowego zadania na bazie zadania już istniejącego (nowego, otwartego lub zakończonego). Dotyczy to tylko zadań powiązanych ze zgłoszeniami w Helpdesk (tworzonych po 2012-07-12, dacie wprowadzenia podkategorii poziom 2) (T.Starosta).
+		10. ponownie włączono opcję sprawdzania komunikacji z routerem w zgłoszonych w UP awariach łaczy. Dodatkowo dodano automatyczne odświeżanie strony co 5 minut.
+		11. w raporcie rozbudowanym dla Poczty dodano kolumnę AQ z łącznym czasem poświęconym na przejazd. (P.Pietrzak)
+		12. dodano formatkę do weryfikacji poprawności wykonania kopii z UP. Weryfikowane mogą być tylko te komórki, które mają zdefiniowaną "Nazwa pliku z backup'em" (wymaga wdrożenia na placówkach schematu kopii danych opracowanych przez filię Sieradz) 
+		13. przy weryfikacji zgłoszeń dodano przyciski umożliwiające pokazanie lub ukrycie szczegółów wszystkich zgłoszeń z listy. (T.Starosta).
+		
+	Poprawiono:
+	===========
+		1. błąd w otwieraniu załączników PDF w bazie wiedzy (Z.Fałek)
+		2. błąd w raporcie zbiorczym dla oddziału (źle sumowane czasy przejazdu dla filii). (M.Kolano)
+		3. nazwę pliku XLS z generowanego raportu "Zbiorczy ze zgłoszeń dla oddziału" na format "RRRR'MM'DD-RRRR'MM'DD_XX.xls", gdzie XX - skrót filii. (P.Pietrzak)
+	
+Zmiany w wersji 5.2.2
+=====================
+	Dodano:
+	=======
+		1. w przeglądaniu zgłoszeń dodano opcję (dla kierowników) wyświetlania zgłoszeń z błędnie ustawionymi znacznikami START/STOP
+		2. w kroku zgłoszenia, w którym stwierdzono nieprawidłowość w znaczniku, komórka ze znacznikiem uzyskuje żółte tło oraz w zależności od uprawnień pozwala na odpowiednią reakcję:
+			a) dla kieroników jest możliwość zmiany znacznika na prawidłowy
+			b) dla pozostałych użytkowników jest możliwość utworzenia notatki dla kierownika z informacją o napotkanym błędzie.
+		
+	Poprawiono:
+	===========
+		1. poprawiono błąd przy przypisywaniu zgłoszenia do osoby (system błędnie ustawiał znacznik START/STOP)
+		2. dodano podkategorie (poziom 2) dla Awaria->Oprogramowanie - problemy techniczne. (W.Koćwin)
+		3. zmieniono sposób ustalania daty ostatniej zmiany status.
+		
+Zmiany w wersji 5.2.1
+=====================
+	Poprawiono:
+	===========
+		1. błąd przy pokazywaniu daty "Ostatniej zmiany statusu" w podglądzie zgłoszenia. Data była niezgodna z faktyczną datą zmiany ostatniego kroku. (W.Staszel)
+		2. porawki w raporcie rozbudowanym dla Poczty
+		3. inne drobne błędy zgłoszone przez użytkowników
+		
+Zmiany w wersji 5.2.0
+=====================
+	Zmodyfikowano:
+	==============
+		1. od tej wersji połączenie szyfrowane będzie tylko na etapie logowania do bazy, dalsza praca w bazie będzie na połączeniu zwykłym. Może to spowodować nieznaczne zwiększenie szybkości działania bazy.
+
+	Poprawiono:
+	===========
+		1. poprawiono błąd przy zapisywaniu zgłoszenia seryjnego do bazy (w pierwszym kroku nie dodawał do wykonanych czynności treści zgłoszenia) (Z.Fałek)
+		2. poprawiono prezentację informacji w oknie obsługi zgłoszenia. Jeżeli choć jeden z kroków zgłoszenia był powiązany z wyjadem, pojawiać się będzie informacja o "Łącznym czasie przejazdów" - nawet jeżeli będzie to wartość równa 0. (Z.Fałek)
+		3. Obsługę załączników w bazie wiedzy i krokach zgłoszenia.
+		
+Zmiany w wersji 5.1.6
+=====================
+	Poprawiono:
+	===========
+		1. inne drobne błędy, które pojawiły się podczas eksploatacji
+		
+Zmiany w wersji 5.1.5
+=====================
+	Dodano:
+	=======
+		1. dodano podkategorię (poziom 2): ORM (Prace zlecone w ramach umowy -> Oprogramowanie - wsparcie użytkownika) 
+		2. dodano podkategorię (poziom 2): Odblokowanie konta (Prace zlecone w ramach umowy -> Domena)
+
+	Poprawiono:
+	=======
+		1. poprawiono obsługę słowników treści (uwzględniając nowe kategorie, podkategorie i podkategorię poziom 2) (P.Hauptman)
+		2. poprawiono błąd przy dodawaniu nowego zadania na podstawie projektu w przeglądarce IE (W.Koćwin)
+		
+Zmiany w wersji 5.1.4
+=====================
+	Dodano:
+	=======
+		1. w "Raport okresowy ze zgłoszeń" dodano możliwość wybrania czy ma pokazywać zgłoszenia sprawdzone/niesprawdzone/wszystkie
+		2. dodano blokadę edycji kategorii, podkategorii i podkategorii (poziom 2) dla zgłoszeń z podkategorii "Projekty"
+		3. w przeglądaniu zgłoszeń, po najechaniu na ikonkę ze statusem, dodano informacje o kategorii, podkategorii i podkategorii (poziom 2) (M.Kolano)
+		4. dodano możliwość seryjnego potwierdzania sprawdzenia zgłoszenia oraz usuwania sprawdzenia zgłoszenia (w widoku zgłoszeń zamkniętych).
+		5. w edycji zgłoszenia zamkniętego dodano możliwość ustawienia czy zgłoszenie jest sprawdzone czy nie.
+
+	Poprawiono:
+	===========
+		1. poprawiono błąd podczas tworzenia zgłoszenia z pozycji zadania wyświetlanego na stronie startowej (M.Kolano)
+		2. błąd przy przechodzeniu między stronami w przeglądaniu zgłoszeń (dla ustawionego filtra "wg sprawdzenia") (M.Kolano)
+
+Zmiany w wersji 5.1.3
+=====================
+	Dodano:
+	=======
+		1. dodano nowy filtr w przeglądaniu zgłoszeń: "wg sprawdzenia". Dzięki niemu można wyfiltrować wszystkie zgłoszenia sprawdzone, bądź niesprawdzone przez przełożonego. (M.Kolano)
+		2. w "Raport okresowy ze zgłoszeń" dodano możliwość wybrania czy ma pokazywać zgłoszenia sprawdzone/niesprawdzone/wszystkie
+		3. dodano blokadę edycji kategorii, podkategorii i podkategorii (poziom 2) dla zgłoszeń z podkategorii "Projekty"
+		4. w przeglądaniu zgłoszeń, po najechaniu na ikonkę ze statusem, dodano informacje o kategorii, podkategorii i podkategorii (poziom 2) (M.Kolano)
+		5. 
+
+	Poprawiono:
+	===========
+		1. poprawiono błąd przy edycji zgłoszenia (brak możliwości wyboru kategorii: Konserwacja) (M.Kolano).
+		2. poprawiono błąd podczas tworzenia zgłoszenia z pozycji zadania wyświetlanego na stronie startowej (M.Kolano)
+		3. 
+
+Zmiany w wersji 5.1.2
+=====================
+	Dodano:
+	=======
+		1. w raporcie zbiorczym dodano kolumnę z łącznym czasem poświęconym na przejazdy (M.Kolano)
+		
+Zmiany w wersji 5.1.1
+=====================
+	Dodano:
+	=======
+		1. możliwość edycji kategorii (tzn. kategorii, podkategorii, podkategorii (poziom 2))
+		2. możliwość zdefiniowania okresu, dla którego dostęp do edycji kategorii będzie dostępny dla wszystkich pracowników, dla wszystkich zgłoszeń z tego okresu.
+
+	Poprawiono:
+	===========
+		1. mechanizmy w edycji zgłoszenia 
+	
+Zmiany w wersji 5.1.0
+=====================
+	Dodano:
+	=======
+		1. dodano nową kategorię: KONSERWACJA
+		2. w formularzach dodawania nowego zgłoszenia, nowego zgłoszenia seryjnego oraz definiowaniu zadania, dodano podkategorię poziom 2 (większe uszczegółowienie zgłoszeń) 
+		3. możliwość exportu do XLS wyfiltrowanej listy komórek (M.Kolano)
+		4. przebudowano moduł definiowania zadań (uwzględniając poziom 2 podkategorii)
+		5. dodano możliwość definiowania projektów, które to później będa mogły być używane do tworzenia zadań w kategorii "Prace zlecone w ramach umowy"->"Projekty". Aby projekt był dostępny podczas procesu tworzenia zadania, musi posiadać status "OTWARTY". Dostęp do definiowania / zarządzania projektami mają kierownicy i dyrektor.
+		6. dodano mechanizm pozwalający kierownikom potwierdzenie sprawdzenia zgłoszeń zamkniętych (element przydatny podczas weryfikacji raportu dla Poczty). 
+		7. dodano możliwość wyszukiwania zgłoszeń wg osoby zgłaszającej (Z.Fałek)
+		
+	Poprawiono:
+	===========
+		1. poprawiono błąd w raporcie zbiorczym dla oddziału (problem z krokami wykonywanymi przez wiele osób) (M.Kolano)
+		2. poprawiono błąd podczas usuwania sprzedaży i anulowania powiązania sprzedaży z krokiem (Z.Fałek)
+		3. poprawiono mechanizm fitrowania widoku w bazie komórek 
+		4. w definiowaniu nowego zadania oraz w edycji zadania dodano informacje o klasyfikacji wg podkategorii.
+		5. zmiana nazwy podkategorii: "Oprogramowanie - placówka pocztowa" -> "Oprogramowanie - wsparcie techniczne"
+		6. raport ze zgłoszeń (rozbudowany) - dodano kolumnę AL z "Podkategorią (poziom 2)"
+		7. poprawiono błąd w formularzu przekazania sprzętu serwisowego do komórki - błędnie pokazywana była informacja o niezgodności nazwy komórki z nazwą w zgłoszeniu (S.Kur)
+		
+Zmiany w wersji 5.0.7a
+======================
+	Poprawiono:
+	===========
+		1. poprawiono błąd w raporcie rozbudowanym dla Poczty (P.Pietrzak) - błędnie wyliczana kolumna AE (AE = Q + Y + AD)
+		
+Zmiany w wersji 5.0.7
+=====================
+	Dodano:
+	=======
+		1. dodano raport sumaryczny ze zgłoszeń (Helpdesk->Raporty->Okresowy sumaryczny NOWY) (M.Kolano)
+		
+	Poprawiono:
+	===========
+		1. poprawiono błąd w raporcie zbiorczym ze zgłoszeń dla oddziału (brak podsumowania ostatniej filii/oddziału) w raporcie dla całego oddziału. (M.Kolano)
+		2. w widoku zgłoszeń Helpdesk poprawiono prezentację zgłoszeń powiązanych z naprawą sprzętu. Od tej wersji, jeżeli pobraniu sprzętu do naprawy będzie towarzyszyło podstawienie sprzętu serwisowego obok ikonki naprawy (klucz) będzie widoczna ikonka sprzętu serwisowego. 
+		
+Zmiany w wersji 5.0.6
+=====================
+	Dodano:
+	=======
+		1. w raporcie rozbudowanym dla Poczty dodano 2 kolumny: kategoria UP oraz łączny czas poświęcony na wykonanie zgłoszenia (P.Pietrzak)
+		
+Zmiany w wersji 5.0.5
+=====================
+	Dodano:
+	=======
+		1. dodano możliwość zarejestrowania Awarii wraz z podkategorią Oprogramowanie techniczne.
+		
+Zmiany w wersji 5.0.4
+=====================
+	Poprawiono:
+	===========
+		1. usunięto błąd przy tworzeniu zgłoszenia z zamykanej awarii/awarii krytycznej (brak podkategorii).
+		2. jeżeli powyższa poprawka nie usunie tego błędu - dodano w przeglądaniu zgłoszeń informację o braku podkategorii (wyświetlana pod nr zgłoszenia)
+		3. poprawiono wyświetlanie informacji o usuniętym kroku zgłoszenia
+		4. poprawio mechanizm wyliczający łączny czas dla zgłoszenia (po ukrywaniu kroku).
+		
+Zmiany w wersji 5.0.3
+=====================
+	Dodano:
+	=======
+		1. dodano informację o czasie pozostałym do wykonania czynności. (M.Kolano)
+		2. dodano infromacje o klasyfikacjach zgłoszeń pod daną podkategorię
+		3. 
+		
+	Poprawiono:
+	===========	
+		1. zmieniono wygląd raportu ze sprzedaży (na stronie). 
+		2. poprawiono generowanie raportu rozbudowanego dla Poczty. Problem dotyczył sposobu realizacji zgłoszenia. W raporcie system błędnie interpretował przypadki gdy był wyjazd samochodem służbowym.
+		3. poprawiono sortowanie zgłoszeń zamkniętych (M.Kolano)
+		4. poprawiono zachowanie formatki obsługi seryjnej zgłoszeń (kontrola czasu, km przy zapisywaniu zgłoszenia)
+		5. wyłączono kontrolę zerowej ilości km przy wyjazdach samochodem prywatnym.
+		
+Zmiany w wersji 5.0.2
+=====================
+
+	Poprawiono:
+	===========
+		1. działanie słownika treści (błędnie zapisywana podkategoria zgłoszenia) (P.Grabowiecki)
+		2. działanie formatki "przyjęcie uszkodzonego sprzetu" (z menu głównego) - wersja dla kierowników (T.Starosta)
+		3. działanie przesunięcia towarów między filiami (M.Kolano)
+		4. Zmiana TP SA -> Orange
+		
+Zmiany w wersji 5.0.1
+======================
+	Dodano:
+	=======
+		1. przy przesunięciu czasu rozpoczęcia awarii krytycznej nad datą pojawiać się będzie komunikat: 
+											!!! UWAGA !!! 
+			Ustalony czas rozpoczęcia dla awarii krytycznych stosujemy w przypadkach, kiedy pracownik UP 
+			chce podjęcia działań przed otwarciem UP w kolejnym dniu roboczym
+		2. dodano kontrolę ilości minut jakie można przypisać dla zgłoszenia konsultacji (max. 15 minut) (formatki: nowe zgłoszenie, nowe zgłoszenie seryjne, edycja kroku zgłoszenia)
+		3. przy zmianie daty (dla awarii krytycznych) obok pola "Godzina rozpoczęcia" dodano wyliczaną automatycznie graniczną godzinę rozpoczęcia zgodna z umową (np. dla UP I kategorii, zgł. o 20:50: graniczna godzina rozpoczęcia ma być 08:50)
+		4. zaktualizowano kalendarz świąt na 2012
+	
+	Poprawiono:
+	===========
+		1. błędne wyświetlanie na stronie startowej informacji zbiorczych z bazy (przypadek kiedy nic nie ma do pokazania)
+		2. funkcjonalność obsługi pozycji zadania (Z.Fałek)
+		3. w zarządzaniu komórkami poprawiono wcięcie przy adresie komórkie dla komórek podległych
+		4. zmiana podkategorii z "Oprogramowanie - Administracja" -> "Oprogramowanie biurowe"
+		5. w raporcie rozbudowanym dla Poczty, w kolumnie T (przesunięcia czasu reakcji) dodano informacje o ustalonej dacie przesunięcia i osobie potwierdzającej te ustalenia (dla awarii i awarii krytycznych).
+		
+Zmiany w wersji 5.0.0
+======================
+	Dodano:
+	=======
+		1. Powiązanie modułu "Sprzęt serwisowy" z modułem "Helpdesk".
+		2. Dodano możliwość przekazania oraz zwrotu sprzętu serwisowego trakcie zmiany kroku.
+		3. Dodano możliwość połączenia przekazywanego sprzętu serwisowego z już istniejącą naprawą oraz możliwość pobrania sprzętu serwisowego powiązanego z naprawą.
+		4. Dodano możliwość połączenia "przyjmowanego sprzętu na stan" z przekazanym wcześniej sprzętem serwisowym.
+		5. w przeglądaniu zgłoszeń dodano widok "Pokaż zgłoszenia"->"Powiązane z przekazaniem sprzętu serwisowego" (w skrócie "Pow. z przek. s. ser.). Widok ten pokazuje zgłoszenia które są powiązane z samym przekazaniem sprzętu serwisowego albo są powiązane z naprawą, która to jest powiązana z przekazaniem sprzętu serwisowego.
+		6. Przy zamykaniu pozycji zadania, dodano przycisk umożliwiający ponowne wywołanie okna ze zgłoszeniem na bazie pozycji zadania. (M.Kolano)		
+		7. z poziomu dodawnia kroku do zgłoszenia, dodano możliwość zmiany serwisu zewnętrznego (dostępne przy statusie "w serwisie zewnętrznym") oraz wycofania z serwisu naprawianego sprzętu (dostępne przy statusie "w firmie" i "w serwisie zewnętrznym")
+		8. w przeglądaniu zgłoszeń dodano (dla kierowników) możliwość przypisania grupowo zgłoszeń do osoby. Wcześniej ta funkcja była dostępna tylko dla zgłoszeń o statusie "nowe"
+		9. dodano możliwość zbudowania hierarchii w bazie komórek. Dla typu Agencja i Filia możliwe jest zdefiniowanie komórki macierzystej. Wartość tu zdefiniowana będzie wykorzystywana np. w zadaniach (lepsza prezentacja listy komórek)
+		10. Okno z informacjami o komórce zostało wzbogacone o dodatkowe informacje o komórkce macierzystej / komórkach podległych.
+		11. Dodano możliwość anulowania wykonania pozycji zadania. Anulować może osoba która wykonywała lub kierownik zespołu. Po anulowaniu będzie widoczna informacja o tym, że pozycja już była powiązana ze zgłoszeniem Helpdesk.
+		12. Dodano nową funkcjonalność powiązaną z helpdeskiem w obszarach: pobranie sprzętu serwisowego, zwrot sprzętu serwisowego, sprzedaż towaru oraz sprzedaż zestawu. Po wybraniu komórki, pojawia się przycisk "Pokaż zgłoszenia z wybranej komórki", który umożliwi wybranie zgłoszenia z listy zgłoszeń.
+		13. dodano automatyczne zapytanie przy zamykaniu zgłoszenia o wygenerowanie protokołu potwierdzenia dla zamykanego zgłoszenia (tylko dla zgłoszeń które są oznaczone do wyjazdu).
+		14. Dla użytkowników z uprawnieniami "zwykły" dodano możliwość edycji numeru HADIM w zamkniętych zgłoszeniach. (M.Knieć)
+		15. w przeglądaniu zgłoszeń dodano przycisk "Pokaż" obok pola z miejscem na wpisanie komórki do wyszukania. Po jego wciśnięciu następuje wyszukanie komórki wśród zgłoszeń. Wcześniej aby wykonać wyszukiwanie trzeba było nacisnąć Enter na klawiaturze.
+		16. dodano możliwość rejestracji nowego zgłoszenia powiązanego z wyjazdem sam. prywatnym z zerową ilością kilometrów. (M.Brdąkała)
+		17. dodano w obsłudze zgłoszenie informację o widoczności zgłoszenia dla Poczty. Dodatkowo dla kierowników doszła w edycji zgłoszenia możliwość zmiany tej wartości.
+		18. W oknie obsługi zgłoszenia dodano dla kierowników przycisk "Edytuj zgłoszenie".
+		19. Na liście zgłoszeń podpięto link do informacji szczegółowych o komórce po kliknięciu w nazwę komórki.
+		20. w oknie zmiany statusu zgłoszenia dodano informację o komórce, której zgłoszenie dotyczy (Zmiana statusu zgłoszenia nr XXXXX z CP UP XXXXXXX)
+		21. dodano możliwość utworzenia nowego zgłoszenia dla komórki, dla której właśnie dodaliśmy nowe zgłoszenie. Automatycznie jest wybierana dana komórka, osoba zgłaszająca, telefon oraz pokazywane są otwarte zgłoszenia z tej komórki.
+		22. przy dodawaniu zadania dodano wybór osoby zgłaszającej z listy osób przypisanych do zgłoszeń seryjnych.
+		23. rozbudowano formularz dodawania pozycji do zadania (dodano przyciski: odznaczenia wszystkich pozycji, dodano informację o ilości zaznaczonych pozycji)
+		24. dodano możliwość usunięcia zaznaczonych pozycji z zadania (tylko dla kierowników)
+		25. dodano możliwość drukowania potwierdzeń dla większej ilości zaznaczonych zgłoszeń (po zaznaczeniu zgłoszeń pojawi się przycisk "Drukuj potwierdzenia")
+		26. dodano możliwość edycji podkategorii dla zgłoszeń awarii krytycznych
+		27. dodano możliwość zmiany statusu naprawy w "Przeglądanie naprawionego sprzętu na stanie" na "uszkodzony na stanie". Opcja tylko dla kierowników. Przydatna w sytuacjach, gdy odwożony sprzęt na UP okazuje się być uszkodzony, up nie podpisuje protokołu i proces naprawy będzie musiał być powtórzony.
+		28. dodano informację o komórce w oknie pokazywania uwag dla pozycji zadania i w oknie edycji uwag pozycji zadania.
+		29. dodano możliwość filtrowania pozycji zadania wg osoby przypisanej.
+		30. przy pojedynczym przypisywaniu pozycji zadania do osoby dodano możliwość modyfikacji uwag dla tej pozycji.
+		31. dodano możliwość edycji czasu wykonywania kroku dla daty bieżącej oraz D-1 (poprzedni dzień pracujący)
+		32. dodano możliwość cofnięcia zatwierdzenia dla faktury (o ile nie zostały z niej pozycje zraportowane)
+		33. dodano możliwość zdefiniowania dla pozycji zadania "Zaplanowanego czasu wykonania". Opcja dostępna tylko dla kierowników. W przeglądaniu pozycji zadania można od tej wersji filtrować pozycje zadania wg przypisania do osoby i zaplanowanego dnia wykonania.
+		34. dodano możliwość filtrowania w "Pokaż sprzedaż w okresie" wg komórki, wg numeru zgłoszenia oraz zmianę pracownika 
+		35. dodano możliwość pokazania szczegółów naprawianego sprzętu w przeglądaniu zgłoszeń. Ikonka [+] za tematem zgłoszenia.
+		36. dodano na stronie startowej widok zadań przypisanych do danej osoby. Domyślny widok jest na dzisiaj. Można go zmienić na "wszystkie".
+		37. dodano możliwość utworzenia zgłoszenia bliźniaczego do zgłoszenia tworzonego z zadania. Przydatne to będzie przy wykonywaniu w danej komórce działań na wielu komputerach. Treść zgłoszenia, osoba zgłaszająca, komórka, kategoria, podkategoria będą kopiowane ze zgłoszenia pierwotnego. Zgłoszenie bliźniacze będzie można tworzyć dowolną ilość razy. 
+		38. przy przypisywaniu zgłoszenia do osoby - dodano możliwość ustawienia wymaganego wyjazdu.
+		39. w edycji zgłoszenia dodano możliwość zmiany zasadności zgłszenia (dostępne tylko dla zamkniętych zgłoszeń)
+		40. w "Przeglądanie bazy osób zgłaszających" dodano opcję usunięcia osób bez wpisanego numeru telefonu (opcja dostępna tylko dla kierowników)
+		41. w dodawaniu zgłoszenia (pojedyńczego) po wybraniu komórki dodano przycisk "Ewidencja sprzętu" wyświetlający listę sprzętu z danej lokalizacji. 
+		42. przy pobieraniu sprzętu do naprawy, wymianie podzepsołów dodano podstawowe informacje o zgłoszeniu w którym jest wykonywana czynność
+		43. dodano możliwość wyczyszczenia treści zgłoszenia (dodawanie zgłoszeń, edycja zgłoszeń) oraz wpisanych wykonanych czynności (w obsłudze zgłoszenia)
+		44. dodano możliwość dodawania / usuwania osób dodatkowych wykonujących krok zgłoszenia. Operację tą może wykonać osoba do której jest przypisany krok lub kierownik zespołu. (Z. Fałek)
+		45. dodano możliwość zamknięcia wybranych pozycji zadania (bez generowania zgłoszeń Helpdesk). (Z.Fałek)
+		46. dodano automatyczną zmianę znaków: 
+			a) \ -> /
+			b) " -> `
+			c) ' -> `
+			w formatce: dodawania nowego zgłoszenia, dodawania nowego zgłoszenia seryjnego, obsłudze zgłoszenia, obsłudze zgłoszenia seryjnej, edycji wykonywanych czynności w kroku, edycji tematu zgłoszenia
+		47. dodano możliwość utworzenia zgłoszeń o statusie "przypisane" dla wybranych pozycji zadania. Dodatkowo można ustawić: datę, godzinę, nr HADIM oraz poprawić treść zgłoszenia (lub pobrać ją ze słownika) (P.Hauptman)
+		48. w raporcie okresowym ze zgłoszeń dodano ostrzeżenia (czasy rozpoczęcia i zakończenia dla awarii i awarii krytycznych)
+		49. dodano kontrolę wpisanego ustalonego czasu rozpoczęcia (względem wprowadzonej daty zgłoszenia i godziny). Data powinna być > niż koniec następnego dnia roboczego danego UP. 
+		50. przy rejestracji wyjazdów (sam. służbowym lub prywatnym) dodano wymagane pole "Czas przejazdu" (podawany w godzinach i minutach). Czas ten będzie widoczny w krokach zgłoszenia, w obsłudze zgłoszenia, w raporcie dziennym dla pracownika. 
+		51. w edycji profilu ("Start->Edytuj swój profil") dodano możliwość ustawienia strony startowej:
+			- Strona główna (po staremu)
+			- Przeglądanie zgłoszeń (po zalogowaniu od razu będzie ładowana strona ze zgłoszeniami (widok domyslny))
+			To ustawienie jest skuteczne dla widoku bazy po zalogowaniu ustawionym na "zaawansowany"
+		52. dodano możliwość powiązania wymiany podzespołów z utworzonym wcześniej zestawem (do tej pory można było powiązać z typem lub pozycją z magazynu)
+		53. dodano możliwość anulowania powiązania z krokiem zestawu.
+		54. dodano możliwość edycji stanów pośrednich
+		55. dodano możliwość modyfikacji godzin pracy komórki dla Awarii krytycznych (zgłoszenia przed rozpoczęciem pracy komórki lub po jej zakończeniu)
+		56. 
+		
+	Poprawiono:
+	===========
+		1. poprawiono funkcjonalność "Pobrania sprzętu serwisowego" powiązanego ze zgłoszeniem helpdesk.
+		2. Poprawiono funkcjonalność wykonywania napraw sprzętu przez zgłoszenia helpdesk. Od tej wersji wpisane wykonane czynności w np. przesunięciu sprzętu do serwisu zewnętrznego, będą mogły być przerzucone do wykonanych czynności w kroku zgłoszenia. Podobnie przy przekazywaniu sprzętu serwisowgo i zwrocie z UP, wpisane wykonane czynności na protokole, będą mogły być przerzucone do wykonanych czynności w kroku zgłoszenia.
+		3. usunięto błąd przy generowaniu załącznika do delegacji (błędnie doliczał wyjazdy służbowe). (P.Hauptman)
+		4. poprawiono błąd w widoku towarów na stanie. Występował on w sytuacji gdy na stanie były tylko towary złączone w zestaw. System nie pokazywał wtedy żadnych pozycji. (M.Kolano)
+		5. poprawiono błąd przy zmianie statusu dla zgłoszeń wyjazdowych. System błędnie ustawiał domyślną datę wyjazdu na datę rejestracji zgłoszenia. Od tej wersji data wyjazdu będzie automatycznie zmieniała się z datą zakończenia kroku. (W.Koćwin)
+		6. poprawiono wyświetlanie komunikatów ostrzegawczych w krokach zgłoszenia. Problem dotyczył sytuacji z czasem równym "0" (np. czas na zamknięcie zgłoszenia awarii do godziny 07:00 danego dnia, i faktycznie zamknięte zostało tego dnia o 07:00. Różnica między czasem wyliczonym, a faktycznym = 0. System w tych przypadkach informował o przekroczeniu czasu o 0h 0m). (R.Kowalczyk)
+		7. Zmodyfikowano raporty zbiorcze dla oddziału.
+		8. poprawiono działanie wyboru treści ze słownika oraz dodawanie nowej treści do słownika. (M.Brdąkała)
+		9. poprawiono dostępne daty w edycji czasu wykonywania kroku. 
+		10. Skrócono nazwy niektórych przycisków: "Wróć do strony głównej"->"Strona główna", "Wróć do poprzedniego widoku"->"Poprzedni widok", "Utwórz nowy zestaw"->"Nowy zestaw", "Przejdź do obsługi tego zgłoszenia"->"Obsługa zgłoszenia"
+		11. Poprawiono zachowanie wyszukiwania zgłoszeń w połączeniu z filtrami. (P. Hauptman)
+		12. W przeglądaniu zgłoszeń, po zmianie ilości wyświetlanych pozycji na stronie, wartość ta będzie pamiętana na danym komputerze dla danego użytkownika do czasu ich zmiany. Wcześniej zawsze domyślną ilością było 15 pozycji na liście.
+		13. poprawiono sortowanie w pozycjach zadania (przy dodawniu pozycji oraz przy wyświetlaniu pozycji zadania)
+		14. poprawiono funkcjonowanie formatki z edycją zgłoszenia.
+		15. poprawiono wygląd inforacji szczegółowych o zgłoszeniu (w przeglądaniu kroków i zmianie statusu zgłoszenia).
+		16. poprawiono zachowanie formatki zmiany statusu zgłoszenia: powiązanego z naprawą->wycofaniem z serwisu zewn.->wycofaniem sprzętu serwisowego. Błędnie generowany był protokół, sprzęt serwisowy nie był ściągany ze stanu.(Z.Falek)
+		17. poprawiono błąd przy obsłudze zgłoszenia z poziomu widoku kroków w nowym oknie. Po obsłudze zgłoszenia i zamknięciu okna z krokami, okno z listą zgłoszeń nie było odświeżane. (Z.Fałek)
+		18. poprawiono błąd przy zwrocie sprzętu z naprawy (naprawa nie powiązana z HD). 
+		19. zmodyfikowano funkcję usuwania faktury niezatwierdzonej. W związku z dodaniem możliwości wycofania zatwierdzenia faktury, nie będzie można usuwać faktury której choć jedna pozycja jest przekazana do innej filii lub gdy choć jedna jej pozycja jest elementem zestawu.
+		20. z raportu dziennego dla pracownika usunięto kroki które były przypisaniem do zgłoszenia przez inną osobę.
+		21. opis w krokach zgłoszenia: "Problem rozwiązany" widoczny tylko dla Awarii i Awarii krytycznych.
+		22. poprawiono błąd przy przeliczaniu czasów etapu zgłoszenia dla konsultacji. System błędnie zerował czas etapu rozwiązania. (Z.Fałek)
+		23. zmodyfikowano sposób zgłaszania awarii WAN. Aktualnie są do wyboru 3 schematy zgłaszania awarii: 
+			a) telefonicznie do TP S.A. (po staremu)
+			b) telefonicznie do HOUSTON (domyślna)
+			c) mailowo do HOUSTON. W tym schemacie mamy możliwość wygenerowania gotowego do wysłania maila.
+		24. poprawiono mechanizmy kontynuowania napraw przez inną filię w powiązaniu z obsługą zgłoszenia.
+		25. zmieniono domyślne sortowanie zamkniętych zgłoszeń. Aktualnie sortowanie jest po dacie ostatniej zmiany statusu. Pojawił się nowy pasek "Sortowanie zgłoszeń po dacie ostatniej zmiany statusu malejąco ". Z tego paska można wrócić do sortowania malejącego po nr zgłoszenia. (P.Hauptman)
+		26. zmodyfikowano wyświetlane danych z bazy. Przy wolnym łączu pojawiać się będą komunikaty informujące o wczytywaniu danych. 
+		27. zmieniono zachowanie systemu w przeglądaniu zgłoszeń, dla awarii i awarii krytycznych. Od tej wersji jest możliwość zaznaczenia na liście zgłoszeń, zgłoszeń awarii i awarii krytycznych. Jeżeli będziemy chcieli obsłużyć seryjnie zgłoszenia awarii lub awarii krytycznej - system do tego nie dopuści. Jeżeli jednak będziemy chcieli:
+			- wydrukować potwierdzenia
+			- ustawić / anulować zgłoszenia jako wyjazdowe
+			- przypisać zgłoszenia do osoby (f-kcja dla kierowników) 
+		system da nam taką możliwość. 
+		W poprzednich wersjach - tych możliwości dla zgłoszeń awarii i awarii krytycznych nie było.
+		28. zmodyfikowano sprzedaż towarów/zestawów. Po wpisaniu numeru zgłoszenia system wyświetli pytanie o ustawienie sprzedaży dla komórki zgodnej z wpisaną w zgłoszeniu. W polu z nr zgłoszenia działa przycisk ENTER.
+		29. usunięto status "w serwisie zewnętrznym" dla nowych zgłoszeń.
+		30. nowe zgłoszenie z przesuniętym czasem rozpoczęcia - ma status nowy (wcześniej status ustawiał się na "rozpoczęte"
+		31. przy zamknięciu awarii krytycznej dodano możliwość wyboru nowej kategorii:
+		- awaria (domyślna)
+		- praca wg umowy
+		Dodatkowo będzie możliwość zmiany podkategorii zgłoszenia (domyślnie będzie ustawiana podkategoria zgodna ze zgłoszeniem kontynuowanym). Status zgłoszenia bez zmian do wersji poprzednich - jest ustawiany na "rozpoczęte"
+		32. poprawiono mechanizmy informujące o czasach realizacji awarii i awarii krytycznych (pozostały czas lub przekroczony dla rozpoczęcia i zakończenia).
+		33. w pozycjach zadania dodano możliwość wyfiltrowania pozycji "bez przypisania". Dodatkowo domyślny widok przy wejściu w zadania został zmieniony na widok pokazujący pozycje zadania "niezakończone".
+		34. w wyszukiwaniu zgłoszeń po nr HADIM zmieniono max. ilość znaków z 6 na 10
+		35. usunięto status "przypisane" z formularza tworzenia nowego zgłoszenia, nowego zgł. seryjnego. Przypisanie zadania do osoby nie będzie zmieniało statusu, a jedynie zmieniało przypisanie osoby do zgłoszenia.
+		36. w oknie przyjmowania uszkodzonego sprzętu na stan oraz w oknie wymiany podzespołów, po kliknięciu przycisku "Sprzęt poza ewidencją" będzie możliwość po wybraniu typu (Komputer, Serwer, Notebook, Drukarka, Monitor, Czytnik) wyboru pozycji z istniejącego słownika. Wpisanie wartości nie występującej w słowniku będzie skutkowało wyświetleniem komunikatu: "Brak wpisanego modelu w słowniku. Wprowadzony model zostanie automatycznie dodany do odpowiedniego słownika.".
+		37. czas wykonywania nie może być = 0
+		38. 
+		
+	Usunięto:
+	=========
+		1. usunięto przycisk "Odśwież moje liczniki" ze strony startowej (pod grupą moje zgłoszenia). (M.Knieć)
+
+Zmiany w wersji 4.4.0e
+======================
+	1. usunięcie możliwości ustawienia statusu "zakończone" dla awarii i awarii krytycznych w drugim kroku.
+	2. poprawiono funkcjonowanie raportu zbiorczego dla Poczty. Dodano możliwość dokończenia przerwanego z powodu błędu raportu.
+		
+Zmiany w wersji 4.4.0d
+======================
+	1. poprawka w sprzedaży towarów (M.Kolano)
+	
+Zmiany w wersji 4.4.0c
+======================
+	1. zmiany w sprzedaży towarów w związku ze zmianami pionów.
+	
+Zmiany w wersji 4.4.0b
+======================
+	1. wydłużenie liczby znaków z 6 do 10 dla numeru zgłoszenia w HADIM
+	
+Zmiany w wersji 4.4.0a
+======================
+	1. drobne zmiany w raportach
+	
+Zmiany w wersji 4.4.0
+======================
+	1. Dodano raport zbiorczy ze zgłoszeń (opcja dla kierowników i dyrektora) (P.Pietrzak)
+	2. poprawiono błąd przy obsłudze seryjnej zgłoszeń. Przy zmianie rodzaju pojazdu z prywatnego na służbowy (z włączonym ustawianiem kolejności), system przy przejściu nie ukrywał możliwości zmiany kolejności. (P.Hauptman)
+	3. przy dodawaniu zgłoszenia dla komórki, dla której istnieją już inne otwarte zgłoszenia, dodano możliwość otwarcia w nowym oknie kroków danego zgłoszenia. (M.Knieć)
+	4. dodano "Raport dzienny dla mnie" w widoku "prostym" bazy Helpdesk (Z.Fałek)
+	
+	## wersja 4.4.0a ##
+	5. rozszerzono obsługę naprawy sprzętu przekazanego z innej filii/oddziału: dodano możliwość wycofania sprzętu z serwisu oraz dodano możliwość zwrotu nienaprawionego sprzętu do filii/oddziału źródłowego. (M.Kolano)
+	
+Zmiany w wersji 4.3.7b
+======================
+	1. w towarach dostępnych na stanie:
+		a) dodano opis skąd towar jest przesuwany
+		b) dodano możliwość wglądu w fakturę z której był przesuwany do nas towar/y. 
+		c) dodano opis jaki stan magazynu system pokazuje
+	2. w szczegółowych informacjach o fakturze:
+		a) dodano możliwość edycji pozycji przesuniętej do nas z innej filii/oddziału (o ile towar jest na stanie). Można poprawić: numer seryjny i uwagi
+		b) dodano podświetlenie pozycji z której przeszliśmy do danych szczegółowych o fakturze
+		c) dodano opis "w magazynie", informujący o tym w jakim magazynie jest dana pozycja z faktury.
+	3. poprawiono błąd przy wejściu w edycję uwag w pozycji zadania.
+	4. dodano możliwość wpisania uwag przy przypisywaniu pozycji zadania.
+	5. poprawiono błąd przy przechodzeniu między stronami wyborze treści ze słownika (M.Brdąkała)
+	
+	## wersja 4.3.7a ##
+	6. poprawiono błąd przy tworzeniu zestawu z towarów użytych do wymiany podzespołów w zgłoszeniu. Efektem błedu był brak możliwości sprzedaży zestawu z poziomu "Przeglądania utworzonych zestawów". (T.Starosta)
+	7. poprawiono zachowanie systemu przy wprowadzaniu pozycji na fakturę. Przy wyliczaniu ceny netto dla kilku sztuk system nie wyliczał automatycznie "ceny netto + koszty umowne".
+	
+	## wersja 4.3.7b ##
+	8. poprawiono błąd przy edycji zgłoszenia. System nie podpowiadał nazwy komórki i osoby zgłaszającej. (M.Kolano)
+	
+Zmiany w wersji 4.3.6
+======================
+	1. dodano przycisk umożliwiający z poziomu przeglądania zgłoszeń, otwarcie okna z zadaniami
+	2. zmodyfikowano zachowanie się systemu przy tworzeniu zgłoszenia z zadania.
+	3. usunięto możliwość obsługi seryjnej zgłoszeń w kategorii "Awaria krytyczna"
+	4. w obsłudze seryjnej zgłoszeń, dla zgłoszeń w kategorii "Awaria" usunięto dostępność statusu "Zamknięte". Zgłoszenia Awarii można zamykać wyłącznie przez normalną obsługę zgłoszenia.
+	5. poprawiono błędy w wyświetlaniu niektórych elementów w obsłudze zgłoszenia
+	5. poprawiono i ujednolicono wygląd bocznego paska przy przeglądaniu zgłoszeń. 
+	
+Zmiany w wersji 4.3.5
+======================
+	1. dodano obsługę wyjątków w bazie zgłoszeń. 
+		Zgłoszenia zapisane z błędną datą:
+		a) data i godzina rejestracji zgłoszenia = 0000-00-00 00:00			=> w takim przypadku jeżeli dla pierwszego kroku zgłoszenia data i godzina są zapisane poprawnie jest możliwość ustawienia daty rejestracji na tą z pierwszego kroku. Jeżeli data i godzina pierwszego kroku jest również błędnie zapisana, wtedy aby móc poprawić datę rejestracji zgłoszenia należy w pierwszej kolejności poprawić datę i godzinę rejestracji pierwszego kroku.
+		
+		b) data i godzina rozpoczęcie pierwszego kroku = 0000-00-00 00:00:00 	=> w takim przypadku jeżeli poprawna jest data i godzina rejestracji zgłoszenia jest możliwość ustawienia daty i godziny rozpoczęcia pierwszego kroku na datę i godzinę rejestracji zgłoszenia. Jeżeli data i godzina rejestracji zgłoszenia jest również równa 0000-00-00 00:00:00 wtedy pozostaje możliwość ustawienia daty i godziny rozpoczęcia pierwszego kroku na datę systemową rejestracji zgłoszenia. Po ustawieniu daty i godziny rozpoczęcia pierwszego kroku na datę systemową pojawi się opcja ustawienia daty rejestracji zgłoszenia na zgodną z datą i godziną rozpoczęcia pierwszego kroku.
+	
+	2. dodano funkcję dla kierowników umożliwiającą wyłapanie (i poprawę) zgłoszeń z błędnie zapisanymi godzinami rejestracji zgłoszenia oraz błędnie zapisanymi godzinami rozpoczęcia kroków. Błędy związane z datami rozpoczęcia kroku będą rozwiązywane w ten sposób, że będzie możliwość ustawienia daty rozpoczęcia kroku na datę systemową zapisu kroku do bazy.
+	3. dodano nową funkcje: wywołując funckję zwrotu naprawionego sprzętu do klienta (z modułu naprawy) po kliknięciu w "Drukuj" (lub kliknięciu w "Zamknij") pojawiać się będzie okienko z pytaniem o chęć przejścia do obsługi zgłoszenia o danym numerze. Po akceptacji będzie można np. zamknąć zgłoszenie. (M.Kolano)
+	
+Zmiany w wersji 4.3.4a
+======================
+	1. poprawiono formatkę z edycją km i trasy dla wyjazdu w kroku zgłoszenia. Od teraz data nie będzie mogła ulec zmianie (gdyż jest ściśle związana z datą wykonania kroku zgłoszenia). 
+	2. poprawiono błąd przy wyszukiwaniu zgłoszeń (system pokazywał zgłoszenia ukryte). Teraz ta funkcja jest dostępna tylko dla kierowników. (W.Koćwin)
+	3. poprawiono funkcję wycofywania sprzętu z serwisu (dodano kontrolę numeru zgłoszenia z nazwą komórki)
+	4. poprawiono zachowanie się systemu przy przeglądaniu zgłoszeń. Jeżeli wynikiem przeglądania będzie jedno zgłoszenie, system automatycznie pokaże kroki tego zgłoszenia.
+	
+Zmiany w wersji 4.3.4
+======================
+	1. dodano możliwość przypisania pojedyńczej pozycji zadania do siebie (dla użytkowników zwykłych).
+	2. dodano możliwość przypisania wielu pozycji z zadania do siebie (zaznaczając checkbox'y obok nr pozycji). Kierownicy mogą przypisać kilka pozycji zadania do wybranej osoby. Jeżeli zadanie jest przypisane do osoby X to osoba Y może takie zadanie zakończyć po wcześniejszym przypisaniu pozycji do siebie.
+	3. dodano funkcję kontroli wykonanych sprzedaży. Wchodząc w menu "Sprzedaż->Raporty->Sprzedaż w okresie" system wyświetla listę błędnie zarejestrowanych sprzedaży w bazie. Dla pozycji z okresów dla których zatwierdzone są raporty odsprzedaży istnieje możliwość ukrycia ich w systemie (gdyż są to tematy prawdopodobnie już "wyprostowane" w inny sposób). Dla pozycji z bieżącego okresu raportowego jest możliwość: edycji sprzedaży, cofnięcia sprzedaży, przejścia do zgłoszenia Helpdesk bądź podglądu faktury zakupowej dla wybranej pozycji.
+	
+Zmiany w wersji 4.3.3
+======================
+	1. dodano statystyki dla statusów: oczekiwanie na odp. klienta i oczekiwanie na sprzęt (w przeglądaniu zgłoszeń i na stronie startowej)
+	2. zmieniono wygląd kilku elementów w bazie (ikona do rozwijania szczegółów zgłoszenia w obsłudze zgłoszenia, przeglądaniu kroków zgłoszenia oraz edycją zgłoszenia).
+	
+	
+Zmiany w wersji 4.3.2
+======================
+	1. przy zmianie statusu na zamknięte, po zapisaniu kroku, automatycznie zamykane jest okno "Obsługa zgłoszenia" oraz odświeżane jest okno z którego było wywołane okno obsługi zgłoszenia (w większości przypadków będzie to okno "Przeglądanie zgłoszeń"). (M.Knieć)
+	2. Dodano mechanizm oznaczania zgłoszenia jako "wymagające wyjazdu". Ustawienie znacznika będzie rejestrowane (data i osoba go ustawiająca).  Znacznik ten można nadać w następujących miejscach:
+			- dodawanie zgłoszenia (pole: "Zgłoszenie wymaga wyjazdu"). Pole nie będzie dostępne dla Konsultacji.
+			- dodawanie zgłoszenia seryjnego (pole: "Zgłoszenie wymaga wyjazdu"). Pole nie będzie dostępne dla Konsultacji.
+			- przeglądanie zgłoszeń (w menu z opcjami). "Ustaw wymagany wyjazd" / "Anuluj wymagany wyjazd"
+			- obsłudze zgłoszenia (przycisk "Ustaw wymagany wyjazd" / "Anuluj wymagazny wyjazd")
+			- zmianie status zgłoszenia (pole: "Zgłoszenie wymaga wyjazdu"). Jeżeli wybierzemy nowy status "Do oddania" - domyślnie ustawi się "wymaga wyjazdu". Jeżeli wybierzemy status "zamknięte", a ustawiony będzie "wymagany wyjazd" pojawi się informacja "Zgłoszenie wymaga wyjazdu | ustawione przez ...... w dniu ....." 
+		Jeżeli po oznaczeniu zgłoszenia jako "wymagający wyjazdu" zostanie dodany krok do zgłoszenia, powiązany z wyjazdem - znacznik "wymagający wyjazdu" zostaje wyzerowany.
+		Zamknięcie zgłoszenia również powoduje wyzerowanie tego znacznika.
+	3. Dodano powiązanie pozycji zadania z tworzonym zgłoszeniem Helpdesk. W przeglądaniu pozycji zadania dodana została ikonka umożliwiająca otwarcie w oknie wywołującym danego zgłoszenia bądź też przeście do obsługi zgłoszenia powiązanego z danym zadaniem.
+	
+Zmiany w wersji 4.3.1
+======================
+	1. zmiana algorytmu sprawdzającego poprawność wpisanej godziny. Ma to na celu wyeliminowanie błędów jakie sporadycznie pojawiały się w rejestrowanych zgłoszeniach (M.Kolano).
+	2. zmieniono mechanizm przypisywania zgłoszenia do osoby. Od tej wersji przypisanie zgłoszenia do osoby będzie dopisywane jako kolejny krok w zgłoszeniu, ale z datą zakończenia poprzedniego kroku.
+	3. Usunięto błąd przy sprzedaży towaru / zestawu (mimo wybrania zgłoszenia z danej komórki i próbie sprzedaży dla niej, system uniemożliwiał ten proces) (M.Kolano)
+	4. Usunięto błąd pojawiający się przy jednoczesnym wpisywaniu kilku zgłoszeń. W takim przypadku tylko ostatnie zapisane było poprawnie, a pozostałe nie uzywkiwały numeru. (J.Sokołowska)
+	
+Zmiany w wersji 4.3.0 
+======================
+	1. główną zmianą w tej wersji jest optymalizacja kodu oraz ustawień serwera WWW w celu szybszego wyświetlania zawartości bazy eSerwis.
+	2. zmieniono sposób generowania liczników ze zgłoszeń. Od tej wersji liczniki będą automatycznie aktualizowane co określoną ilość minut bądź w dowolnym momencie na żądanie użytkownika. 
+	3. zmieniono sposób prezentacji ilości zgłoszeń w poszczególnych statusach na stronie startowej.
+	4. poprawiono błąd przy oddawaniu sprzętu do klienta w powiązaniu ze sprzedażą usługi
+	5. poprawiono błąd przy sprzedaży towaru. Przy sprawdzaniu zgodności nazw komórki system źle reagował na spacje na końcu nazwy komórki. (R.Kowalczyk)
+	6. zmiana daty wykonania pierwszego kroku powoduje zmianę daty rejestracji zgłoszenia (W.Staszel)
+	7. poprawiono błąd przy tworzeniu z awariii krytycznej -> awarii zwykłej oraz ze zwykłej -> prac wg umowy. Dodatko dodano zamykanie okien zgłoszeń zamykanych. (W.Koćwin)
+	8. Rozszerzono dostepność typów sprzętu dostępnego przy przyjmowaniu sprzętu do naprawy. Dla podkategorii "stacja robocza", "serwer", "urządzenia peryferyjne" dodano możliwość powiązania z naprawą monitora (M.Kolano).
+	9. Poprawiono generowanie protokołu oddania sprzętu z naprawy (w której były wymieniane podzespoły wg pozycji lub typów). Od tej wersji do protokołu można dodać pozycje wskazane wg typu. (W.Koćwin)
+	10. usunięto błąd przy tworzeniu zgłoszenia awarii z aw. krytycznej i prac wg umowy z awarii. Błąd polegał na tym, że system nie przenosił kategorii komórki i przypisanie do załącznika do nowo tworzonego zgłoszenia
+	11. dodano możliwość powiązania typu podzespołu z dowolną pozycją w magazynie. (W.Koćwin)
+	12. dodano obsługę błędów przy zapisywaniu nowego zgłoszenia, objawiający się tym, że do zgłoszenia nie dopisywane były żadne kroki. Od tej wersji, jeżeli taka sytuacja będzie miała miejsce, po zapisaniu pojawi się komunikat: "Wystąpił błąd podczas zapisywania zgłoszenia do bazy" oraz dwa przyciski: "Spróbuj ponownie zapisać zgłoszenie" oraz "Zamknij". Wciśnięcie przycisku "Spróbuj..." spowoduje ukrycie błędnie zapisanego zgłoszenia i jego ponowne zapisanie. Czynność ta może być wykonywana wielokrotnie. Na razie ta funkcjonalność nie została zaimplementowana przy zgłoszeniach seryjnych.
+	13. poprawiono dostępność typów sprzętu dostępnego dla poszczegółnych podkategorii zgłoszeń. (M.Kolano)
+	14. rozbudowano tworzenie zadań o nowe pola: 
+		- osobę zgłaszającą
+		- wykonane czynności
+		- kategoria "Prace zlecone wg umowy"
+		- podkategoria
+		W momencie zakończenia pozycji zadania utworzy nam się nowe zgłoszenie z wypełnionymi polami. Status takiego zgłoszenia domyślnie będzie "zamknięte". Dostępne będzie również "przypisane", "rozpoczęte - nie zakończone".
+		Dodatkowo na liście zadań doszła kolumna z podkategorią powiązaną z Helpdeskiem oraz osobą zgłaszjącą.
+	15. na stronie głownej, na pasku "Informacje zbiorcze z bazy Helpdesk" dodano możliwość wyszukania zgłoszenia po numerze
+	16. dodano możliwość utworzenia nowego zgłoszenia Helpdesk dla wybranej komórki (po wyfilitrowaniu zgłoszeń po komórce). Pojawia się przycisk z niebieskim napisem "Nowe zgłoszenie dla ........." (M.Knieć)
+	17. zmodyfikowano zachowanie w formatce wpisywania nowego zgłoszenia. Po utworzeniu nowego zgłoszenia reklamacyjnego, nowego zgłoszenia z zadania lub nowego zgłoszenia dla komórki formatka jest wypełniana automatycznie i system ustawia się na domyślnych polach. W poprzedniej wersji nie były uzupełniane i pokazywane informacje o: telefonie, adresie IP, godzinach pracy i zgłoszeniach otwartych dla wybranej placówki.
+	18. dodano obsługę pionów złożonych z więcej niż jednego wyrazu. (M.Kolano)
+	19. poprawiono wyliczanie czasów na poszczególnych etapach. (analiza przypadków ze zgłoszeń 43938 i 44034 - ujemne czasy na poszczególnych etapach. Czynności były wykonywane przed rozpoczęciem pracy komórki lub po jej zakończeniu).
+	20. poprawiono generowanie raportów dla poczty.
+	21. poprawiono zachowanie systemu podczas wpisywania nowego zgłoszenia, polegający na tym że wpisując komórkę "z ręki", po wyjściu z pola, system ładuje pozostałe dane tj. telefon, adres ip, godziny pracy, otwarte zgłoszenia. Takie zachowanie było automatycznie wykonywane przy wyborze komórki z listy (uruchamiane wtedy były inne mechanizmy w bazie). Od tej wersji system zachowuje się jednakowo - niezależnie od sposobu wprowadzenia nazwy komórki.
+	22. poprawiono błąd w przeglądaniu kroków zgłoszenia. Błąd objawiał się brakiem dostępności przycisku do obsługi zgłoszenia jeżeli ostatni krok był usunięty. 
+	23. w oknie zmiany statusu zgłoszenia zmodyfikowano zachowanie systemu na wpisane/wybrane pola. Od wersji 4.3.0: wybrana data, wpisana godzina,wpisane wykonane czynności oraz czas wykonywania będą zapamiętywane w systemie po zmianie wartości. W wyniku tej zmiany, po wpisaniu godziny i późniejszym uruchomieniu kreatora (i jego zakończeniu) godzina nie będzie resetowana do aktualnej godziny.
+	24. możliwość edycji podkategorii zgłoszenia (w kategorii "Prace zlecone w ramach umowy")
+	
+Zmiany w wersji 4.2.2
+======================
+	1. zmodyfikowano stronę ze zgłoszeniami w celu uzyskania wyszczej szybkości ładowania. 
+	2. poprawiono błąd przy wymianie podzespołów dla zgłoszeń wynikających z innych (np. Awaria) zgłoszeń. W tej wersji pamięta do jakiego sprzętu były wymieniane podzespoły. 
+	3. poprawiono błąd przy wymianie podzespołów dla zgłoszeń reklamacyjnych. W tej wersji pamięta jaki sprzęt był powiązany w zgłoszeniu reklamowanym (wymieniane podzespoły lub przyjęty uszkodzony sprzęt)
+	4. dodano kolumnę z nazwą komórki z danego zgłoszenia w Przeglądaniu towarów na stanie (wiązanie typów z pozycjami w magazynie) (W.Koćwin)
+	
+Zmiany w wersji 4.2.1
+======================
+	1. poprawiono algorytmy wyliczające czasy: pozostałe do rozpoczęcia / zakończenia (lub o przekroczeniu tego czasu) w zgłoszeniach awarii i awarii krytycznych. (W.Koćwin) 
+	2. dodano możliwość usunięcia wyjazdu w danym kroku oraz dodania wyjazdu do danego kroku (nawet jeżeli zgłoszenie jest zamknięte). Usuwać wyjazd można również w wygenerowanym załączniku do delegacji.
+	3. usunięto z okna zmiany statusu zgłoszenia informację o rozwiązanym problemie (dla kategorii innych niż Awaria krytyczna i Awaria)
+	4. usunięto błąd przy tworzeniu zgłoszenia Helpdesk z zamykanej czynności. Nie pokazywał się temat oraz nie zawsze kopiowała się nazwa komórki (Z.Falek)
+	5. usunięto błąd przy zmianie statusu na "w serwisie zewn." dla Awarii krytyczynych. Nie pokazywało się okno do wpisania nr zgłoszenia w TPSA. (W.Koćwin)
+	6. usunięto błąd po zapisaniu zgłoszenia utworzonego z czynności. Nie działał przycisk "przeglądaj zgłoszenia". Usunięto przycisk.
+	7. poprawiono raport "Aktualna ilość komórek w podziale na typ i kategoria". Nie były brane pod uwagę komórki administracyjne. (M.Kolano)
+	8. w związku z rosnącą ilością modeli czytników, zostały one zesłownikowane (tak jak np. drukarki) (Z.Fałek)
+	9. w oknie zmiany statusu zgłoszenia zmodyfikowano widok stanów pośrednich. Domyślnie będą one ukryte. Po kliknięciu w przycisk "Pokaż" zostaną wyświetlone. Po kliknięciu w przycisk "Ukryj" zostaną ukryte. Zmiana ta spowoduje, że większa ilość informacji zmieści się w oknie (bez przewijania)
+	10. usunięto błąd przy sortowaniu zgłoszeń (po nr zgłoszenia, statusie, dacie, placówce i treści) przy specyficznych widokach zgłoszeń (np. starsze niż 14 dni)
+	11. usunięto błąd  podczas generowania protokołu przekazania podzespołów (w krokach zgłoszenia) objawiający się brakiem możliwości jego utworzenia (W.Koćwin)
+	12. usunięto widok na stronie startowej i w przeglądaniu zgłoszeń: Rozpoczęte - nie zakończone (M.Knieć)
+	13. poprawiono błąd przy tworzeniu zgłoszenia Prace wg umowy z Awarii. System nie przenosił typu usługi
+	14. po przejściu do zgłoszenia z innych widoków automatycznie ładowane są kroki zgłoszenia
+	15. wyświetlanie ostrzeżeń o kończącym się czasie na zakończenie zgłoszenia zostało zmodyfikowane: jeżeli ostatni krok zgłoszenia wiąże się z zatrzymaniem dla nas czasu (w serw. zewn. lub oczek. na odp. klienta) wtedy komunikat się nie będzie pokazywał.
+	16. usunięto błąd uniemożliwiający powiązanie naprawy ze zgłoszeniem, jeżeli podkategorią zgłoszenia było: Oprogramowanie - pl. pocztowa lub Oprogramowanie - Administracja. (J.Lewandowski)
+	17. przy przechodzeniu z przeglądania zgłoszeń do modułu napraw lub awarii wan, na dole ekranu obok przycisku "Wróć do strony głównej" pojawiać się będzie przycisk "Wróć do poprzedniego widoku" (P.Hauptman)
+	18. przy dodawaniu pozycji do zadania dodano możliwość zaznaczenia komórek z KOI (up_kompleksowa_obsluga = 1) (M.Kolano)
+	19. dodano raport szczegółowy dla Poczty. Jest możliwość wygenerowania raportu z dodatkową kolumną "Filia" - dla celów kontroli.
+	
+Zmiany w wersji 4.2.0
+======================
+
+	1. dodano powiązanie modułu sprzedaży z bazą zgłoszeń
+	2. rejestracja awarii tylko ze statusem "nowy". Dalsze działania w nowych krokrach.
+	3. obsługa awarii o statusie "nowy" daje możliwość ustawienia statusu "rozpoczęte" lub "zakończone" ???
+	4. usunięcie możliwości rejestracji w zgłoszeniach seryjnych awarii
+	5. nałożono restrykcje na wpisywane w bazie dane osób (zgłaszających problem, potw. przesunięcie terminu rozpoczęcia i potw. zamknięcie zgłoszenia), zgodnie z zapisami umowy mamy obowiązek rejestrować dane osobowe wg. imienia i nazwiska.
+	Od tej wersji jest kontrola, aby nie było wpisów: 
+		- zawierających cyfry
+		- zbyt krótkich (<5 znaków)
+		- zawierających zabronione słowa (np. naczelnik, kasjer, asystent) lub ich kombinacje z innymi słowami
+	6. w dodawaniu nowej komórki lub edycji komórki dodano przyciski umożliwiające skopiowanie wpisanej godziny dla poniedziałku, na pozostałe dni tygodnia (wtorek -> piątek).
+	7. przy wyliczaniu czasu rozpoczęcia działań i zakończenia (przy awariach) przyjęto następujące założenie:
+		- jeżeli godzina wpisu jest wcześniejsza niż 07:00, wtedy rozpoczynamy liczenie czasu rozpoczęcia jakgdyby zgłoszenie wpłynęło o godzinie 07:00
+		- jeżeli godzina wpisu jest późniejsza niż 21:00 (od poniedziału do piątku), wtedy rozpoczynamy liczenie czasu rozpoczęcia jakgdyby zgłoszenie wpłynęło o godzinie 07:00 następnego dnia
+		- jeżeli godzina wpisu jest późniejsza niż 15:00 (w sobotę), wtedy rozpoczynamy liczenie czasu rozpoczęcia jakgdyby zgłoszenie wpłynęło o godzinie 07:00 w poniedziałek (<----- do przetestowania !!!!! )
+	8. rejestrując zgłoszenie seryjne ze statusem "zamknięte" podany czas jest dzielony na ilość komórek i dodawany jest do godziny rejestracji. Data rejestracji kolejnego zgłoszenia jest powiększona o wyliczony jednostkowy czas.
+	9. rozszerzono ilość danych potrzebnych w definicji komórki. Dodano typ usługi (KOI, OK, UZ, UUAK) oraz przypisanie jednostki do załącznika (1Szczecin, 1Łódź, 2Łódź, 3Szczecin, 3Łódź, 4Szczecin, 5Szczecin, 5Łódź). Domyślny typ usługi: KOI. Wszystkie zgłoszenia historyczne będą miały przypisany typ usługi: KOI.
+	10. przy rejestracji nowego zgłoszenia, jeżeli komórka której dotyczy ma zdefiniowany więcej niż jeden typ usługi, wtedy system daje mozliwość wyboru z listy odpowiedniego typu. Wartość z tego pola będzie zapisywana do zgłoszenia.
+	11. zdefiniowane w bazie komórek "przypisanie jednostki" będzie zapisywane do tabeli ze zgłoszeniami.
+	12. dodano kolumnę w generowanym raporcie ze sprzedaży: Sugerowana cena odsprzedaży
+	13. przy rejestracji zgłoszenia zapisywana jest kategoria komórki
+	14. dodano możliwość zarejestrowania wyjazdu samochodem służbowym (nie będzie wymagana trasa, km ani data). Element ten będzie potrzebny do raportów dla Poczty.
+	15. dodano nową podkategorię pod "Prace zlecone w ramach umowy": "Prace administracyjno-sprawozdawcze"
+	16. dodano w przeglądaniu komórek nowe zestawienie: "Zestawienie aktualnej ilości komórek w podziale na typ i kategorie"
+	17. dodano możliwość zamknięcia zgłoszenia Helpdesk, powiązanego z naprawą, która została wycofana z serwisu i oddana do klienta (zgłoszenie ze Szczecina).
+	18. dodano możliwść zamknięcia zgłoszenia awarii, powiązanej z naprawą (bez konieczności wykonywania ruchów z naprawą). Przydatne przy zamykani awarii i tworzeniu z niej prac wg umowy. W nowym zgłoszeniu naprawa może być kontynuowana.
+	19. poprawiono błąd w numeracji napraw z przekroczonym terminem (na stronie startowej)
+	20. usunięto możliwość zamknięcia awarii WAN w module "Awarie WAN", jeżeli awaria jest powiązana ze zgłoszeniem w Helpdesk'u.
+	21. w przeglądaniu zgłoszeń dodano ikonę informującą o tym, że zgłoszenie dotyczy awarii WAN. Klikając w tą ikonę można przejść do otwartych zgłoszeń (analogicznie jest z zamkniętymi zgłoszeniami powiązanymi z awariami WAN).
+	22. w krokach zgłoszenia pogrubiono linijkę z ilością km i datą wyjazdu
+	23. dodano nową kategorię "Awaria krytyczna" (ze standardowymi podkategoriami) oraz usunięto pole "priorytet" (z dodawania zgłoszenia, wyświetlania w obsłudze, przeglądania zgłoszeń)
+	24. dodano możliwość przejścia ze statusu "rozpoczęte" -> "oczekiwanie na odpowiedź klienta" (dla prac wg umowy)
+	25. dodano możliwość edycji informacji o wysłanej ofercie dla klienta oraz wysłanego zamówienia. Opcja dostępna jest dla osoby która rejestrowała krok oraz kierownika filii.
+	26. dodano możliwość rejestracji zgłoszeń reklamacyjnych. Aby utworzyć zgłoszenie reklamacyjne należy wybrać z listy opcji w zgłoszeniach zamkniętych "Utwórz zgł. reklamacyjne". W nowym zgłoszeniu skopiowane są pola: nr zgł. poczty, komórka, osoba zgłaszająca, telefon, temat, treść, kategoria, podkategoria. Status jest ustawiany jako "rozpoczęte" (dla prac wg umowy) lub nowy (dla awarii). Zgłoszenie reklamacyjne można utworzyć dla kategorii: awaria, awaria krytyczna, prace wg umowy, prace zlecone poza umową. Zgłoszenia reklamacyjnego nie można utworzyć dla kategorii: konsultacje, prace na potrzeby Postdata.
+	27. dodano możliwość przeglądania zgłoszeń reklamacyjnych (w przeglądaniu zgłoszeń oraz w menu głównym)
+	28. przy dodawaniu nowego zgłoszenia dodano wylistowanie wszystkich otwartych zgłoszeń z tej placówki wraz z możliwością przejścia do obsługi wybranego zgłoszenia. Ma to zlikwidować zdublowane zgłoszenia dotyczące tego samego tematu.
+	29. dodano możliwość zaznaczania/odznaczania pozycji w dodawanym zadaniu wg typy (UP, Filie, Agencje, Administracja). Przyspieszy to definiowanie zadań.
+	30. jeżeli dla wybranej placówki zdefiniowany jest tylko jeden typ usługi, podczas rejestracji zgłoszenia nie jest on pokazywany. Wybór jest dostępny dla komórek z większą ilością zdefiniowanych typów usług.
+	31. przy dodawaniu nowego zgłoszenia / zgłoszenia seryjnego dodano pole informacyjne "Data systemowa". Jest to informacja, jaka będzie faktyczna data zapisana dla aktualnego zgłoszenia do bazy. Ma to ograniczyć wpisywanie zgłoszeń "później". Różnica między Datą systemową a datą zgłoszenia może mieć miejsce w przypadku zgłoszeń wyjazdowych, udokumentowanych protokołem potwierdzającym datę i godziny pracy.
+	32. usunięto możliwość rejestracji awarii WAN z menu głównego. Jedyna możliwość rejestracji awarii WAN to zgłoszenie Helpdesk (Awaria->WAN\LAN)
+	33. ustawiono domyślny samochód przy wyjeździe na "służbowy"
+	34. w związku z połączeniem modułu sprzedaży z bazą zgłoszeń dodano następujące funkcje:
+		- możliwość uruchomienia kreatora wymiany podzespołów przy statusach: rozpoczęte, rozpoczęte - nie zakończone, w firmie, do oddania i zamknięte
+		- kreator jest dostępny dla kategorii: awaria, awaria krytyczna, prace wg umowy
+		- kreator jest dostępny dla podkategorii: stacja robocza, serwer, WAN/LAN, urządzenia peryferyjne, oprogramowanie - administracja, oprogramowanie - placówka pocztowa.
+		- podzespoły można dodawać wg konkretnych pozycji magazynowych lub (jeżeli w momencie wymiany nie mamy go wprowadzonego) wg typu podzespołu.
+		- z poziomu zmiany kroku, użytkownicy którzy mają włączoną możliwość sprzedaży, mogą dokonać sprzedaży (bez konieczności robienia tego w module sprzedaży
+		- jeżeli używamy do wymiany więcej niż jednego podzespołu - aby dokonać sprzedaży, trzeba utworzyć z tych podzespołów zestaw i dopiero jego można sprzedać.
+		- w widoku towarów dostępnych na stanie, jeżeli do wymian użyto podzespołów wskazanych wg typu, nad listą towarów pojawi się lista z pozycjami które należy przypisać do konkretnej pozycji w magazynie. Po takiej czynności tworzony będzie musiał być zestaw, który będzie można sprzedać.
+		- dodawanie towarów lub typów do wymiany w sprzęcie polega na budowaniu listy wyjściowej z towarów / typów.
+		- w formatkach: obsługi zgłoszenia, zmiany statusu, kroków zgłoszenia dodano pasek informujący, że dane zgłoszenie jest powiązane z wymianą podzespołów. Dodatkowo są podane informacje o sprzęcie którego wymiany dotyczyły.
+		- przy przeglądaniu zgłoszeń obok numeru zgłoszenia dodano ikonę informującą o tym, że to zgłoszenie jest powiązane z wymianą podzespołów. Dodatkowo jest możliwość wyświetlenia tylko zgłoszeń powiązanych z wymianą podzespołów.
+		- przy kreatorze "oddawania sprzętu do klienta" dodano możliwość wybrania spośród wszystkich użytych w zgłoszeniu podzespołów, tych które mają się znaleść na protokole (W.Koćwin)		
+	35. w oknie "obsługa zgłoszenia" dodano przycisk drukujący potwierdzenie	(P.Mielczarek)
+	36. dodano możliwość dodania adresu IP w ewidencji sprzętu dla urządzeń typu: DRUKARKA (T.Starosta)
+	37. dodano powiązanie zakończenia czynności z utworzeniem nowego zgłoszenia Helpdesk'a (T.Starosta)
+	38. przy tworzeniu protokołów wymagane będzie pole "Numer zgłoszenia Helpdesk"
+	39. w przeglądaniu zgłoszeń w opcjach zgłoszenia dodano pozycję "Protokoły powiązane (n)". n - to ilość protokołów powiązanych z danym zgłoszeniem.
+	40. przy usuwaniu sprzedaży zestawu dodano wylistowanie pozycji zestawu
+	41. w zapisywanym zgłoszeniu doszło pole z obowiązującymi w momencie rejestracji zgłoszenia godzinami pracy komórki
+	42. poprawiono błąd przy sprawdzaniu godziny zmiany statusu oraz godziny dodania zgłoszenia. System umożliwiał wprowadzenie godziny niekompletnej (np. 09: ) - co skutkowało błędnymi wpisami w bazie
+	43. dodanie pola "gwarancja" do pozycji dodawanych do faktury. Pole wymagane (domyślnie 3 m-ce)
+	44. w dostępnych towarach na stanie dodano przycisk "Faktury niezatwierdzone"
+	45. zakańczając dodawnie pozycji do faktury, mamy możliwość przejścia do listy niezatwierdzonych faktur.
+	46. przy zmianie statusu dodano pole z wyborem TAK, NIE odnośnie rozwiązania problemu. Po dokonaniu wyboru uaktywnia się przycisk ZAPISZ. Jeżeli status "Zakończony" - ma się to nie pojawiać i domyślnie ustawia się na TAK. Jeżeli w poprzednim kroku ktoś wybrał, że problem jest rozwiązany - pole z wyborem się nie pojawia. 
+	47. przy anulowaniu sprzedaży zestawu dodano wylistowanie pozycji zestawu
+	48. usunięto możliwość generowania protokołu z menu głównego (dostęp do tej funkcji pozostaje dla kierowników)
+	49. przy zamknięciu zgłoszenia awarii lub awarii krytycznej zmieniono sposób komunikacji z użytkownikiem. Zamiast pytania i przycisków OK Anuluj - zrobiono TAK NIE (W.Koćwin)
+	50. dodano zestawienie pokazujące komórki z błędnie wprowadzonymi godzinami pracy
+	51. dodano zapisywanie do zgłoszenia ilości minut do rozpoczęcia i ilości minut do zakończenia zgłoszenia (zgodnie z umową)
+	52. przy dodawaniu zgłoszenia pojedyńczego, zgłoszenia seryjnego, dodaniu kroku zgłoszenia, edycji daty rozpoczęcia kroku zgłoszenia, ukryciu kroku dodano mechanizm przeliczający czasy na poszczególnych etapach (reakcja, rozwiązanie, zamknięcie)
+	53. w przeglądaniu zgłoszeń dodano pogrubienie aktualnie przeglądanych statusów zgłoszeń
+	54. zmieniono prezentację godzin w bazie z formatu gg:mm:ss na gg:mm
+	55. dodano możliwość usunięcia podzespołu/towaru ze zgłoszenia (jeżeli nie jest sprzedany). Jeżeli jest sprzedany - należy wycofać sprzedaż i wtedy usunąć podzespoł (A. Sokołowska)
+	56. Dodano możliwość powiązania sprzedaży towarów i zestawów ze zgłoszeniem (również zamkniętym). Sprzedane towary dodają się do wymienionych podzespołów dla tego zgłoszenia. Po podaniu numeru zgłoszenia, system sprawdza:
+		a. czy zgłosznie jest z danego obszaru
+		b. jeżeli tak, system sprawdza czy nie było wcześniej wymiany podzespołów w tym zgłoszeniu. Jeżeli tak - pobiera automatycznie informacje o komputerze.
+		c. jeżeli nie było we wcześniejszych krokach wymiany podzespołów, system sprawdza czy nie było we wcześniejszych krokach przyjęcia uszkodzonego sprzętu z UP. Jeżeli tak - pobiera również automatycznie informacje o tym sprzęcie. 
+		d. jeżeli nie było ani wymiany podzespołów ani przyjęcia uszkodzonego podzespołu w poprzednich krokach - system wymusza podanie tych informacji. Bez ich podania nie jest możliwe dokonanie sprzedaży.
+	57. usunięto błąd pojawiąjący się po usunięciu sprzedaży. Towar wracał na stan - ale nie był widoczny w raporcie aktualnych stanów magazynowych (M.Kolano)
+	58. dodano konieczność powiązania pobrania i zwrotu sprzętu serwisowego ze zgłoszeniem Helpdesk	
+	
+Zmiany w wersji 4.1.4b:
+=======================
+	1. zmiany w raportach dla poczty
+	
+Zmiany w wersji 4.1.4a:
+=======================
+	1. zmiany w raportach dla poczty
+	
+Zmiany w wersji 4.1.4:
+======================
+	1. ograniczono możliwość rejestracji/obsługi zgłoszeń dla maksymalnie D-1
+	2. usunięto możliwość nadania przez kierownika dostępu czasowego dla pracownika. Od tej wersji taką możliwość ma tylko dyrektor.
+	3. dodano możliwość zfediniowania dla każdej komórki godzin pracy (oraz godzin pracy alternatywnych [np. w okresie wakacyjnym]). Te zdefiniowane godziny pracy pojawiają się po wybraniu komórki przy wpisywaniu zgłoszenia. W przypadku rejestracji awarii - te godziny są brane do wyliczenia odpowiednich czasów rozpoczęcia oraz zakończenia zgłoszenia. W przypadku nie zdefiniowania godzin pracy - system domyślnie będzie brał godziny pracy: pn-pt: 08-15 oraz so i niedziela: wolne.
+	Możliwość definiowania godzin pracy UP mają tylko kierownicy.
+	4. dodano widok sprzętu wycofanego z serwisu na stronie głównej
+	5. dodano liczniki w widoku na stronie głównej odnośnie: sprzętu uszkodzonego, gotowego do oddania oraz przeterminowanych napraw.
+	6. dodano powiązanie wykonania zadania z utworzeniem nowego zgłoszenia helpdesk.	
+	

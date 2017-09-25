@@ -1,0 +1,456 @@
+BODY
+{
+	background-color	: #F4F5F7;
+	color					: #000000;
+	font-size			: 11px;
+	font-family			: Tahoma, Arial;
+	margin				: 0px !important;
+	padding				: 0px !important;
+	position				: static;
+	top					: 0px;
+	left					: 0px;
+}
+
+H2	/*  komunikat RED */
+{
+   font-size			: small;	
+	font-weight			: bold;		
+	background-color	: #FF2A2A;
+	color					: black;	
+	padding-top			: 10px;		
+	padding-bottom		: 10px;
+	margin				: 0px;		
+	margin-bottom		: 10px;	
+	width				: 100%;		
+	text-align			: center;
+}
+
+H4	/* komunikat SIWY */
+{
+	font-size			: small;	
+	font-weight			: bold;		
+	background-color	: #5F6676;
+	color				: #F5F5F5;	
+	padding-top			: 5px;		
+	padding-bottom		: 5px;		
+	margin				: 0px;
+	margin-bottom		: 10px;
+	text-align			: center;
+/*	letter-spacing		: 1px;	
+	word-spacing		: 1px;
+*/
+}
+
+H5	/* komunikat KREMOWY */
+{  
+	font-size			: small;
+	font-weight			: normal;
+	background-color	: #FFFFA1;
+	color				: #000000;
+	padding-top			: 10px;
+	padding-bottom		: 10px;
+	margin				: 0px;
+	margin-bottom		: 10px;	
+	text-align			: center;
+	width				: 100%;
+}
+
+/* ===================================== wygl¹d tabeli ============================================== */
+
+.parzyste 
+{
+	color				: #000000; 
+	background			: #AFB6BF;
+}
+
+.nieparzyste 
+{
+	color				: #000000; 
+	background			: #C9CDD3;
+}
+
+TH
+{
+	color				: #F5F5F5; 
+	font-weight			: bold;
+	background-color	: #5F6676;
+	margin				: 10px;
+	text-decoration		: none;
+	border-top-width	: 0px;
+	border-right-width	: 0px;
+	border-bottom-width	: 0px;
+	border-left-width	: 0px;
+	border-top-style	: none;
+	border-right-style	: none;
+	border-bottom-style	: none;
+	border-left-style	: none;
+	text-align			: left;
+}
+
+TD
+{
+	/*text-align			: left; */
+}
+
+.titlebar
+{
+	background-color	: #5F6676;	
+}
+
+.titlebar_menu
+{
+	background-color	: #5F6676;	
+}
+
+.titlebar_add 	/* wygl¹d wierszy w tabelach */
+{
+	color				: #F5F5F5; 
+	font-weight			: normal;
+	background-color	: #8D94A3;
+	margin				: 10px;
+	text-decoration		: none;
+	border-top-width	: 0px;
+	border-right-width	: 0px;
+	border-bottom-width	: 0px;
+	border-left-width	: 0px;
+	border-top-style	: none;
+	border-right-style	: none;
+	border-bottom-style	: none;
+	border-left-style	: none;
+	
+}
+
+.titlebar_add_n {	/* wygl¹d nag³ówków tabel */
+	color				: #F5F5F5;
+	font-size			: 11px;
+	font-weight			: bold;
+	background-color	: #AFB6BF;
+	margin				: 10px;
+	height				: 25px;
+	vertical-align		: middle;
+	border-top-width	: 0px;
+	border-right-width	: 0px;
+	border-bottom-width	: 0px;
+	border-left-width	: 0px;
+	border-top-style	: none;
+	border-right-style	: none;
+	border-bottom-style	: none;
+	border-left-style	: none;
+}
+
+/* ===================================== wygl¹d okienka do logowania ============================================== */
+
+.loginwindow_tlo		/* t³o okienka do logowania */
+{
+	background			: #AFB6BF;
+	color				: #000000;
+}
+
+.loginwindow_pasek		/* pasek okienka do logowania */ 
+{
+	background			: transparent;
+	color				: #000000;
+}
+
+.loginwindow_user
+{
+	border				: none;
+	background			: #F5F5F5;
+	color					: #000000;
+	margin-bottom		: 2px;
+}
+
+.loginwindow_pass
+{
+	border				: none;
+	background			: #F5F5F5;
+	color					: #FF2A2A;
+}
+
+.loginwindow_title {	/* wygl¹d nag³ówków tabel */
+	color				: #F5F5F5;
+	font-size			: 11px;
+	font-weight			: bold;
+	background-color	: #5F6676;
+	margin				: 10px;
+	height				: 24px;
+	vertical-align		: middle;
+	border-top-width	: 0px;
+	border-right-width	: 0px;
+	border-bottom-width	: 0px;
+	border-left-width	: 0px;
+	border-top-style	: none;
+	border-right-style	: none;
+	border-bottom-style	: none;
+	border-left-style	: none;
+}
+
+/* ===================================== stronicowanie wyników ============================================== */
+
+A.nav_normal
+{
+	background-color	: #000;
+	text-decoration	: none;
+	color					: black;
+	font-size			: 11px;
+	font-weight			: normal;
+	padding-bottom		: 1px;
+	padding-top			: 1px;
+	padding-left		: 1px;
+	padding-right		: 1px;
+	margin-left			: 0px;
+	margin-right		: 0px;
+}
+
+A.nav_normal:hover,visited 
+{
+	background-color	: transparent;
+	text-decoration		: none;
+	border-width		: 1px;
+	border-top			: solid;
+	border-bottom		: solid;
+	color				: #5F6676;
+	font-size			: 11px;
+	font-weight			: normal;
+	padding-bottom		: 1px;
+	padding-top			: 1px;
+	padding-left		: 1px;
+	padding-right		: 1px;
+	margin-left			: 0px;
+	margin-right		: 0px;
+}
+
+A.nav_current
+{
+    background-color	: transparent;
+	text-decoration		: none;
+	font-weight			: bold;
+	color				: #5F6676;
+	font-size			: 11px;
+	padding-bottom		: 1px;
+	padding-top			: 1px;
+	padding-left		: 1px;
+	padding-right		: 1px;
+	margin-left			: 0px;
+	margin-right		: 3px;
+}
+
+A.nav_current:hover,visited
+{
+	background-color	: transparent;
+	text-decoration		: none;
+	font-weight			: bold;
+	color				: #5F6676;
+	font-size			: 11px;
+	padding-bottom		: 1px;
+	padding-top			: 1px;
+	padding-left		: 1px;
+	padding-right		: 1px;
+	margin-left			: 0px;
+	margin-right		: 3px;
+}
+
+A.nav_current_first,A.nav_current_last
+{
+	background-color	: transparent;
+	text-decoration		: none;
+	color				: #CCCCCC;
+	font-size			: 11px;
+	font-weight			: normal;
+	padding-bottom		: 1px;
+	padding-top			: 1px;
+	padding-left		: 0px;
+	padding-right		: 0px;
+	margin-left			: 0px;
+	margin-right		: 3px;
+}
+
+A.nav_current_first,A.nav_current_last:hover,visited
+{
+	background-color	: transparent;
+	text-decoration		: none;
+	color				: #CCCCCC;
+	font-size			: 11px;
+	font-weight			: normal;
+	padding-bottom		: 1px;
+	padding-top			: 1px;
+	padding-left		: 0px;
+	padding-right		: 0px;
+	margin-left			: 0px;
+	margin-right		: 3px;
+}
+
+/* ================================== linki <A> ======================================= */
+
+A.endpoint_s
+{
+	text-decoration		: none;
+	color						: #004080;
+	font-size				: 11px;
+	font-weight				: normal;
+}
+
+A.endpoint_s:hover,visited
+{
+	text-decoration		: none;
+	background-color	: transparent;
+	color				: #F5F5F5;
+	font-size			: 11px;
+	font-weight			: normal;
+	cursor				: hand;
+}
+
+A.opt
+{
+	text-decoration		: none;
+	color				: #5F6676;
+	font-size			: 11px;
+	font-weight			: normal;
+}
+
+A.opt:hover,visited
+{
+	text-decoration		: none;
+	color				: #F5F5F5;
+	font-size			: 11px;
+	font-weight			: bold;
+}
+
+A.opt_g 
+{
+	text-decoration		: none;
+	color				: #5F6676;
+	font-size			: 11px;
+	font-weight			: normal;
+}
+
+A.opt_r
+{
+	text-decoration		: none;
+	color						: #FF2A2A;
+	font-size				: 11px;
+	font-weight				: bold;
+}
+
+A.opt_b 
+{
+	text-decoration		: none;
+	color				: black;
+	font-size			: 11px;
+	font-weight			: bold;
+}
+
+A.opt_w
+{
+	text-decoration		: none;
+	color				: #F5F5F5;
+	font-size			: 11px;
+	font-weight			: bold;
+}
+
+A.opt_blue
+{
+	text-decoration		: none;
+	color						: blue;
+	font-size				: 11px;
+	font-weight				: bold;
+}
+
+A.opt_pink
+{
+	text-decoration		: none;
+	color				: #5F6676;
+	font-size			: 11px;
+	font-weight			: normal;
+}
+
+hr
+{
+	border-width		: 1px;
+	color				: #5F6676;		 
+}
+
+.gold_font
+{
+	color				: #FFFFA6;
+}
+
+.black_font
+{
+	color				: black;
+	text-decoration		: none;
+}
+
+.red_font
+{
+	color				: #FF2A2A;
+}
+
+.white_font
+{
+	color				: #F5F5F5;
+}
+
+.blue_font
+{
+	color				: Blue;
+}
+
+.black_font
+{
+	color				: Black;
+}
+
+.buttons, .buttons_ok, .startpage
+{
+  font-size				: 12px;
+  color					: #F5F5F5;
+  border				: 1px black;
+  margin-bottom			: 0px;
+  border-style			: solid;
+  background-color		: #5F6676;
+  padding-top			: 3px;
+  padding-bottom		: 4px;
+  padding-left			: 15px;
+  padding-right			: 15px;
+}
+
+.wymagane
+{
+	background-color	: #FFFFA6;
+	color				: #000000;
+}
+
+/* ========================== tooltip ================================ */
+
+.tooltip,.tooltip *
+{
+	display				: block
+} /*added by javascript*/
+
+.tooltip 
+{ 
+	width				: 200px; 
+	color				: #000000;
+    font				: bold 11px/1.3 Tahoma;
+    text-decoration		: none;
+	text-align			: center
+}
+
+.tooltip span.top 
+{
+	padding				: 4px 5px 0;
+    background			: url(bt.gif) no-repeat top
+}
+
+.tooltip b.bottom
+{
+	padding				: 3px 5px 3px;
+	color					: #5F6676;
+	background			: url(bt.gif) no-repeat bottom
+}
+
+.pokazwszystko 
+{
+	margin-bottom		: 0px;
+}

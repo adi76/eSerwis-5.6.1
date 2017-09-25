@@ -1,0 +1,25 @@
+.jquery-one-checkbox  input {display: inline; font-size: 16px; line-height: 16px; cursor: pointer; cursor: hand;background: transparent url(one-checkbox.png) no-repeat;background-position: 0px 0px;}
+.jquery-one-checkbox .mark {display: inline;}
+
+.jquery-one-checkbox img {vertical-align: middle; width: 16px; height: 16px;}
+.jquery-one-checkbox img{background: transparent url(one-checkbox.png) no-repeat;}
+
+.jquery-one-checkbox img{
+	background-position: 0px 0px;
+}
+.jquery-one-checkbox-hover img{
+	background-position: -16px 0px;
+}
+.jquery-one-checkbox-checked img{
+	background-position: 0px -16px;
+}
+.jquery-one-checkbox-checked .jquery-one-checkbox-hover img {
+	background-position: -16px -16px;
+}
+
+.jquery-one-checkbox-disabled img{
+	background-position: 0px -32px;
+}
+.jquery-one-checkbox-checked .jquery-one-checkbox-disabled img{
+	background-position: 0px -48px;
+}

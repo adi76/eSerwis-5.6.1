@@ -1,0 +1,25 @@
+.jquery-many-checkbox {display: inline; font-size: 16px; line-height: 16px; cursor: pointer; cursor: hand;}
+.jquery-many-checkbox .mark {display: inline;}
+
+.jquery-many-checkbox img {vertical-align: middle; width: 16px; height: 16px;}
+.jquery-many-checkbox img{background: transparent url(many-checkbox.png) no-repeat;}
+
+.jquery-many-checkbox img{
+	background-position: 0px 0px;
+}
+.jquery-many-checkbox-hover img{
+	background-position: -16px 0px;
+}
+.jquery-many-checkbox-checked img{
+	background-position: 0px -16px;
+}
+.jquery-many-checkbox-checked .jquery-many-checkbox-hover img {
+	background-position: -16px -16px;
+}
+
+.jquery-many-checkbox-disabled img{
+	background-position: 0px -32px;
+}
+.jquery-many-checkbox-checked .jquery-many-checkbox-disabled img{
+	background-position: 0px -48px;
+}

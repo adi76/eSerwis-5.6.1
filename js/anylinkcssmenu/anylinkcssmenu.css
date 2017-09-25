@@ -1,0 +1,166 @@
+.selectedanchor{ /*CSS class that gets added to the currently selected anchor link (assuming it's a text link)*/
+background: transparent;
+text-decoration:none;
+
+}
+
+
+/* ######### Default class for drop down menus ######### */
+
+.anylinkcss{
+position: absolute;
+left: 0;
+top: 0;
+visibility: hidden;
+border: 1px solid #696969;
+border-bottom-width: 0;
+font: normal 11px Verdana;
+line-height: 18px;
+z-index: 100; /* zIndex should be greater than that of shadow's below */
+background: #FFFFFF;
+width: 180px; /* default width for menu */
+}
+
+.anylinkcss ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+.anylinkcss ul li a{
+width: 100%;
+display: block;
+text-indent: 3px;
+border-bottom: 0px solid black;
+padding: 1px 0;
+text-decoration: none;
+font-weight: normal;
+text-indent: 5px;
+color:#2E2E44;
+}
+
+.anylinkcss a:hover{ /*hover background color*/
+background: #4C4D72;
+color: white;
+}
+
+
+/* wersja dla kroków */
+
+.anylinkcss-kroki{
+position: absolute;
+left: 0;
+top: 0;
+visibility: hidden;
+border: 1px solid #696969;
+border-bottom-width: 0;
+font: normal 11px Verdana;
+line-height: 18px;
+z-index: 100; /* zIndex should be greater than that of shadow's below */
+background: #FFFFFF;
+width: 210px; /* default width for menu */
+}
+
+.anylinkcss-kroki ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+.anylinkcss-kroki ul li a{
+width: 100%;
+display: block;
+text-indent: 3px;
+border-bottom: 0px solid black;
+padding: 1px 0;
+text-decoration: none;
+font-weight: normal;
+text-indent: 5px;
+color:#1B351B;
+}
+
+.anylinkcss-kroki a:hover{ /*hover background color*/
+background: #448644;
+color: white;
+}
+
+/* wersja dla przycisków na dole przegl¹dania zg³oszeñ */
+
+.anylinkcss-buttons{
+position: absolute;
+left: 0;
+top: 0;
+visibility: hidden;
+border: 1px solid #696969;
+border-bottom-width: 0;
+font: normal 11px Verdana;
+line-height: 18px;
+z-index: 100; /* zIndex should be greater than that of shadow's below */
+background: #FFFFFF;
+width: 210px; /* default width for menu */
+}
+
+.anylinkcss-buttons ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+.anylinkcss-buttons ul li a{
+width: 100%;
+display: block;
+text-indent: 3px;
+border-bottom: 0px solid black;
+padding: 1px 0;
+text-decoration: none;
+font-weight: normal;
+text-indent: 5px;
+color:#2E2E44;
+}
+
+.anylinkcss-buttons a:hover{ /*hover background color*/
+background: #4C4D72;
+color: white;
+}
+
+/* ######### Alternate multi-column class for drop down menus ######### */
+
+
+.anylinkcsscols{
+position: absolute;
+left: 0;
+top: 0;
+visibility: hidden;
+border: 1px solid black;
+padding: 10px;
+font: normal 12px Verdana;
+z-index: 100; /*zIndex should be greater than that of shadow's below*/
+background: #DEFFCA;
+}
+
+.anylinkcsscols .column{
+width: 130px;
+float: left;
+}
+
+.anylinkcsscols .column ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+.anylinkcsscols li{
+padding-bottom: 3px;
+}
+
+/* ######### class for shadow DIV ######### */
+
+
+.anylinkshadow{ /*CSS for shadow. Keep this as is */
+position: absolute;
+left: 0;
+top: 0;
+z-index: 99; /*zIndex for shadow*/
+background: black;
+visibility: hidden;
+}
